@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/pipe-intersection-1.obj-1461729f0b21d0c78a6b5eb082d09702.mesh"
+
+[deps]
+
+files=[ "res://.import/pipe-intersection-1.obj-1461729f0b21d0c78a6b5eb082d09702.mesh" ]
+
+source_file="res://assets/models/pipe-intersection-1.obj"
+dest_files=[ "res://.import/pipe-intersection-1.obj-1461729f0b21d0c78a6b5eb082d09702.mesh", "res://.import/pipe-intersection-1.obj-1461729f0b21d0c78a6b5eb082d09702.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
