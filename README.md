@@ -4,5 +4,5 @@ WIP
 
 # Authors
 
-Ayrton Sato
-Rafael Bordoni
+* Ayrton Sato
+* Rafael Bordoni
