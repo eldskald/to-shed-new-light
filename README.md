@@ -1,1 +1,8 @@
-# godot-fire-jam
+# Godot Fire Jam
+
+WIP
+
+# Authors
+
+Ayrton Sato
+Rafael Bordoni
