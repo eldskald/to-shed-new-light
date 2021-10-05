@@ -6,6 +6,7 @@
 [node name="BaseLevel" type="Spatial"]
 script = ExtResource( 1 )
 stage_path = NodePath("Stage")
+stage_rotation_velocity = 1.0
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.42115 )
