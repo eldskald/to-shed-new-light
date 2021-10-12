@@ -21,7 +21,6 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Fire Jam"
-config/icon="res://assets/textures/icon.png"
 
 [physics]
 
