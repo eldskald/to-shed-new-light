@@ -6,27 +6,28 @@
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 3
 
-[sub_resource type="NoiseTexture" id=13]
+[sub_resource type="NoiseTexture" id=2]
 seamless = true
 noise = SubResource( 1 )
 
 [sub_resource type="OpenSimplexNoise" id=3]
 seed = 4
 
-[sub_resource type="NoiseTexture" id=14]
+[sub_resource type="NoiseTexture" id=4]
 seamless = true
 noise = SubResource( 3 )
 
 [sub_resource type="OpenSimplexNoise" id=5]
 seed = 5
 
-[sub_resource type="NoiseTexture" id=15]
+[sub_resource type="NoiseTexture" id=6]
 seamless = true
 noise = SubResource( 5 )
 
-[sub_resource type="ShaderMaterial" id=16]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 1 )
 shader_param/color = Color( 0.196078, 0.741176, 0.752941, 1 )
+shader_param/grow = -0.01
 shader_param/origin = Vector3( 0, 0, 0 )
 shader_param/fade_in_dist = 99.0
 shader_param/fade_out_dist = 100.0
@@ -34,34 +35,35 @@ shader_param/transp_intensity = 0.2
 shader_param/transp_vel = Vector2( 2, 1.5 )
 shader_param/transp_uv_scale = Vector2( 0.4, 0.4 )
 shader_param/transp_edge_rot = Vector3( 0.2, 0.3, 0.1 )
-shader_param/transp_tex_x = SubResource( 13 )
-shader_param/transp_tex_y = SubResource( 14 )
-shader_param/transp_tex_z = SubResource( 15 )
+shader_param/transp_tex_x = SubResource( 2 )
+shader_param/transp_tex_y = SubResource( 4 )
+shader_param/transp_tex_z = SubResource( 6 )
 
 [sub_resource type="OpenSimplexNoise" id=8]
 
-[sub_resource type="NoiseTexture" id=17]
+[sub_resource type="NoiseTexture" id=9]
 seamless = true
 noise = SubResource( 8 )
 
 [sub_resource type="OpenSimplexNoise" id=10]
 seed = 1
 
-[sub_resource type="NoiseTexture" id=18]
+[sub_resource type="NoiseTexture" id=11]
 seamless = true
 noise = SubResource( 10 )
 
 [sub_resource type="OpenSimplexNoise" id=12]
 seed = 2
 
-[sub_resource type="NoiseTexture" id=19]
+[sub_resource type="NoiseTexture" id=13]
 seamless = true
 noise = SubResource( 12 )
 
-[sub_resource type="ShaderMaterial" id=20]
-next_pass = SubResource( 16 )
+[sub_resource type="ShaderMaterial" id=14]
+next_pass = SubResource( 7 )
 shader = ExtResource( 1 )
 shader_param/color = Color( 0.196078, 0.741176, 0.752941, 1 )
+shader_param/grow = -0.01
 shader_param/origin = Vector3( 0, 0, 0 )
 shader_param/fade_in_dist = 99.0
 shader_param/fade_out_dist = 100.0
@@ -69,13 +71,13 @@ shader_param/transp_intensity = 0.2
 shader_param/transp_vel = Vector2( 1, 1 )
 shader_param/transp_uv_scale = Vector2( 0.25, 0.25 )
 shader_param/transp_edge_rot = Vector3( 0.3, 0.2, 0.4 )
-shader_param/transp_tex_x = SubResource( 17 )
-shader_param/transp_tex_y = SubResource( 18 )
-shader_param/transp_tex_z = SubResource( 19 )
+shader_param/transp_tex_x = SubResource( 9 )
+shader_param/transp_tex_y = SubResource( 11 )
+shader_param/transp_tex_z = SubResource( 13 )
 
 [node name="CurveWidePath" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -1.5 )
 mesh = ExtResource( 2 )
-material/0 = SubResource( 20 )
+material/0 = SubResource( 14 )

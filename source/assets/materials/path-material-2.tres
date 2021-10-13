@@ -32,6 +32,7 @@ noise = SubResource( 5 )
 [resource]
 shader = ExtResource( 1 )
 shader_param/color = Color( 0.196078, 0.741176, 0.752941, 1 )
+shader_param/grow = -0.01
 shader_param/origin = Vector3( 0, 0, 0 )
 shader_param/fade_in_dist = 99.0
 shader_param/fade_out_dist = 100.0
