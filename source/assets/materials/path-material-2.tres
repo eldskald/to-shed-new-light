@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=8 format=2]
+[gd_resource type="ShaderMaterial" load_steps=15 format=2]
 
 [ext_resource path="res://assets/shaders/paths.gdshader" type="Shader" id=1]
 
@@ -6,8 +6,6 @@
 seed = 3
 
 [sub_resource type="NoiseTexture" id=2]
-width = 256
-height = 256
 seamless = true
 noise = SubResource( 1 )
 
@@ -15,8 +13,6 @@ noise = SubResource( 1 )
 seed = 4
 
 [sub_resource type="NoiseTexture" id=4]
-width = 256
-height = 256
 seamless = true
 noise = SubResource( 3 )
 
@@ -24,14 +20,12 @@ noise = SubResource( 3 )
 seed = 5
 
 [sub_resource type="NoiseTexture" id=6]
-width = 256
-height = 256
 seamless = true
 noise = SubResource( 5 )
 
-[resource]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 1 )
-shader_param/color = Color( 0.196078, 0.741176, 0.752941, 1 )
+shader_param/color = Color( 0.435294, 0.886275, 0.894118, 1 )
 shader_param/grow = -0.01
 shader_param/origin = Vector3( 0, 0, 0 )
 shader_param/fade_in_dist = 99.0
@@ -43,3 +37,39 @@ shader_param/transp_edge_rot = Vector3( 0.2, 0.3, 0.1 )
 shader_param/transp_tex_x = SubResource( 2 )
 shader_param/transp_tex_y = SubResource( 4 )
 shader_param/transp_tex_z = SubResource( 6 )
+
+[sub_resource type="OpenSimplexNoise" id=8]
+
+[sub_resource type="NoiseTexture" id=9]
+seamless = true
+noise = SubResource( 8 )
+
+[sub_resource type="OpenSimplexNoise" id=10]
+seed = 1
+
+[sub_resource type="NoiseTexture" id=11]
+seamless = true
+noise = SubResource( 10 )
+
+[sub_resource type="OpenSimplexNoise" id=12]
+seed = 2
+
+[sub_resource type="NoiseTexture" id=13]
+seamless = true
+noise = SubResource( 12 )
+
+[resource]
+next_pass = SubResource( 7 )
+shader = ExtResource( 1 )
+shader_param/color = Color( 0.435294, 0.886275, 0.894118, 1 )
+shader_param/grow = -0.01
+shader_param/origin = Vector3( 0, 0, 0 )
+shader_param/fade_in_dist = 99.0
+shader_param/fade_out_dist = 100.0
+shader_param/transp_intensity = 0.2
+shader_param/transp_vel = Vector2( 1, 1 )
+shader_param/transp_uv_scale = Vector2( 0.25, 0.25 )
+shader_param/transp_edge_rot = Vector3( 0.3, 0.2, 0.4 )
+shader_param/transp_tex_x = SubResource( 9 )
+shader_param/transp_tex_y = SubResource( 11 )
+shader_param/transp_tex_z = SubResource( 13 )

@@ -6,8 +6,8 @@
 seed = 3
 
 [sub_resource type="NoiseTexture" id=2]
-width = 256
-height = 256
+width = 768
+height = 768
 seamless = true
 noise = SubResource( 1 )
 
@@ -15,8 +15,8 @@ noise = SubResource( 1 )
 seed = 4
 
 [sub_resource type="NoiseTexture" id=4]
-width = 256
-height = 256
+width = 768
+height = 768
 seamless = true
 noise = SubResource( 3 )
 
@@ -24,8 +24,8 @@ noise = SubResource( 3 )
 seed = 5
 
 [sub_resource type="NoiseTexture" id=6]
-width = 256
-height = 256
+width = 768
+height = 768
 seamless = true
 noise = SubResource( 5 )
 
@@ -47,8 +47,8 @@ shader_param/transp_tex_z = SubResource( 6 )
 [sub_resource type="OpenSimplexNoise" id=8]
 
 [sub_resource type="NoiseTexture" id=9]
-width = 256
-height = 256
+width = 768
+height = 768
 seamless = true
 noise = SubResource( 8 )
 
@@ -56,8 +56,8 @@ noise = SubResource( 8 )
 seed = 1
 
 [sub_resource type="NoiseTexture" id=11]
-width = 256
-height = 256
+width = 768
+height = 768
 seamless = true
 noise = SubResource( 10 )
 
@@ -65,8 +65,8 @@ noise = SubResource( 10 )
 seed = 2
 
 [sub_resource type="NoiseTexture" id=13]
-width = 256
-height = 256
+width = 768
+height = 768
 seamless = true
 noise = SubResource( 12 )
 

@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/models/stick-intersection-1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/models/stick-intersection-4.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://assets/materials/path-material-1.tres" type="Material" id=2]
 
-[node name="TriIntersectionPath" type="Spatial"]
+[node name="PentaIntersectionPath" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 2 )
 material/1 = ExtResource( 2 )
+material/2 = ExtResource( 2 )
