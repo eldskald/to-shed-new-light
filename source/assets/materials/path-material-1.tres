@@ -3,31 +3,31 @@
 [ext_resource path="res://assets/shaders/paths.gdshader" type="Shader" id=1]
 [ext_resource path="res://assets/materials/path-material-2.tres" type="Material" id=2]
 
-[sub_resource type="OpenSimplexNoise" id=1]
+[sub_resource type="OpenSimplexNoise" id=8]
 
-[sub_resource type="NoiseTexture" id=2]
+[sub_resource type="NoiseTexture" id=9]
 width = 256
 height = 256
 seamless = true
-noise = SubResource( 1 )
+noise = SubResource( 8 )
 
-[sub_resource type="OpenSimplexNoise" id=3]
+[sub_resource type="OpenSimplexNoise" id=10]
 seed = 1
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="NoiseTexture" id=11]
 width = 256
 height = 256
 seamless = true
-noise = SubResource( 3 )
+noise = SubResource( 10 )
 
-[sub_resource type="OpenSimplexNoise" id=5]
+[sub_resource type="OpenSimplexNoise" id=12]
 seed = 2
 
-[sub_resource type="NoiseTexture" id=6]
+[sub_resource type="NoiseTexture" id=13]
 width = 256
 height = 256
 seamless = true
-noise = SubResource( 5 )
+noise = SubResource( 12 )
 
 [resource]
 next_pass = ExtResource( 2 )
@@ -40,6 +40,6 @@ shader_param/transp_intensity = 0.2
 shader_param/transp_vel = Vector2( 1, 1 )
 shader_param/transp_uv_scale = Vector2( 0.25, 0.25 )
 shader_param/transp_edge_rot = Vector3( 0.3, 0.2, 0.4 )
-shader_param/transp_tex_x = SubResource( 2 )
-shader_param/transp_tex_y = SubResource( 4 )
-shader_param/transp_tex_z = SubResource( 6 )
+shader_param/transp_tex_x = SubResource( 9 )
+shader_param/transp_tex_y = SubResource( 11 )
+shader_param/transp_tex_z = SubResource( 13 )

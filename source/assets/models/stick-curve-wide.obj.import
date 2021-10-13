@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stick-curve-wide.obj-7d2c867e66aa8d050512232d6533eadf.mesh"
+
+[deps]
+
+files=[ "res://.import/stick-curve-wide.obj-7d2c867e66aa8d050512232d6533eadf.mesh" ]
+
+source_file="res://assets/models/stick-curve-wide.obj"
+dest_files=[ "res://.import/stick-curve-wide.obj-7d2c867e66aa8d050512232d6533eadf.mesh", "res://.import/stick-curve-wide.obj-7d2c867e66aa8d050512232d6533eadf.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
