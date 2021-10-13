@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/materials/main-sphere-material.tres" type="Material" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.5
+height = 1.0
+
+[node name="MainSphere" type="MeshInstance"]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
