@@ -14,4 +14,7 @@ width = 256
 shader = ExtResource( 1 )
 shader_param/brightness = 1.0
 shader_param/cycle_length = 20.0
+shader_param/origin = Vector3( 0, 0, 0 )
+shader_param/fade_in_dist = 99.0
+shader_param/fade_out_dist = 100.0
 shader_param/gradient = SubResource( 2 )
