@@ -6,6 +6,7 @@
 background_mode = 1
 background_sky = SubResource( 1 )
 background_color = Color( 0.0980392, 0.027451, 0.172549, 1 )
+tonemap_mode = 2
 glow_enabled = true
 glow_levels/1 = true
 glow_levels/2 = true

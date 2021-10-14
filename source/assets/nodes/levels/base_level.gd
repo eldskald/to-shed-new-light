@@ -61,7 +61,7 @@ func rotate_object_to_camera(object:Spatial, direction: Vector2, delta: float) -
 				rotation_state = rotation_states.IDLE
 			else:
 				rotated_angle += direction.y*rotation_amount
-			object.rotate_object_local(camera.transform.basis.x, rotation_amount)
+			object.rotate(camera.transform.basis.x, rotation_amount)
 		Vector2.RIGHT, Vector2.LEFT:
 			var rotation_amount: float = stage_rotation_velocity*delta*direction.x
 			if abs(rotated_angle + direction.x*rotation_amount) > PI/2:

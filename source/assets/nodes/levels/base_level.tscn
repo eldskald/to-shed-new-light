@@ -1,15 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/nodes/levels/base_level.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/pipe-straight.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/nodes/draggables/main-sphere.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.5
+height = 1.0
 
 [node name="BaseLevel" type="Spatial"]
 script = ExtResource( 1 )
 stage_path = NodePath("Stage")
 stage_rotation_velocity = 1.0
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.42115 )
+[node name="CameraPivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+
+[node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0 )
+keep_aspect = 0
+projection = 1
+size = 16.0
 
 [node name="Stage" type="Spatial" parent="."]
 
@@ -17,5 +29,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.42115 )
 transform = Transform( 0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 0, 0, 0 )
 mesh = ExtResource( 2 )
 material/0 = null
+
+[node name="StraightPath" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+
+[node name="StraightPath2" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1 )
+
+[node name="StraightPath3" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -2 )
+
+[node name="StraightPath4" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, -3 )
+
+[node name="StraightPath5" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, -4 )
+
+[node name="StraightPath6" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3, 0, -5 )
+
+[node name="StraightPath7" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -6 )
+
+[node name="StraightPath8" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -7 )
+
+[node name="StraightPath9" parent="Stage" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -8 )
+
+[node name="MainSphere" parent="Stage" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
+mesh = SubResource( 1 )
 
 [node name="RotationTween" type="Tween" parent="."]
