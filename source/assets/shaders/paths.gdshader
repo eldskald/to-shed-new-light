@@ -1,10 +1,13 @@
 shader_type spatial;
 
 uniform vec4 color : hint_color = vec4(1.0);
+uniform float brightness = 1.0;
 uniform float grow = 0.0;
+
 uniform vec3 origin = vec3(0.0);
 uniform float fade_in_dist;
 uniform float fade_out_dist;
+
 uniform float transp_intensity = 0.1;
 uniform vec2 transp_vel = vec2(1.0);
 uniform vec2 transp_uv_scale = vec2(1.0);

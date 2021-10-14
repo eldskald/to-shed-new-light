@@ -32,6 +32,7 @@ noise = SubResource( 5 )
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 1 )
 shader_param/color = Color( 0.435294, 0.886275, 0.894118, 1 )
+shader_param/brightness = 1.0
 shader_param/grow = -0.01
 shader_param/origin = Vector3( 0, 0, 0 )
 shader_param/fade_in_dist = 99.0
@@ -74,6 +75,7 @@ noise = SubResource( 12 )
 next_pass = SubResource( 7 )
 shader = ExtResource( 1 )
 shader_param/color = Color( 0.435294, 0.886275, 0.894118, 1 )
+shader_param/brightness = 1.0
 shader_param/grow = -0.01
 shader_param/origin = Vector3( 0, 0, 0 )
 shader_param/fade_in_dist = 99.0
