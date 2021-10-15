@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/scripts/base_level.gd" type="Script" id=1]
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/nodes/draggables/main-sphere.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/nodes/interactables/main-sphere.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.5
