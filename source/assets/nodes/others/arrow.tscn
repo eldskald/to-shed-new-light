@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/models/arrow.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/materials/arrow-material.tres" type="Material" id=2]
+
+[node name="Arrow" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 2 )
+material/1 = ExtResource( 2 )
