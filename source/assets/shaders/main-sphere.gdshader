@@ -21,5 +21,5 @@ void fragment() {
 	vec3 view_space_origin = (INV_CAMERA_MATRIX * vec4(origin, 1.0)).xyz;
 	float t = abs((VERTEX - view_space_origin).z);
 	
-	ALPHA = 1.0 - smoothstep(fade_in_dist, fade_out_dist, t);
+	//ALPHA = 1.0 - smoothstep(fade_in_dist, fade_out_dist, t);
 }

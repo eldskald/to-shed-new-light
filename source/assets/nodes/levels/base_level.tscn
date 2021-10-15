@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/nodes/levels/base_level.gd" type="Script" id=1]
-[ext_resource path="res://assets/models/pipe-straight.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/scripts/base_level.gd" type="Script" id=1]
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/nodes/draggables/main-sphere.tscn" type="PackedScene" id=4]
 
@@ -10,25 +9,20 @@ radius = 0.5
 height = 1.0
 
 [node name="BaseLevel" type="Spatial"]
+transform = Transform( 3.0598e-07, -5.34992e-14, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, 3.0598e-07, 0, 0, 0 )
 script = ExtResource( 1 )
-stage_path = NodePath("Stage")
 stage_rotation_velocity = 1.0
 
 [node name="CameraPivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 6.56811e-15, 1, 0, 0, -4 )
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0, 0 )
 keep_aspect = 0
 projection = 1
 size = 16.0
 
 [node name="Stage" type="Spatial" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="Stage"]
-transform = Transform( 0.707107, 0.5, 0.5, 0, 0.707107, -0.707107, -0.707107, 0.5, 0.5, 0, 0, 0 )
-mesh = ExtResource( 2 )
-material/0 = null
 
 [node name="StraightPath" parent="Stage" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
@@ -62,3 +56,74 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1 )
 mesh = SubResource( 1 )
 
 [node name="RotationTween" type="Tween" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Spatial" parent="."]
+
+[node name="Y" type="Button" parent="Button"]
+margin_left = 906.0
+margin_top = 435.0
+margin_right = 929.0
+margin_bottom = 455.0
+text = "Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="-Y" type="Button" parent="Button"]
+margin_left = 906.686
+margin_top = 521.69
+margin_right = 930.686
+margin_bottom = 541.69
+text = "-Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Z" type="Button" parent="Button"]
+margin_left = 945.577
+margin_top = 457.343
+margin_right = 969.577
+margin_bottom = 477.343
+text = "Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="-Z" type="Button" parent="Button"]
+margin_left = 864.26
+margin_top = 496.941
+margin_right = 888.26
+margin_bottom = 516.941
+text = "-Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="X" type="Button" parent="Button"]
+margin_left = 946.991
+margin_top = 495.527
+margin_right = 970.991
+margin_bottom = 515.527
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="-X" type="Button" parent="Button"]
+margin_left = 863.552
+margin_top = 455.929
+margin_right = 888.552
+margin_bottom = 475.929
+text = "-X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_down" from="Button/Y" to="." method="_on_Z_button_down"]
+[connection signal="button_down" from="Button/-Y" to="." method="_on_mZ_button_down"]
+[connection signal="button_down" from="Button/Z" to="." method="_on_Y_button_down"]
+[connection signal="button_down" from="Button/-Z" to="." method="_on_mY_button_down"]
+[connection signal="button_down" from="Button/X" to="." method="_on_X_button_down"]
+[connection signal="button_down" from="Button/-X" to="." method="_on_mX_button_down"]

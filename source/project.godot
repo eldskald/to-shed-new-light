@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "BaseLevel",
 "language": "GDScript",
-"path": "res://assets/nodes/levels/base_level.gd"
+"path": "res://assets/scripts/base_level.gd"
 } ]
 _global_script_class_icons={
 "BaseLevel": ""
