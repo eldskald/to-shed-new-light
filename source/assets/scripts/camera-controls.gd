@@ -1,11 +1,7 @@
 extends Spatial
-class_name BaseLevel
 
-export(float) var stage_rotation_velocity
-
-onready var stage: Spatial = get_node("Stage")
-onready var camera_pivot: Spatial = get_node("CameraPivot")
-onready var rotation_tween: Tween = get_node("RotationTween")
+onready var camera_pivot: Spatial = get_parent().get_node("CameraPivot")
+onready var rotation_tween: Tween = camera_pivot.get_node("RotationTween")
 
 
 func rotate_pivot(button_name: String = "") -> void:
@@ -20,13 +16,13 @@ func rotate_pivot(button_name: String = "") -> void:
 		"-Y":
 			direction = Vector3(0, -90, 0)
 		"X":
-			direction = Vector3(0, -90, 0)
-		"-X":
 			direction = Vector3(0, 0, 0)
-	rotation_tween.interpolate_property(camera_pivot, "rotation_degrees", camera_pivot.get_rotation_degrees(), direction, 1, 
-										Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+		"-X":
+			direction = Vector3(180, 0, 0)
+	rotation_tween.interpolate_property(
+		camera_pivot, "rotation_degrees", camera_pivot.get_rotation_degrees(),
+		direction, 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	rotation_tween.start()
-	return
 
 
 func _on_Z_button_down():
