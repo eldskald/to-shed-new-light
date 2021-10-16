@@ -1,5 +1,6 @@
 extends RayCast
 
+onready var level: Spatial = get_node_or_null("../../../")
 onready var sphere: Spatial = null
 onready var path: Spatial = null
 
@@ -51,7 +52,7 @@ func update_raycast_position() -> void:
 	self.translation.y *= viewport.size.y / viewport.size.x
 
 func drag_sphere(new_position: Vector3) -> void:
-	var offset: Vector3 = new_position - sphere.to_global(sphere.translation)
+	var offset: Vector3 = new_position - level.to_global(sphere.translation)
 	sphere.global_translate(offset)
 
 func let_go_of_sphere() -> void:
