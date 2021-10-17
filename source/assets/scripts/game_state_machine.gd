@@ -4,6 +4,8 @@ enum states {START_MENU, GAME, CREDITS}
 
 export(String, DIR) var levels_derectory
 export(String) var level_prefix
+export(String, FILE, "*.tscn") var start_menu
+export(String, FILE, "*.tscn") var credits
 export(states) var initial_state
 
 onready var state: int setget set_state
@@ -16,10 +18,11 @@ func set_state(new_value: int) -> void:
 	state = new_value
 	match state:
 		states.INITIAL_MENU:
-			#Load Start Menu
-			pass
+			get_tree().change_scene(start_menu)
 		states.GAME:
 			get_tree().change_scene(levels_derectory + "/"+ level_prefix + String(level_progress) + ".tscn")
+		states.CREDITS:
+			get_tree().change_scene(credits)
 
 func _ready():
 	state = initial_state
