@@ -35,9 +35,9 @@ void vertex() {
 	float bounds = smoothstep(0.0, 0.2, UV.x) * smoothstep(0.0, 0.2, 1.0 - UV.x);
 	bounds *= smoothstep(0.0, 0.2, UV.y) * smoothstep(0.0, 0.2, 1.0 - UV.y);
 	vec3 edge_offs = vec3(0.0);
-	edge_offs.x = sin(TIME * transp_edge_rot.x) * 0.2;
-	edge_offs.y = cos(TIME * transp_edge_rot.y) * 0.2;
-	edge_offs.z = sin(TIME * transp_edge_rot.z) * 0.2;
+	edge_offs.x = sin(TIME * transp_edge_rot.x) * 0.0;
+	edge_offs.y = cos(TIME * transp_edge_rot.y) * 0.0;
+	edge_offs.z = sin(TIME * transp_edge_rot.z) * 0.0;
 	
 	VERTEX += mix(edge_offs, offset, bounds) * transp_intensity + NORMAL * grow;
 }
