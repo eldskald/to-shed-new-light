@@ -18,7 +18,7 @@ func rotate_pivot(button_name: String = "") -> void:
 		"X":
 			direction = Vector3(0, 0, 0)
 		"-X":
-			direction = Vector3(180, 0, 0)
+			direction = Vector3(0, 180, 0)
 	rotation_tween.interpolate_property(
 		camera_pivot, "rotation_degrees", camera_pivot.get_rotation_degrees(),
 		direction, 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)

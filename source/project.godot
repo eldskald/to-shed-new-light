@@ -12,6 +12,10 @@ config_version=4
 
 config/name="Godot Fire Jam"
 
+[audio]
+
+default_bus_layout="res://common/default_bus_layout.tres"
+
 [debug]
 
 gdscript/warnings/unused_variable=false
