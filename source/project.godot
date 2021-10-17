@@ -16,6 +16,10 @@ config/name="Godot Fire Jam"
 
 default_bus_layout="res://common/default_bus_layout.tres"
 
+[autoload]
+
+GameStateMachine="*res://assets/nodes/autoloads/game_state_machine.tscn"
+
 [debug]
 
 gdscript/warnings/unused_variable=false
@@ -32,6 +36,15 @@ click={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+3d_render/layer_1="sphere"
+3d_physics/layer_1="sphere"
+3d_render/layer_2="paths"
+3d_physics/layer_2="paths"
+3d_render/layer_3="goals"
+3d_physics/layer_3="goal"
 
 [physics]
 
