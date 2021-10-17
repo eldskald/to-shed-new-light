@@ -41,7 +41,7 @@ func _physics_process(_delta: float) -> void:
 
 func update_raycast_position() -> void:
 	var viewport: Viewport = get_viewport()
-	var camera: Camera = get_parent()
+	var camera: Camera = viewport.get_camera()
 	var mouse_position: Vector2 = viewport.get_mouse_position()
 	var unit_pos: Vector2 = Vector2(                 # Makes mouse pos coords
 		2 * mouse_position.x / viewport.size.x - 1,  # range from -1 to 1 with

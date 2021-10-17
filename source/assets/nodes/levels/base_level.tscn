@@ -1,16 +1,93 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/nodes/ui/audio-controls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/camera-controls.gd" type="Script" id=2]
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/nodes/interactables/main-sphere.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/scripts/mouse-controls.gd" type="Script" id=5]
+[ext_resource path="res://assets/scripts/drag-controls.gd" type="Script" id=5]
+[ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=6]
+[ext_resource path="res://assets/models/widget-piece.obj" type="ArrayMesh" id=7]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.4
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = ExtResource( 6 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
 
 [node name="BaseLevel" type="Spatial"]
 transform = Transform( 3.0598e-07, -5.34992e-14, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, 3.0598e-07, 0, 0, 0 )
 
 [node name="CameraPivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4 )
+transform = Transform( -4.37114e-08, -1, 2.84217e-14, 1, -4.37114e-08, -1.74846e-07, 1.74846e-07, -2.84217e-14, 1, -1.13687e-13, 1.35525e-20, -4 )
 
 [node name="RotationTween" type="Tween" parent="CameraPivot"]
 
@@ -20,7 +97,7 @@ keep_aspect = 0
 projection = 1
 size = 16.0
 
-[node name="MouseControls" type="RayCast" parent="CameraPivot/Camera"]
+[node name="DragControls" type="RayCast" parent="CameraPivot/Camera"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27374e-13, 1.90735e-06 )
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
@@ -28,6 +105,105 @@ collision_mask = 3
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource( 5 )
+
+[node name="CameraControls" type="Spatial" parent="CameraPivot/Camera"]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="CameraPivot/Camera/CameraControls"]
+
+[node name="RayCast" type="RayCast" parent="CameraPivot/Camera/CameraControls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35, -3, 0 )
+cast_to = Vector3( 0, 0, -10 )
+collision_mask = 1024
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="PivotWidget" type="Spatial" parent="CameraPivot/Camera/CameraControls"]
+transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 6.35, -3, -5 )
+
+[node name="Z" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
+transform = Transform( 1, 2.47269e-07, -1.02422e-07, -2.47269e-07, 1, -2.58344e-08, 1.02422e-07, 2.58345e-08, 1, 0, 0, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z"]
+mesh = ExtResource( 7 )
+material/0 = SubResource( 2 )
+material/1 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="nZ" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
+transform = Transform( 1, -2.47269e-07, -1.02422e-07, -2.47269e-07, -1, -2.58344e-08, 1.02422e-07, -2.58345e-08, 1, 0, 0, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ"]
+mesh = ExtResource( 7 )
+material/0 = SubResource( 4 )
+material/1 = SubResource( 5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="X" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
+transform = Transform( -4.37113e-08, 1, -1.74845e-07, -1, -4.37113e-08, -5.24537e-07, -5.24537e-07, 1.74845e-07, 1, -9.53674e-07, 0, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/X"]
+mesh = ExtResource( 7 )
+material/0 = SubResource( 14 )
+material/1 = SubResource( 15 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/X"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="nX" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
+transform = Transform( -4.37113e-08, -1, -1.74845e-07, -1, 4.37114e-08, -5.24537e-07, -5.24537e-07, -1.74845e-07, 1, -9.53674e-07, 0, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX"]
+mesh = ExtResource( 7 )
+material/0 = SubResource( 8 )
+material/1 = SubResource( 9 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="Y" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
+transform = Transform( 3.49691e-07, -2.18557e-07, -1, -1, -2.18557e-07, -3.49691e-07, -2.18557e-07, 1, -2.18557e-07, -9.53674e-07, 0, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y"]
+mesh = ExtResource( 7 )
+material/0 = SubResource( 10 )
+material/1 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
+
+[node name="nY" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
+transform = Transform( 3.49691e-07, 1.62921e-07, -1, -1, 1.62921e-07, -3.49691e-07, -1.62921e-07, -1, -1.62921e-07, -9.53674e-07, 0, 0 )
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
+mesh = ExtResource( 7 )
+material/0 = SubResource( 12 )
+material/1 = SubResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
+transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
 
 [node name="Stage" type="Spatial" parent="."]
 
@@ -61,74 +237,4 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -
 [node name="StraightPath9" parent="Stage" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -8 )
 
-[node name="CameraControls" type="Spatial" parent="."]
-script = ExtResource( 2 )
-
-[node name="Y" type="Button" parent="CameraControls"]
-margin_left = 906.0
-margin_top = 435.0
-margin_right = 929.0
-margin_bottom = 455.0
-text = "Y"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="-Y" type="Button" parent="CameraControls"]
-margin_left = 906.686
-margin_top = 521.69
-margin_right = 930.686
-margin_bottom = 541.69
-text = "-Y"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Z" type="Button" parent="CameraControls"]
-margin_left = 945.577
-margin_top = 457.343
-margin_right = 969.577
-margin_bottom = 477.343
-text = "Z"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="-Z" type="Button" parent="CameraControls"]
-margin_left = 864.26
-margin_top = 496.941
-margin_right = 888.26
-margin_bottom = 516.941
-text = "-Z"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="X" type="Button" parent="CameraControls"]
-margin_left = 946.991
-margin_top = 495.527
-margin_right = 970.991
-margin_bottom = 515.527
-text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="-X" type="Button" parent="CameraControls"]
-margin_left = 863.552
-margin_top = 455.929
-margin_right = 888.552
-margin_bottom = 475.929
-text = "-X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AudioControls" parent="." instance=ExtResource( 1 )]
-
-[connection signal="button_down" from="CameraControls/Y" to="CameraControls" method="_on_Z_button_down"]
-[connection signal="button_down" from="CameraControls/-Y" to="CameraControls" method="_on_mZ_button_down"]
-[connection signal="button_down" from="CameraControls/Z" to="CameraControls" method="_on_Y_button_down"]
-[connection signal="button_down" from="CameraControls/-Z" to="CameraControls" method="_on_mY_button_down"]
-[connection signal="button_down" from="CameraControls/X" to="CameraControls" method="_on_X_button_down"]
-[connection signal="button_down" from="CameraControls/-X" to="CameraControls" method="_on_mX_button_down"]
