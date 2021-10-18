@@ -42,8 +42,7 @@ func _ready() -> void:
 
 func disable_widget(widget: Area) -> void:
 	widget.visible = false
-	widget.monitoring = false
-	widget.monitorable = false
+	widget.get_node("CollisionShape").disabled = true
 
 
 

@@ -25,12 +25,19 @@ var rot_states: Dictionary = {
 	"Right" : Vector3(0, 90, 90)
 }
 
-onready var rot_materials: Dictionary = {
-	"Up" : $RotationWidget/MeshInstance.get_surface_material(3),
-	"Left" : $RotationWidget/MeshInstance.get_surface_material(0),
-	"Down" : $RotationWidget/MeshInstance.get_surface_material(1),
-	"Right" : $RotationWidget/MeshInstance.get_surface_material(2)
+var rot_materials: Dictionary = {
+	"Up" : 0,
+	"Left" : 1,
+	"Down" : 2,
+	"Right" : 3
 }
+
+#onready var rot_materials: Dictionary = {
+#	"Up" : [$RotationWidget.up_brightness, $RotationWidget.up_alpha],
+#	"Left" : [$RotationWidget.left_brightness, $RotationWidget.left_alpha],
+#	"Down" : [$RotationWidget.down_brightness, $RotationWidget.down_alpha],
+#	"Right" : [$RotationWidget.right_brightness, $RotationWidget.right_alpha]
+#}
 
 
 
@@ -45,8 +52,7 @@ func _physics_process(_delta) -> void:
 	pivot_ray.force_raycast_update()
 	if pivot_ray.is_colliding():
 		var c_widget: Area = pivot_ray.get_collider()
-		var c_mesh: MeshInstance = c_widget.get_node("MeshInstance")
-		c_mesh.get_surface_material(1).set_shader_param("brightness", 1.1)
+		c_widget.brightness = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
 			tween.interpolate_property(
 				pivot, "rotation_degrees", null, pivot_states[c_widget.name],
@@ -64,7 +70,8 @@ func _physics_process(_delta) -> void:
 	rot_ray.force_raycast_update()
 	if rot_ray.is_colliding():
 		var c_widget: String = rot_ray.get_collider().name
-		rot_materials[c_widget].set_shader_param("brightness", 1.1)
+		var rot_widget = $RotationWidget
+		rot_widget.brightness[rot_materials[c_widget]] = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
 			tween.interpolate_property(
 				camera, "rotation_degrees", null, rot_states[c_widget],
@@ -101,15 +108,11 @@ func get_pivot_widget_by_name(state: String) -> Area:
 	return null
 
 func light_pivot_widgets(state: String) -> void:
-	var widget: Area = get_pivot_widget_by_name(state)
-	var mesh: MeshInstance = widget.get_node("MeshInstance")
-	mesh.get_surface_material(0).set_shader_param("brightness", 1.1)
-	mesh.get_surface_material(1).set_shader_param("brightness", 1.1)
-	for o_widget in get_node("PivotWidget").get_children():
-		if o_widget.name != state:
-			var o_mesh: MeshInstance = o_widget.get_node("MeshInstance")
-			o_mesh.get_surface_material(0).set_shader_param("brightness", 0.6)
-			o_mesh.get_surface_material(1).set_shader_param("brightness", 0.6)
+	for widget in get_node("PivotWidget").get_children():
+		if widget.name == state:
+			widget.brightness = 1.1
+		else:
+			widget.brightness = 0.6
 
 
 
@@ -120,9 +123,10 @@ func get_rot_state() -> String:
 	return "none"
 
 func light_rot_widget(state: String) -> void:
+	var rot_widget = $RotationWidget
 	for key in rot_states.keys():
 		if key == state:
-			rot_materials[key].set_shader_param("brightness", 1.1)
+			rot_widget.brightness[rot_materials[key]] = 1.1
 		else:
-			rot_materials[key].set_shader_param("brightness", 0.6)
+			rot_widget.brightness[rot_materials[key]] = 0.6
 

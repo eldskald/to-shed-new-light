@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/nodes/ui/audio-controls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/controls-camera.gd" type="Script" id=2]
@@ -13,12 +13,15 @@
 [ext_resource path="res://assets/shaders/pivot-widget.gdshader" type="Shader" id=11]
 [ext_resource path="res://assets/nodes/paths/fixed-path-straight.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/scripts/scene_level.gd" type="Script" id=13]
+[ext_resource path="res://assets/scripts/scene_pivot_widget.gd" type="Script" id=14]
+[ext_resource path="res://assets/scripts/scene_rotation_widget.gd" type="Script" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.4
@@ -28,88 +31,98 @@ resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=8]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=10]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=11]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
 shader = ExtResource( 11 )
 shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=13]
 resource_local_to_scene = true
 shader = ExtResource( 9 )
 shader_param/color = Color( 1, 0.46875, 0, 1 )
 shader_param/brightness = 0.6
-shader_param/grow = 0.0
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=14]
 resource_local_to_scene = true
 shader = ExtResource( 9 )
 shader_param/color = Color( 1, 0.46875, 0, 1 )
 shader_param/brightness = 0.6
-shader_param/grow = 0.0
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=15]
 resource_local_to_scene = true
 shader = ExtResource( 9 )
 shader_param/color = Color( 1, 0.46875, 0, 1 )
 shader_param/brightness = 0.6
-shader_param/grow = 0.0
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=16]
 resource_local_to_scene = true
 shader = ExtResource( 9 )
 shader_param/color = Color( 1, 0.46875, 0, 1 )
 shader_param/brightness = 0.6
-shader_param/grow = 0.0
+shader_param/alpha = 1.0
 
 [sub_resource type="CapsuleShape" id=17]
 radius = 0.2
@@ -172,6 +185,7 @@ transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 
 transform = Transform( 1, 2.47269e-07, -1.02422e-07, -2.47269e-07, 1, -2.58344e-08, 1.02422e-07, 2.58345e-08, 1, 0, 0, 0 )
 collision_layer = 1024
 collision_mask = 1024
+script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z"]
 mesh = ExtResource( 7 )
@@ -182,10 +196,14 @@ material/1 = SubResource( 1 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z"]
+one_shot = true
+
 [node name="nZ" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
 transform = Transform( 1, -2.47269e-07, -1.02422e-07, -2.47269e-07, -1, -2.58344e-08, 1.02422e-07, -2.58345e-08, 1, 0, 0, 0 )
 collision_layer = 1024
 collision_mask = 1024
+script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ"]
 mesh = ExtResource( 7 )
@@ -196,10 +214,14 @@ material/1 = SubResource( 4 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ"]
+one_shot = true
+
 [node name="X" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
 transform = Transform( -4.37113e-08, 1, -1.74845e-07, -1, -4.37113e-08, -5.24537e-07, -5.24537e-07, 1.74845e-07, 1, -9.53674e-07, 0, 0 )
 collision_layer = 1024
 collision_mask = 1024
+script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/X"]
 mesh = ExtResource( 7 )
@@ -210,10 +232,14 @@ material/1 = SubResource( 6 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/PivotWidget/X"]
+one_shot = true
+
 [node name="nX" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
 transform = Transform( -4.37113e-08, -1, -1.74845e-07, -1, 4.37114e-08, -5.24537e-07, -5.24537e-07, -1.74845e-07, 1, -9.53674e-07, 0, 0 )
 collision_layer = 1024
 collision_mask = 1024
+script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX"]
 mesh = ExtResource( 7 )
@@ -224,10 +250,14 @@ material/1 = SubResource( 8 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX"]
+one_shot = true
+
 [node name="Y" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
 transform = Transform( 3.49691e-07, -2.18557e-07, -1, -1, -2.18557e-07, -3.49691e-07, -2.18557e-07, 1, -2.18557e-07, -9.53674e-07, 0, 0 )
 collision_layer = 1024
 collision_mask = 1024
+script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y"]
 mesh = ExtResource( 7 )
@@ -238,10 +268,14 @@ material/1 = SubResource( 10 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y"]
+one_shot = true
+
 [node name="nY" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
 transform = Transform( 3.49691e-07, 1.62921e-07, -1, -1, 1.62921e-07, -3.49691e-07, -1.62921e-07, -1, -1.62921e-07, -9.53674e-07, 0, 0 )
 collision_layer = 1024
 collision_mask = 1024
+script = ExtResource( 14 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
 mesh = ExtResource( 7 )
@@ -252,8 +286,12 @@ material/1 = SubResource( 12 )
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
+one_shot = true
+
 [node name="RotationWidget" type="Spatial" parent="CameraPivot/Camera/CameraControls"]
 transform = Transform( 1.5, 0, 8.35269e-16, 0, 1.5, -1.13687e-13, 8.35296e-16, -1.13687e-13, 1.5, 6, -2.75, -2 )
+script = ExtResource( 15 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.75343e-08, 0 )
@@ -298,6 +336,9 @@ collision_mask = 2048
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/RotationWidget/Right"]
 transform = Transform( -4.37113e-08, 5.24538e-07, -1, 8.74229e-08, 1, 5.24537e-07, 1, -8.74226e-08, -4.37113e-08, 0, 0, 0 )
 shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
+one_shot = true
 
 [node name="FixedStage" type="Spatial" parent="CameraPivot/Camera"]
 
@@ -346,3 +387,11 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -
 transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, 2.44784e-06, -1.90735e-06, -8 )
 
 [node name="AudioControls" parent="." instance=ExtResource( 1 )]
+
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/Z/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/Z" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/nZ/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/nZ" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/X/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/X" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/nX/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/nX" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/Y/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/Y" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/nY/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/nY" method="_on_Timer_timeout"]
+[connection signal="timeout" from="CameraPivot/Camera/CameraControls/RotationWidget/Timer" to="CameraPivot/Camera/CameraControls/RotationWidget" method="_on_Timer_timeout"]
