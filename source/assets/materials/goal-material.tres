@@ -1,11 +1,18 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
 [ext_resource path="res://assets/shaders/goal.gdshader" type="Shader" id=1]
 
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 2
+
+[sub_resource type="NoiseTexture" id=2]
+width = 128
+height = 128
+seamless = true
+noise = SubResource( 1 )
+
 [resource]
 shader = ExtResource( 1 )
-shader_param/ring_brightness = 1.0
+shader_param/brightness = 1.0
 shader_param/ring_thickness = 0.5
-shader_param/origin = Vector3( 0, 0, 0 )
-shader_param/fade_in_dist = 99.0
-shader_param/fade_out_dist = 100.0
+shader_param/noise_tex = SubResource( 2 )

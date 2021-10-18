@@ -5,85 +5,80 @@
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/nodes/interactables/main-sphere.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/drag-controls.gd" type="Script" id=5]
-[ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=6]
+[ext_resource path="res://assets/materials/pivot-widget-material.tres" type="Material" id=6]
 [ext_resource path="res://assets/models/widget-piece.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://assets/nodes/interactables/goal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=9]
 [ext_resource path="res://assets/models/widget-ring.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://assets/shaders/pivot-widget.gdshader" type="Shader" id=11]
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=19]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/color = Color( 0, 0, 1, 1 )
-shader_param/brightness = 0.6
-
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
 
 [sub_resource type="SphereShape" id=3]
 radius = 0.4
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=20]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=21]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=22]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=23]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=24]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=25]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
+shader = ExtResource( 11 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=26]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/color = Color( 0, 1, 0, 1 )
+shader = ExtResource( 11 )
+shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=27]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/color = Color( 0, 1, 0, 1 )
+shader = ExtResource( 11 )
+shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=28]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/color = Color( 0, 1, 0, 1 )
+shader = ExtResource( 11 )
+shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
 
-[sub_resource type="ShaderMaterial" id=13]
+[sub_resource type="ShaderMaterial" id=29]
 resource_local_to_scene = true
-shader = ExtResource( 6 )
-shader_param/color = Color( 0, 1, 0, 1 )
+shader = ExtResource( 11 )
+shader_param/color = Color( 0.0823529, 1, 0, 1 )
 shader_param/brightness = 0.6
 
 [sub_resource type="ShaderMaterial" id=14]
@@ -170,8 +165,8 @@ collision_mask = 1024
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z"]
 mesh = ExtResource( 7 )
-material/0 = SubResource( 1 )
-material/1 = SubResource( 2 )
+material/0 = ExtResource( 6 )
+material/1 = SubResource( 19 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -184,8 +179,8 @@ collision_mask = 1024
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ"]
 mesh = ExtResource( 7 )
-material/0 = SubResource( 4 )
-material/1 = SubResource( 5 )
+material/0 = SubResource( 20 )
+material/1 = SubResource( 21 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -198,8 +193,8 @@ collision_mask = 1024
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/X"]
 mesh = ExtResource( 7 )
-material/0 = SubResource( 6 )
-material/1 = SubResource( 7 )
+material/0 = SubResource( 22 )
+material/1 = SubResource( 23 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/X"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -212,8 +207,8 @@ collision_mask = 1024
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX"]
 mesh = ExtResource( 7 )
-material/0 = SubResource( 8 )
-material/1 = SubResource( 9 )
+material/0 = SubResource( 24 )
+material/1 = SubResource( 25 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -226,8 +221,8 @@ collision_mask = 1024
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y"]
 mesh = ExtResource( 7 )
-material/0 = SubResource( 10 )
-material/1 = SubResource( 11 )
+material/0 = SubResource( 26 )
+material/1 = SubResource( 27 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
@@ -240,8 +235,8 @@ collision_mask = 1024
 
 [node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
 mesh = ExtResource( 7 )
-material/0 = SubResource( 12 )
-material/1 = SubResource( 13 )
+material/0 = SubResource( 28 )
+material/1 = SubResource( 29 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
