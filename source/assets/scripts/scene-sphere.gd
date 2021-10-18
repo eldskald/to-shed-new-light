@@ -1,8 +1,8 @@
 extends Spatial
 
 onready var tween: Tween = $Tween
-
 var reparent_call: Spatial = null
+signal stage_cleared
 
 func _physics_process(_delta):
 	if reparent_call != null:       # Can't reparent on an area_entered signal
@@ -16,15 +16,15 @@ func reparent_to(new_parent: Spatial) -> void:
 	global_transform = old_transform
 
 func snap_to(position: Vector3) -> void:
-	if not tween.is_active():
-		tween.interpolate_property(
-			self, "translation", null, position, 0.5,
-			Tween.TRANS_QUAD, Tween.EASE_OUT)
-		tween.start()
+	tween.interpolate_property(
+		self, "translation", null, position, 0.5,
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.start()
 
 func _on_Detector_area_entered(area) -> void:
 	if area.is_in_group("goal"):
-		GameStateMachine.stage_cleared()
+		emit_signal("stage_cleared")
+		snap_to(area.translation)
 	elif area.is_in_group("path_inside"):
 		if not get_parent().is_a_parent_of(area):
 			reparent_call = area.get_parent().get_parent()
