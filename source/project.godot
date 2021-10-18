@@ -45,6 +45,7 @@ click={
 3d_physics/layer_2="paths"
 3d_render/layer_3="goals"
 3d_physics/layer_3="goal"
+3d_render/layer_4="inside_paths"
 
 [physics]
 

@@ -20,7 +20,9 @@ func set_state(new_value: int) -> void:
 		states.INITIAL_MENU:
 			get_tree().change_scene(start_menu)
 		states.GAME:
-			get_tree().change_scene(levels_derectory + "/"+ level_prefix + String(level_progress) + ".tscn")
+			get_tree().change_scene(
+				levels_derectory + "/" + level_prefix +
+				String(level_progress) + ".tscn")
 		states.CREDITS:
 			get_tree().change_scene(credits)
 
@@ -32,10 +34,13 @@ func stage_cleared():
 		return
 	
 	level_progress += 1
-	var level_file: String = levels_derectory + "/"+ level_prefix + String(level_progress) + ".tscn"
+	var level_file: String = levels_derectory + "/"
+	level_file += level_prefix + String(level_progress) + ".tscn"
 	var file_checker := File.new()
 	if file_checker.file_exists(level_file):
-		get_tree().change_scene(levels_derectory + "/"+ level_prefix + String(level_progress) + ".tscn")
+		get_tree().change_scene(
+			levels_derectory + "/" + level_prefix +
+			String(level_progress) + ".tscn")
 	else:
 		print("Game ended")
 		get_tree().quit()
