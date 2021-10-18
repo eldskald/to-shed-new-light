@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/nodes/ui/audio-controls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/camera-controls.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=6]
 [ext_resource path="res://assets/models/widget-piece.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://assets/nodes/interactables/goal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=9]
+[ext_resource path="res://assets/models/widget-ring.obj" type="ArrayMesh" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -84,6 +86,38 @@ shader = ExtResource( 6 )
 shader_param/color = Color( 0, 1, 0, 1 )
 shader_param/brightness = 0.6
 
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 9 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/grow = 0.0
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = ExtResource( 9 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/grow = 0.0
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 9 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/grow = 0.0
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = ExtResource( 9 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/grow = 0.0
+
+[sub_resource type="CapsuleShape" id=18]
+radius = 0.2
+height = 0.8
+
 [node name="BaseLevel" type="Spatial"]
 transform = Transform( 3.0598e-07, -5.34992e-14, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, 3.0598e-07, 0, 0, 0 )
 
@@ -93,7 +127,7 @@ transform = Transform( -4.37114e-08, -1, 2.84217e-14, 1, -4.37114e-08, -1.74846e
 [node name="RotationTween" type="Tween" parent="CameraPivot"]
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16, 0, 0 )
+transform = Transform( -4.37113e-08, 0, 1, 1.74846e-07, 1, 1.42109e-14, -1, 1.74846e-07, -4.37113e-08, 16, 2.85953e-07, 2.38419e-07 )
 keep_aspect = 0
 projection = 1
 size = 16.0
@@ -112,15 +146,22 @@ script = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="CameraPivot/Camera/CameraControls"]
 
-[node name="RayCast" type="RayCast" parent="CameraPivot/Camera/CameraControls"]
+[node name="PivotRay" type="RayCast" parent="CameraPivot/Camera/CameraControls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35, -3, 0 )
 cast_to = Vector3( 0, 0, -10 )
 collision_mask = 1024
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="RotRay" type="RayCast" parent="CameraPivot/Camera/CameraControls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.35, -3, 0 )
+cast_to = Vector3( 0, 0, -10 )
+collision_mask = 2048
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="PivotWidget" type="Spatial" parent="CameraPivot/Camera/CameraControls"]
-transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 6.35, -3, -5 )
+transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 6, -2.75, -5 )
 
 [node name="Z" type="Area" parent="CameraPivot/Camera/CameraControls/PivotWidget"]
 transform = Transform( 1, 2.47269e-07, -1.02422e-07, -2.47269e-07, 1, -2.58344e-08, 1.02422e-07, 2.58345e-08, 1, 0, 0, 0 )
@@ -205,6 +246,53 @@ material/1 = SubResource( 13 )
 [node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY"]
 transform = Transform( 1, 0, 5.68434e-14, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 3 )
+
+[node name="RotationWidget" type="Spatial" parent="CameraPivot/Camera/CameraControls"]
+transform = Transform( 1.5, 0, 8.35269e-16, 0, 1.5, -1.13687e-13, 8.35296e-16, -1.13687e-13, 1.5, 6, -2.75, -5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 4.75343e-08, 0 )
+mesh = ExtResource( 10 )
+material/0 = SubResource( 14 )
+material/1 = SubResource( 15 )
+material/2 = SubResource( 16 )
+material/3 = SubResource( 17 )
+
+[node name="Up" type="Area" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
+transform = Transform( 1, 0, 1.00307e-14, 8.52651e-14, 1, -2.84217e-14, 1.00308e-14, -2.84217e-14, 1, 0, 1, 0 )
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/RotationWidget/Up"]
+transform = Transform( -4.37113e-08, 5.24538e-07, -1, 8.74229e-08, 1, 5.24537e-07, 1, -8.74226e-08, -4.37113e-08, 0, 0, 0 )
+shape = SubResource( 18 )
+
+[node name="Left" type="Area" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
+transform = Transform( -4.37116e-08, -1, -8.74227e-08, 1, -4.37115e-08, -3.49692e-07, 3.49692e-07, -8.74229e-08, 1, -1, 0, 0 )
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/RotationWidget/Left"]
+transform = Transform( -4.37113e-08, 5.24538e-07, -1, 8.74229e-08, 1, 5.24537e-07, 1, -8.74226e-08, -4.37113e-08, 0, 0, 0 )
+shape = SubResource( 18 )
+
+[node name="Down" type="Area" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
+transform = Transform( -1, 8.7423e-08, 2.62269e-07, -8.74231e-08, -1, -4.37115e-07, 2.62269e-07, -4.37115e-07, 1, 0, -1, 0 )
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/RotationWidget/Down"]
+transform = Transform( -4.37113e-08, 5.24538e-07, -1, 8.74229e-08, 1, 5.24537e-07, 1, -8.74226e-08, -4.37113e-08, 0, 0, 0 )
+shape = SubResource( 18 )
+
+[node name="Right" type="Area" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
+transform = Transform( 1.31134e-07, 1, 3.49692e-07, -1, 1.31135e-07, -8.74224e-08, -8.74228e-08, -3.49692e-07, 1, 1, -1.19209e-07, 0 )
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape" type="CollisionShape" parent="CameraPivot/Camera/CameraControls/RotationWidget/Right"]
+transform = Transform( -4.37113e-08, 5.24538e-07, -1, 8.74229e-08, 1, 5.24537e-07, 1, -8.74226e-08, -4.37113e-08, 0, 0, 0 )
+shape = SubResource( 18 )
 
 [node name="Stage" type="Spatial" parent="."]
 

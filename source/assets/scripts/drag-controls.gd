@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 					drag_sphere(get_collision_point())
 				
 				# In case we don't find a path, we use last frame's path
-				# value to snap the sphere to the its center.
+				# value to snap the sphere to its center.
 				elif path != null:
 					let_go_of_sphere()
 			elif path != null:
