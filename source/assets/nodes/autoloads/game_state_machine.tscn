@@ -6,4 +6,4 @@
 script = ExtResource( 1 )
 levels_derectory = "res://assets/nodes/levels"
 level_prefix = "level_"
-initial_state = 1
+start_menu = "res://assets/nodes/ui/starting-screen.tscn"

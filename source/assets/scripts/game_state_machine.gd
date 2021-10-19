@@ -10,14 +10,13 @@ export(states) var initial_state
 
 onready var state: int setget set_state
 
-var level_progress: int = 0
+var level_progress: int = 1
 
 func set_state(new_value: int) -> void:
 	if state == new_value:
 		return
-	state = new_value
-	match state:
-		states.INITIAL_MENU:
+	match new_value:
+		states.START_MENU:
 			get_tree().change_scene(start_menu)
 		states.GAME:
 			get_tree().change_scene(
@@ -25,6 +24,7 @@ func set_state(new_value: int) -> void:
 				String(level_progress) + ".tscn")
 		states.CREDITS:
 			get_tree().change_scene(credits)
+	state = new_value
 
 func _ready():
 	state = initial_state
