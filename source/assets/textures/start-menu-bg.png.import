@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/skybox-0.png-5b2d4c419af6de12a1e2b06c1543e1ee.stex"
+path="res://.import/start-menu-bg.png-f542bf79a4c654c4c68f65671ed13e32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/skybox-0.png"
-dest_files=[ "res://.import/skybox-0.png-5b2d4c419af6de12a1e2b06c1543e1ee.stex" ]
+source_file="res://assets/textures/start-menu-bg.png"
+dest_files=[ "res://.import/start-menu-bg.png-f542bf79a4c654c4c68f65671ed13e32.stex" ]
 
 [params]
 
