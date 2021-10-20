@@ -8,14 +8,10 @@ func _ready() -> void:
 	anim_player.play("load")
 
 func _on_Transition_fade_out_finished():
-	pass # Replace with function body.
-
-# Chama um transition.fade_out() ao invés de carregar o primeiro
-# nível direto, e carrega o primeiro nível no _on_Transition_fade_out_finished.
-func _on_StartGame_pressed():
-	anim_player.play("to_game")
-	yield(anim_player, "animation_finished")
 	GameStateMachine.set_state(GameStateMachine.states.GAME)
+
+func _on_StartGame_pressed():
+	transition.fade_out()
 
 func _on_Credits_pressed():
 	anim_player.play("load_credits")
