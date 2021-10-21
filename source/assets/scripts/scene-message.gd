@@ -6,8 +6,8 @@ export(float) var deactivate_after
 onready var timer = $Timer
 onready var anim_player = $AnimationPlayer
 
-signal on_activate
-signal on_deactivate
+signal activated
+signal deactivated
 
 func _ready() -> void:
 	if auto_activate_in > 0:
@@ -21,10 +21,10 @@ func _on_timer_timeout() -> void:
 
 func activate() -> void:
 	anim_player.play("activate")
-	emit_signal("on_activate")
+	emit_signal("activated")
 	if deactivate_after > 0:
 		timer.start(deactivate_after)
 
 func deactivate() -> void:
 	anim_player.play("deactivate")
-	emit_signal("on_deactivate")
+	emit_signal("deactivated")

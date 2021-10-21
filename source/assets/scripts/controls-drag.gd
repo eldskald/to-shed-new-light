@@ -3,8 +3,8 @@ extends RayCast
 onready var sphere: Spatial = null
 onready var path: Spatial = null
 
-signal on_grab_sphere
-signal on_let_go_of_sphere
+signal grabbed_sphere
+signal let_go_of_sphere
 
 func _physics_process(_delta: float) -> void:
 	update_raycast_position()
@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 			add_exception(sphere)
 			path = find_path()
 			if path != null:
-				emit_signal("on_grab_sphere")
+				emit_signal("grabbed_sphere")
 				drag_sphere(get_collision_point())
 			else:
 				sphere = null
@@ -72,7 +72,7 @@ func let_go_of_sphere() -> void:
 	sphere = null
 	path = null
 	clear_exceptions()
-	emit_signal("on_let_go_of_sphere")
+	emit_signal("let_go_of_sphere")
 
 func is_grabbing_sphere() -> bool:
 	return sphere != null

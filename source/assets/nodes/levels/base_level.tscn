@@ -384,6 +384,8 @@ transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08
 
 [node name="Transition" parent="." instance=ExtResource( 16 )]
 
+[connection signal="grabbed_sphere" from="CameraPivot/Camera/DragControls" to="Stage/MainSphere" method="_on_grabbed_sphere"]
+[connection signal="let_go_of_sphere" from="CameraPivot/Camera/DragControls" to="Stage/MainSphere" method="_on_let_go_of_sphere"]
 [connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/Z/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/Z" method="_on_Timer_timeout"]
 [connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/nZ/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/nZ" method="_on_Timer_timeout"]
 [connection signal="timeout" from="CameraPivot/Camera/CameraControls/PivotWidget/X/Timer" to="CameraPivot/Camera/CameraControls/PivotWidget/X" method="_on_Timer_timeout"]
