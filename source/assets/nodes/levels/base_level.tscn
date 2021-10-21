@@ -349,7 +349,6 @@ one_shot = true
 [node name="Stage" type="Spatial" parent="."]
 
 [node name="MainSphere" parent="Stage" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5 )
 
 [node name="StraightPath" parent="Stage" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
