@@ -57,3 +57,5 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/activate = SubResource( 2 )
 anims/deactivate = SubResource( 3 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
