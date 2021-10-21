@@ -128,7 +128,9 @@ shader_param/alpha = 1.0
 radius = 0.2
 height = 0.8
 
-[node name="BaseLevel" type="Spatial"]
+[node name="BaseLevel" type="Spatial" groups=[
+"level",
+]]
 transform = Transform( 3.0598e-07, -5.34992e-14, -1, 1.74846e-07, 1, 0, 1, -1.74846e-07, 3.0598e-07, 0, 0, 0 )
 script = ExtResource( 13 )
 z_widget = true
@@ -150,7 +152,9 @@ keep_aspect = 0
 projection = 1
 size = 16.0
 
-[node name="DragControls" type="RayCast" parent="CameraPivot/Camera"]
+[node name="DragControls" type="RayCast" parent="CameraPivot/Camera" groups=[
+"drag_controls",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27374e-13, 1.90735e-06 )
 enabled = true
 cast_to = Vector3( 0, 0, -100 )

@@ -1,4 +1,5 @@
 extends Spatial
+class_name BaseLevel
 
 export(bool) var z_widget
 export(bool) var nz_widget
