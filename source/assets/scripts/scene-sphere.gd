@@ -3,12 +3,15 @@ extends Spatial
 onready var tween: Tween = $Tween
 onready var sphere_grab_sfx = $SphereGrab
 onready var sphere_grab_sfx_tween = $SphereGrab/Tween
-onready var drag_controls = get_tree().get_nodes_in_group("drag_controls")[0]
+
+var drag_controls
 
 var reparent_call: Spatial = null
 signal stage_cleared
 
 func _ready():
+	if not get_tree().get_nodes_in_group("drag_controls").empty():
+		drag_controls = get_tree().get_nodes_in_group("drag_controls")[0]
 	if drag_controls != null:
 		drag_controls.connect("on_grab_sphere", self, "on_grab_sphere")
 		drag_controls.connect("on_let_go_of_sphere", self, "on_let_go_of_sphere")
