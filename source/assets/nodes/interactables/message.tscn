@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/scripts/scene-message.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 24
+size = 30
 font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
@@ -50,6 +50,9 @@ margin_right = 40.0
 margin_bottom = 14.0
 custom_fonts/font = SubResource( 1 )
 text = "lorem ipsum"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
