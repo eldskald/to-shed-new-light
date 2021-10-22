@@ -32,6 +32,7 @@ GameStateMachine="*res://assets/nodes/autoloads/game_state_machine.tscn"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/unused_variable=false
 gdscript/warnings/return_value_discarded=false
 
