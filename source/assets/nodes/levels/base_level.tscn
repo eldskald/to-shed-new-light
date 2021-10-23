@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/nodes/ui/audio-controls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/controls-camera.gd" type="Script" id=2]
+[ext_resource path="res://assets/materials/cube-widget-material.tres" type="Material" id=3]
 [ext_resource path="res://assets/nodes/interactables/main-sphere.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/controls-drag.gd" type="Script" id=5]
 [ext_resource path="res://assets/materials/pivot-widget-material.tres" type="Material" id=6]
@@ -10,10 +11,12 @@
 [ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=9]
 [ext_resource path="res://assets/models/widget-ring.obj" type="ArrayMesh" id=10]
 [ext_resource path="res://assets/shaders/pivot-widget.gdshader" type="Shader" id=11]
+[ext_resource path="res://assets/models/widget-cube.obj" type="ArrayMesh" id=12]
 [ext_resource path="res://assets/scripts/scene_level.gd" type="Script" id=13]
 [ext_resource path="res://assets/scripts/scene_pivot_widget.gd" type="Script" id=14]
 [ext_resource path="res://assets/scripts/scene_rotation_widget.gd" type="Script" id=15]
 [ext_resource path="res://assets/nodes/ui/screen-transition.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/scripts/scene_cube_widget.gd" type="Script" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -178,6 +181,17 @@ cast_to = Vector3( 0, 0, -10 )
 collision_mask = 2048
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="WidgetCube" type="MeshInstance" parent="CameraPivot/Camera/CameraControls"]
+transform = Transform( 5.96046e-08, 0.707107, 0.707106, 0.707107, -0.5, 0.5, 0.707107, 0.5, -0.5, 6, -2.75, -2 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 3 )
+script = ExtResource( 17 )
+
+[node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/WidgetCube"]
+one_shot = true
 
 [node name="PivotWidget" type="Spatial" parent="CameraPivot/Camera/CameraControls"]
 transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 6, -2.75, -2 )

@@ -15,6 +15,7 @@ onready var x = $CameraPivot/Camera/CameraControls/PivotWidget/X
 onready var nx = $CameraPivot/Camera/CameraControls/PivotWidget/nX
 onready var y = $CameraPivot/Camera/CameraControls/PivotWidget/Y
 onready var ny = $CameraPivot/Camera/CameraControls/PivotWidget/nY
+onready var cube = $CameraPivot/Camera/CameraControls/WidgetCube
 onready var ring = $CameraPivot/Camera/CameraControls/RotationWidget
 onready var up = $CameraPivot/Camera/CameraControls/RotationWidget/Up
 onready var left = $CameraPivot/Camera/CameraControls/RotationWidget/Left
@@ -35,6 +36,10 @@ func _ready() -> void:
 		disable_widget(y)
 	if not ny_widget:
 		disable_widget(ny)
+	if not (z_widget and nz_widget):
+		if not (x_widget and nx_widget):
+			if not (y_widget and ny_widget):
+				cube.visible = false
 	if not ring_widget:
 		var mesh: MeshInstance = get_node(
 			"CameraPivot/Camera/CameraControls/RotationWidget/MeshInstance")
@@ -52,18 +57,26 @@ func activate_widget(widget_name: String) -> void:
 	match widget_name:
 		"Z":
 			z.activate()
+			cube.activate()
 		"nZ":
 			nz.activate()
+			cube.activate()
 		"Y":
 			y.activate()
+			cube.activate()
 		"nY":
 			ny.activate()
+			cube.activate()
 		"X":
 			x.activate()
+			cube.activate()
 		"nX":
 			nx.activate()
+			cube.activate()
 		"Ring":
 			ring.activate()
+		"Cube":
+			cube.activate()
 
 func disable_controls() -> void:
 	$CameraPivot/Camera/DragControls.enabled = false

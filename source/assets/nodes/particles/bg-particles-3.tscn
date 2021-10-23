@@ -96,7 +96,6 @@ material = SubResource( 5 )
 size = Vector2( 2, 2 )
 
 [node name="Particles" type="Particles"]
-amount = 4
 lifetime = 9.0
 preprocess = 10.0
 process_material = SubResource( 3 )

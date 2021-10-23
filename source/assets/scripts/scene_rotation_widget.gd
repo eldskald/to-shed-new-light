@@ -12,7 +12,7 @@ var alpha: Array = [1.0, 1.0, 1.0, 1.0]
 func _process(_delta) -> void:
 	if not timer.is_stopped():
 		for i in range(4):
-			alpha[i] = 1.0 - timer.time_left
+			alpha[i] = 1 - timer.time_left
 	up_mat.set_shader_param("brightness", brightness[0])
 	up_mat.set_shader_param("alpha", alpha[0])
 	left_mat.set_shader_param("brightness", brightness[1])
@@ -29,5 +29,6 @@ func _on_Timer_timeout():
 	$Right/CollisionShape.disabled = false
 
 func activate() -> void:
-	timer.start()
-	$MeshInstance.visible = true
+	if not $MeshInstance.visible:
+		timer.start()
+		$MeshInstance.visible = true

@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode depth_draw_never;
 
 uniform vec4 color : hint_color = vec4(1.0);
 uniform float brightness = 1.0;

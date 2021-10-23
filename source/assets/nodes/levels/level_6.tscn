@@ -263,7 +263,7 @@ message = "But if you look at it from a different perspective..."
 [node name="Message3" type="Control" parent="." index="5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 391.0
+margin_left = 293.0
 margin_top = 492.0
 script = ExtResource( 14 )
 __meta__ = {

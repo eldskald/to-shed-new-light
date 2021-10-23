@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://assets/shaders/cube-widget.gdshader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/color = Color( 0.454902, 0.0862745, 0.505882, 1 )
+shader_param/brightness = 1.0
+shader_param/alpha = 1.0
+shader_param/grow = -0.05
