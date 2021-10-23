@@ -1,0 +1,299 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://assets/nodes/levels/base_level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
+[ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/nodes/paths/path-curve.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/nodes/paths/path-3-intersection.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/nodes/particles/bg-particles-3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/nodes/particles/bg-particles-2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/nodes/particles/falling-stars.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/nodes/interactables/message.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/scripts/special-level-6.gd" type="Script" id=13]
+[ext_resource path="res://assets/scripts/scene-message.gd" type="Script" id=14]
+[ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=15]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="DynamicFont" id=17]
+size = 42
+font_data = ExtResource( 15 )
+
+[sub_resource type="Animation" id=18]
+resource_name = "activate"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "deactivate"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="BaseLevel" instance=ExtResource( 1 )]
+z_widget = false
+nz_widget = false
+x_widget = false
+nx_widget = false
+y_widget = false
+ny_widget = false
+ring_widget = false
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ" index="0"]
+material/0 = SubResource( 3 )
+material/1 = SubResource( 4 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/X" index="0"]
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX" index="0"]
+material/0 = SubResource( 7 )
+material/1 = SubResource( 8 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y" index="0"]
+material/0 = SubResource( 9 )
+material/1 = SubResource( 10 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY" index="0"]
+material/0 = SubResource( 11 )
+material/1 = SubResource( 12 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/RotationWidget" index="0"]
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
+material/2 = SubResource( 15 )
+material/3 = SubResource( 16 )
+
+[node name="MainSphere" parent="Stage" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43019e-07, 1, 4 )
+
+[node name="Goal" parent="Stage" index="1"]
+transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, 9.21929e-07, 1, -4 )
+
+[node name="StraightPath" parent="Stage" index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1.43019e-07, 1, 4 )
+
+[node name="StraightPath2" parent="Stage" index="3" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 2.1058e-07, 1, 3 )
+
+[node name="StraightPath3" parent="Stage" index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 5.1656e-07, 1, 2 )
+
+[node name="StraightPath4" parent="Stage" index="5" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1.12852e-06, 1, 9.53675e-07 )
+
+[node name="StraightPath5" parent="Stage" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1.74048e-06, 1, -2 )
+
+[node name="StraightPath6" parent="Stage" index="7" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 2.04646e-06, 1, -3 )
+
+[node name="StraightPath7" parent="Stage" index="8" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 2.35244e-06, 1, -4 )
+
+[node name="StraightPath8" parent="Stage" index="9" instance=ExtResource( 3 )]
+transform = Transform( 1, -3.49692e-07, 6.1196e-07, -3.49692e-07, -1, -8.74229e-08, 6.1196e-07, 8.74227e-08, -1, -3.0598e-07, -1.19209e-07, 1 )
+
+[node name="StraightPath9" parent="Stage" index="10" instance=ExtResource( 3 )]
+transform = Transform( 1, -3.49692e-07, 6.1196e-07, -3.49692e-07, -1, -8.7423e-08, 6.1196e-07, 8.74227e-08, -1, 3.0598e-07, -1.19209e-07, -1 )
+
+[node name="StraightPath10" parent="Stage" index="11" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 7.78828e-07, -1, 9.53675e-07 )
+
+[node name="CurvePath" parent="Stage" index="12" instance=ExtResource( 4 )]
+transform = Transform( -1, 8.74223e-08, -5.68249e-07, -8.74225e-08, -1, 1.31134e-07, -5.68249e-07, 1.31134e-07, 1, -1.82803e-07, -1, 1 )
+
+[node name="CurvePath2" parent="Stage" index="13" instance=ExtResource( 4 )]
+transform = Transform( 1, -4.37114e-07, 4.80826e-07, -4.37114e-07, -1, 1.31134e-07, 4.80826e-07, -1.31134e-07, -1, 4.29157e-07, -1, -1 )
+
+[node name="TriIntersectionPath" parent="Stage" index="14" instance=ExtResource( 6 )]
+transform = Transform( 5.68434e-14, 1.74846e-07, 1, 2.18557e-07, 1, -1.74846e-07, -1, 2.18557e-07, 0, 1.19608e-06, 1, -0.999999 )
+
+[node name="TriIntersectionPath2" parent="Stage" index="15" instance=ExtResource( 6 )]
+transform = Transform( 8.52651e-14, 1.45044e-07, 1, 2.18557e-07, 1, -1.45044e-07, -1, 2.18557e-07, 2.84217e-14, 3.45703e-07, 1, 1 )
+
+[node name="Wall" parent="Stage" index="16" instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 1.74846e-07, 1, 1.76183e-19 )
+
+[node name="Particles" parent="Props" index="0" instance=ExtResource( 9 )]
+
+[node name="Particles2" parent="Props" index="1" instance=ExtResource( 8 )]
+
+[node name="Particles3" parent="Props" index="2" instance=ExtResource( 7 )]
+
+[node name="Particles4" parent="Props" index="3" instance=ExtResource( 10 )]
+
+[node name="Message" parent="." index="3" instance=ExtResource( 12 )]
+margin_left = 67.0
+margin_top = 384.0
+auto_activate_in = 12.0
+message = "Some problems might seem impossible."
+
+[node name="Message2" parent="." index="4" instance=ExtResource( 12 )]
+margin_left = 100.0
+margin_top = 434.0
+auto_activate_in = 18.0
+message = "But if you look at it from a different perspective..."
+
+[node name="Message3" type="Control" parent="." index="5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 391.0
+margin_top = 492.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+message = "Everything Changes!"
+
+[node name="Label" type="Label" parent="Message3" index="0"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 17 )
+text = "lorem ipsum"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Message3" index="1"]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Message3" index="2"]
+anims/activate = SubResource( 18 )
+anims/deactivate = SubResource( 19 )
+
+[node name="Level6Special" type="Timer" parent="." index="6"]
+wait_time = 21.0
+one_shot = true
+autostart = true
+script = ExtResource( 13 )
+
+[connection signal="changed_view_direction" from="CameraPivot/Camera/CameraControls" to="Level6Special" method="_on_CameraControls_changed_view_direction"]
+[connection signal="timeout" from="Message3/Timer" to="Message3" method="_on_timer_timeout"]
+[connection signal="changed_direction" from="Level6Special" to="Message3" method="activate"]
+[connection signal="timeout" from="Level6Special" to="Level6Special" method="_on_timeout"]

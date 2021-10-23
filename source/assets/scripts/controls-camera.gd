@@ -32,22 +32,17 @@ var rot_materials: Dictionary = {
 	"Right" : 3
 }
 
-#onready var rot_materials: Dictionary = {
-#	"Up" : [$RotationWidget.up_brightness, $RotationWidget.up_alpha],
-#	"Left" : [$RotationWidget.left_brightness, $RotationWidget.left_alpha],
-#	"Down" : [$RotationWidget.down_brightness, $RotationWidget.down_alpha],
-#	"Right" : [$RotationWidget.right_brightness, $RotationWidget.right_alpha]
-#}
-
-
+signal changed_view_direction
+signal changed_camera_rotation
 
 func _physics_process(_delta) -> void:
+	
+	# Check for changes in the camera direction.
 	var pivot_state: String = get_pivot_state()
 	if pivot_state != "none":
 		light_pivot_widgets(pivot_state)
 	else:
 		light_pivot_widgets(last_pivot_state)
-	
 	update_raycast_position(pivot_ray)
 	pivot_ray.force_raycast_update()
 	if pivot_ray.is_colliding():
@@ -59,13 +54,14 @@ func _physics_process(_delta) -> void:
 				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 			tween.start()
 			last_pivot_state = c_widget.name
+			emit_signal("changed_view_direction", c_widget.name)
 	
+	# Check for rotation around the current view direction.
 	var rot_state: String = get_rot_state()
 	if rot_state != "none":
 		light_rot_widget(rot_state)
 	else:
 		light_rot_widget(last_rot_state)
-	
 	update_raycast_position(rot_ray)
 	rot_ray.force_raycast_update()
 	if rot_ray.is_colliding():
@@ -78,9 +74,7 @@ func _physics_process(_delta) -> void:
 				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 			tween.start()
 			last_rot_state = c_widget
-		
-
-
+			emit_signal("changed_camera_rotation", c_widget)
 
 func update_raycast_position(ray: RayCast) -> void:
 	var viewport: Viewport = get_viewport()
@@ -91,8 +85,6 @@ func update_raycast_position(ray: RayCast) -> void:
 	ray.translation.x = unit_pos.x * camera.size / 2
 	ray.translation.y = -unit_pos.y * camera.size / 2
 	ray.translation.y *= viewport.size.y / viewport.size.x
-
-
 
 func get_pivot_state() -> String:
 	for key in pivot_states.keys():
