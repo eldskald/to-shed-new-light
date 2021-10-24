@@ -84,6 +84,7 @@ func disable_controls() -> void:
 	$CameraPivot/Camera/CameraControls/RotRay.enabled = false
 
 func _on_stage_cleared() -> void:
+	GameStateMachine.get_node("StageTransitionSFX").play()
 	$Transition.fade_out()
 	disable_controls()
 

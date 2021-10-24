@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot Fire Jam"
+run/main_scene="res://assets/nodes/ui/starting-screen.tscn"
 
 [audio]
 
