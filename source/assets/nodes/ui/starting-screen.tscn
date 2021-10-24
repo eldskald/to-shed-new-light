@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/textures/start-menu-bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/shaders/starting-screen-bg.gdshader" type="Shader" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/nodes/ui/audio-controls.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/ui-starting-screen.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/ui-starting-screen-button.gd" type="Script" id=7]
+[ext_resource path="res://assets/sfx/ui_sfx.ogg" type="AudioStream" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
@@ -409,6 +410,10 @@ anims/to_game = SubResource( 12 )
 [node name="AudioControls" parent="." instance=ExtResource( 5 )]
 
 [node name="Transition" parent="." instance=ExtResource( 4 )]
+
+[node name="SelectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "SFX"
 
 [connection signal="pressed" from="Menu/StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="Menu/Credits" to="." method="_on_Credits_pressed"]
