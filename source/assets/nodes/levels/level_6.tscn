@@ -21,72 +21,84 @@ resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 0, 1, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=8]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 1, 0, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=10]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=11]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=12]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 shader_param/color = Color( 0, 1, 0, 1 )
 shader_param/brightness = 0.6
+shader_param/alpha = 1.0
 
 [sub_resource type="ShaderMaterial" id=13]
 resource_local_to_scene = true

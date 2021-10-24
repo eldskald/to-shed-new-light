@@ -18,32 +18,31 @@ shader = ExtResource( 2 )
 size = 81
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=13]
-
-[sub_resource type="DynamicFont" id=4]
-size = 49
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxEmpty" id=14]
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="DynamicFont" id=5]
 size = 49
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 50
-font_data = ExtResource( 3 )
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="DynamicFont" id=7]
-size = 32
+size = 49
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "back_to_menu"
+[sub_resource type="Animation" id=11]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:modulate")
@@ -94,7 +93,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 length = 10.0
 step = 1.0
 tracks/0/type = "value"
@@ -158,8 +157,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "load_credits"
+[sub_resource type="Animation" id=13]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:modulate")
@@ -210,8 +208,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "to_game"
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -278,8 +275,8 @@ modulate = Color( 1, 1, 1, 0 )
 margin_top = 406.0
 margin_right = 587.0
 margin_bottom = 462.0
-custom_styles/focus = SubResource( 13 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 disabled = true
 shortcut_in_tooltip = false
 text = "Start Game"
@@ -293,8 +290,8 @@ modulate = Color( 1, 1, 1, 0 )
 margin_top = 474.0
 margin_right = 587.0
 margin_bottom = 530.0
-custom_styles/focus = SubResource( 14 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 disabled = true
 shortcut_in_tooltip = false
 text = "Credits"
@@ -322,7 +319,7 @@ margin_bottom = 576.0
 [node name="Label" type="Label" parent="Credits/VBoxContainer"]
 margin_right = 960.0
 margin_bottom = 51.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "CREDITS"
 
 [node name="HSeparator" type="HSeparator" parent="Credits/VBoxContainer"]
@@ -346,14 +343,14 @@ margin_bottom = 250.0
 [node name="Ayrton" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
 margin_right = 918.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Ayrton Sato"
 
 [node name="Ayrton2" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
 margin_top = 37.0
 margin_right = 918.0
 margin_bottom = 62.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 text = "Programming, sound effects"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -370,14 +367,14 @@ custom_constants/separation = 24
 margin_top = 94.0
 margin_right = 918.0
 margin_bottom = 127.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Rafael Bordoni"
 
 [node name="Rafael2" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
 margin_top = 131.0
 margin_right = 918.0
 margin_bottom = 156.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 text = "Game design, graphics, programming"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -394,24 +391,24 @@ custom_constants/separation = 24
 margin_top = 188.0
 margin_right = 918.0
 margin_bottom = 221.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 text = "Free sound effects and music by:"
 
 [node name="Audio2" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
 margin_top = 225.0
 margin_right = 918.0
 margin_bottom = 250.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 text = "Lets list everyone here."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/back_to_menu = SubResource( 9 )
-anims/load = SubResource( 10 )
-anims/load_credits = SubResource( 11 )
-anims/to_game = SubResource( 12 )
+anims/back_to_menu = SubResource( 11 )
+anims/load = SubResource( 12 )
+anims/load_credits = SubResource( 13 )
+anims/to_game = SubResource( 14 )
 
 [node name="AudioControls" parent="." instance=ExtResource( 5 )]
 
