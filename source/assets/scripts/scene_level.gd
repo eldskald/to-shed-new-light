@@ -36,10 +36,10 @@ func _ready() -> void:
 		disable_widget(y)
 	if not ny_widget:
 		disable_widget(ny)
-	if not (z_widget and nz_widget):
-		if not (x_widget and nx_widget):
-			if not (y_widget and ny_widget):
-				cube.visible = false
+	if not (
+		z_widget or nz_widget or x_widget or nx_widget or y_widget or ny_widget
+	):
+		cube.visible = false
 	if not ring_widget:
 		var mesh: MeshInstance = get_node(
 			"CameraPivot/Camera/CameraControls/RotationWidget/MeshInstance")

@@ -19,7 +19,7 @@ initial_velocity = 0.25
 initial_velocity_random = 1.0
 angle = 180.0
 angle_random = 1.0
-scale = 0.5
+scale = 0.7
 color_ramp = SubResource( 2 )
 
 [sub_resource type="QuadMesh" id=4]
@@ -31,7 +31,7 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 [node name="Wall" type="Area"]
 
 [node name="Particles" type="Particles" parent="."]
-amount = 64
+amount = 128
 lifetime = 0.5
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 4 )
