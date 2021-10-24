@@ -3,17 +3,17 @@ extends Spatial
 export(float) var alpha
 
 onready var mesh: MeshInstance = $MeshInstance
+onready var material: Material = mesh.get_surface_material(0)
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 signal activated
 signal deactivated
 
 func _physics_process(_delta) -> void:
-	var material = mesh.get_surface_material(0)
-	material.set_shader_param("color", Color(1.0, 1.0, 1.0, alpha))
+	material.set_shader_param("alpha", alpha)
 
 func is_active() -> bool:
-	return mesh.get_surface_material(0).get_shader_param("color").a == 1
+	return material.get_shader_param("alpha") == 1
 
 func activate() -> void:
 	if not is_active():
