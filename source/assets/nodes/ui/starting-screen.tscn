@@ -243,8 +243,8 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -293.5
-margin_right = 293.5
+margin_left = -324.5
+margin_right = 324.5
 custom_constants/separation = 12
 __meta__ = {
 "_edit_use_anchors_": false

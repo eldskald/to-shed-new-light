@@ -22,6 +22,9 @@ _global_script_class_icons={
 
 config/name="To Shed New Light"
 run/main_scene="res://assets/nodes/ui/starting-screen.tscn"
+config/icon="res://common/icon.png"
+config/macos_native_icon="res://common/icon.icns"
+config/windows_native_icon="res://common/icon.ico"
 
 [audio]
 
