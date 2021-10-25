@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Fire Jam"
+config/name="To Shed New Light"
 run/main_scene="res://assets/nodes/ui/starting-screen.tscn"
 
 [audio]

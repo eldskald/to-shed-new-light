@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/shaders/starting-screen-bg.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/nodes/ui/screen-transition.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/nodes/ui/audio-controls.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/nodes/ui/gui-buttons.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/ui-starting-screen.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/ui-starting-screen-button.gd" type="Script" id=7]
 [ext_resource path="res://assets/sfx/ui_sfx.ogg" type="AudioStream" id=8]
@@ -251,21 +251,21 @@ __meta__ = {
 }
 
 [node name="HSeparator" type="HSeparator" parent="Menu"]
-margin_right = 587.0
+margin_right = 649.0
 margin_bottom = 128.0
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 128
 
 [node name="GameTitle" type="Label" parent="Menu"]
 margin_top = 140.0
-margin_right = 587.0
+margin_right = 649.0
 margin_bottom = 222.0
 custom_fonts/font = SubResource( 3 )
-text = "A DIFFERENT VIEW"
+text = "TO SHED NEW LIGHT"
 
 [node name="HSeparator2" type="HSeparator" parent="Menu"]
 margin_top = 234.0
-margin_right = 587.0
+margin_right = 649.0
 margin_bottom = 394.0
 custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 160
@@ -273,7 +273,7 @@ custom_constants/separation = 160
 [node name="StartGame" type="Button" parent="Menu"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 406.0
-margin_right = 587.0
+margin_right = 649.0
 margin_bottom = 462.0
 custom_styles/focus = SubResource( 4 )
 custom_fonts/font = SubResource( 5 )
@@ -288,7 +288,7 @@ focus_text = "- Start Game -"
 [node name="Credits" type="Button" parent="Menu"]
 modulate = Color( 1, 1, 1, 0 )
 margin_top = 474.0
-margin_right = 587.0
+margin_right = 649.0
 margin_bottom = 530.0
 custom_styles/focus = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
@@ -410,7 +410,7 @@ anims/load = SubResource( 12 )
 anims/load_credits = SubResource( 13 )
 anims/to_game = SubResource( 14 )
 
-[node name="AudioControls" parent="." instance=ExtResource( 5 )]
+[node name="GUIButtons" parent="." instance=ExtResource( 5 )]
 
 [node name="Transition" parent="." instance=ExtResource( 4 )]
 

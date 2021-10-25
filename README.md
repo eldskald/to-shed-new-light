@@ -1,6 +1,8 @@
-# Godot Fire Jam
+# To Shed New Light
 
-WIP
+Game submitted for the [Godot Fire Jam](https://itch.io/jam/godot-fire-charity-jam-1). This is a puzzle game about perspectives, where changing the camera angle, position and rotation changes what's possible and what's not.
+
+WIP!
 
 # Authors
 
