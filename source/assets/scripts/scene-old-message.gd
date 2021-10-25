@@ -1,8 +1,9 @@
-extends Label
+extends Control
 
 export(bool) var start_active
 export(float) var auto_activate_in
 export(float) var deactivate_after
+export(String, MULTILINE) var message
 
 onready var timer = $Timer
 onready var anim_player = $AnimationPlayer
@@ -11,6 +12,7 @@ signal activated
 signal deactivated
 
 func _ready() -> void:
+	$Label.text = message
 	if start_active:
 		self.modulate.a = 1
 		if deactivate_after > 0:

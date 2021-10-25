@@ -1,10 +1,10 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/textures/start-menu-bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/shaders/starting-screen-bg.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/nodes/ui/screen-transition.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/nodes/ui/gui-buttons.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/nodes/ui/gui-settings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/ui-starting-screen.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/ui-starting-screen-button.gd" type="Script" id=7]
 [ext_resource path="res://assets/sfx/ui_sfx.ogg" type="AudioStream" id=8]
@@ -12,40 +12,41 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 81
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
+size = 49
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
 size = 49
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=6]
-
 [sub_resource type="DynamicFont" id=7]
-size = 49
+size = 64
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 50
+size = 32
+use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=9]
-size = 32
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=10]
 size = 24
+use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menu:modulate")
+tracks/0/path = NodePath("TitleScreen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -57,7 +58,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menu:visible")
+tracks/1/path = NodePath("TitleScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -65,11 +66,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Credits:modulate")
+tracks/2/path = NodePath("CreditsScreen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -81,7 +82,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Credits:visible")
+tracks/3/path = NodePath("CreditsScreen:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -93,35 +94,35 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 10.0
 step = 1.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menu/GameTitle:modulate")
+tracks/0/path = NodePath("TitleScreen/Credits:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 5.1, 7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menu/StartGame:modulate")
+tracks/1/path = NodePath("TitleScreen/StartGame:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 9, 10 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Menu/Credits:modulate")
+tracks/2/path = NodePath("TitleScreen/Credits:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -133,34 +134,34 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Menu/StartGame:disabled")
+tracks/3/path = NodePath("TitleScreen/StartGame:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Menu/Credits:disabled")
+tracks/4/path = NodePath("TitleScreen/GameTitle:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 10 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"times": PoolRealArray( 0.1, 5.1, 7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Menu:modulate")
+tracks/0/path = NodePath("TitleScreen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -172,7 +173,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Menu:visible")
+tracks/1/path = NodePath("TitleScreen:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -180,11 +181,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
+"update": 0,
 "values": [ true, false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Credits:modulate")
+tracks/2/path = NodePath("CreditsScreen:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -196,7 +197,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Credits:visible")
+tracks/3/path = NodePath("CreditsScreen:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -206,20 +207,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
-}
-
-[sub_resource type="Animation" id=14]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [node name="StartingScreen" type="Control"]
@@ -234,183 +221,198 @@ __meta__ = {
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Menu" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
+[node name="TitleScreen" type="Control" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -324.5
-margin_right = 324.5
-custom_constants/separation = 12
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="Menu"]
-margin_right = 649.0
-margin_bottom = 128.0
-custom_styles/separator = SubResource( 2 )
-custom_constants/separation = 128
-
-[node name="GameTitle" type="Label" parent="Menu"]
-margin_top = 140.0
-margin_right = 649.0
-margin_bottom = 222.0
-custom_fonts/font = SubResource( 3 )
+[node name="GameTitle" type="Label" parent="TitleScreen"]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
 text = "TO SHED NEW LIGHT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="HSeparator2" type="HSeparator" parent="Menu"]
-margin_top = 234.0
-margin_right = 649.0
-margin_bottom = 394.0
-custom_styles/separator = SubResource( 2 )
-custom_constants/separation = 160
-
-[node name="StartGame" type="Button" parent="Menu"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 406.0
-margin_right = 649.0
-margin_bottom = 462.0
-custom_styles/focus = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
-disabled = true
+[node name="StartGame" type="Button" parent="TitleScreen"]
+anchor_left = 0.5
+anchor_top = 0.7
+anchor_right = 0.5
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 shortcut_in_tooltip = false
 text = "Start Game"
 flat = true
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 unfocus_text = "Start Game"
 focus_text = "- Start Game -"
 
-[node name="Credits" type="Button" parent="Menu"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 474.0
-margin_right = 649.0
-margin_bottom = 530.0
-custom_styles/focus = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
-disabled = true
+[node name="Credits" type="Button" parent="TitleScreen"]
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/focus = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 shortcut_in_tooltip = false
 text = "Credits"
 flat = true
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 unfocus_text = "Credits"
 focus_text = "- Credits -"
 
-[node name="Credits" type="MarginContainer" parent="."]
+[node name="CreditsScreen" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_top = 64
-custom_constants/margin_left = 64
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits"]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 1024.0
-margin_bottom = 576.0
-
-[node name="Label" type="Label" parent="Credits/VBoxContainer"]
-margin_right = 960.0
-margin_bottom = 51.0
-custom_fonts/font = SubResource( 8 )
+[node name="Credits" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 7 )
 text = "CREDITS"
-
-[node name="HSeparator" type="HSeparator" parent="Credits/VBoxContainer"]
-margin_top = 55.0
-margin_right = 960.0
-margin_bottom = 87.0
-custom_styles/separator = SubResource( 2 )
-custom_constants/separation = 32
-
-[node name="MarginContainer" type="MarginContainer" parent="Credits/VBoxContainer"]
-margin_top = 91.0
-margin_right = 960.0
-margin_bottom = 341.0
-custom_constants/margin_left = 42
-
-[node name="Page1" type="VBoxContainer" parent="Credits/VBoxContainer/MarginContainer"]
-margin_left = 42.0
-margin_right = 960.0
-margin_bottom = 250.0
-
-[node name="Ayrton" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_right = 918.0
-margin_bottom = 33.0
-custom_fonts/font = SubResource( 9 )
-text = "Ayrton Sato"
-
-[node name="Ayrton2" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 37.0
-margin_right = 918.0
-margin_bottom = 62.0
-custom_fonts/font = SubResource( 10 )
-text = "Programming, sound effects"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 66.0
-margin_right = 918.0
-margin_bottom = 90.0
-custom_styles/separator = SubResource( 2 )
-custom_constants/separation = 24
+[node name="Ayrton" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.25
+anchor_right = 0.5
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 8 )
+text = "Ayrton Sato"
+align = 1
+valign = 1
 
-[node name="Rafael" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 94.0
-margin_right = 918.0
-margin_bottom = 127.0
+[node name="Ayrton2" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = SubResource( 9 )
+text = "Programming, sound effects"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rafael" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 8 )
 text = "Rafael Bordoni"
 
-[node name="Rafael2" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 131.0
-margin_right = 918.0
-margin_bottom = 156.0
-custom_fonts/font = SubResource( 10 )
+[node name="Rafael2" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.45
+anchor_right = 0.5
+anchor_bottom = 0.45
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 9 )
 text = "Game design, graphics, programming"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator2" type="HSeparator" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 160.0
-margin_right = 918.0
-margin_bottom = 184.0
-custom_styles/separator = SubResource( 2 )
-custom_constants/separation = 24
+[node name="Music" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.55
+anchor_right = 0.5
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 8 )
+text = "Free music by:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Audio" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 188.0
-margin_right = 918.0
-margin_bottom = 221.0
+[node name="Music2" type="Label" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
 custom_fonts/font = SubResource( 9 )
-text = "Free sound effects and music by:"
-
-[node name="Audio2" type="Label" parent="Credits/VBoxContainer/MarginContainer/Page1"]
-margin_top = 225.0
-margin_right = 918.0
-margin_bottom = 250.0
-custom_fonts/font = SubResource( 10 )
 text = "Lets list everyone here."
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/back_to_menu = SubResource( 11 )
-anims/load = SubResource( 12 )
-anims/load_credits = SubResource( 13 )
-anims/to_game = SubResource( 14 )
+[node name="Return" type="Button" parent="CreditsScreen"]
+anchor_left = 0.5
+anchor_top = 0.85
+anchor_right = 0.5
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+custom_styles/focus = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+shortcut_in_tooltip = false
+text = "Return"
+flat = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+unfocus_text = "Return"
+focus_text = "- Return -"
 
-[node name="GUIButtons" parent="." instance=ExtResource( 5 )]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/back_to_menu = SubResource( 10 )
+anims/load = SubResource( 11 )
+anims/load_credits = SubResource( 12 )
+
+[node name="SettingsGUI" parent="." instance=ExtResource( 5 )]
 
 [node name="Transition" parent="." instance=ExtResource( 4 )]
 
@@ -418,14 +420,19 @@ anims/to_game = SubResource( 14 )
 stream = ExtResource( 8 )
 bus = "SFX"
 
-[connection signal="focus_entered" from="Menu/StartGame" to="Menu/StartGame" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Menu/StartGame" to="Menu/StartGame" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="Menu/StartGame" to="Menu/StartGame" method="_on_focus_entered"]
-[connection signal="mouse_exited" from="Menu/StartGame" to="Menu/StartGame" method="_on_focus_exited"]
-[connection signal="pressed" from="Menu/StartGame" to="." method="_on_StartGame_pressed"]
-[connection signal="focus_entered" from="Menu/Credits" to="Menu/Credits" method="_on_focus_entered"]
-[connection signal="focus_exited" from="Menu/Credits" to="Menu/Credits" method="_on_focus_exited"]
-[connection signal="mouse_entered" from="Menu/Credits" to="Menu/Credits" method="_on_focus_entered"]
-[connection signal="mouse_exited" from="Menu/Credits" to="Menu/Credits" method="_on_focus_exited"]
-[connection signal="pressed" from="Menu/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="focus_entered" from="TitleScreen/StartGame" to="TitleScreen/StartGame" method="_on_focus_entered"]
+[connection signal="focus_exited" from="TitleScreen/StartGame" to="TitleScreen/StartGame" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="TitleScreen/StartGame" to="TitleScreen/StartGame" method="_on_focus_entered"]
+[connection signal="mouse_exited" from="TitleScreen/StartGame" to="TitleScreen/StartGame" method="_on_focus_exited"]
+[connection signal="pressed" from="TitleScreen/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="focus_entered" from="TitleScreen/Credits" to="TitleScreen/Credits" method="_on_focus_entered"]
+[connection signal="focus_exited" from="TitleScreen/Credits" to="TitleScreen/Credits" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="TitleScreen/Credits" to="TitleScreen/Credits" method="_on_focus_entered"]
+[connection signal="mouse_exited" from="TitleScreen/Credits" to="TitleScreen/Credits" method="_on_focus_exited"]
+[connection signal="pressed" from="TitleScreen/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="focus_entered" from="CreditsScreen/Return" to="CreditsScreen/Return" method="_on_focus_entered"]
+[connection signal="focus_exited" from="CreditsScreen/Return" to="CreditsScreen/Return" method="_on_focus_exited"]
+[connection signal="mouse_entered" from="CreditsScreen/Return" to="CreditsScreen/Return" method="_on_focus_entered"]
+[connection signal="mouse_exited" from="CreditsScreen/Return" to="CreditsScreen/Return" method="_on_focus_exited"]
+[connection signal="pressed" from="CreditsScreen/Return" to="." method="_on_Return_pressed"]
 [connection signal="fade_out_finished" from="Transition" to="." method="_on_Transition_fade_out_finished"]

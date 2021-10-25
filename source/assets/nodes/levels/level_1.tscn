@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/nodes/levels/base_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/nodes/particles/bg-particles-2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/nodes/particles/falling-stars.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -123,6 +124,11 @@ shader_param/color = Color( 1, 0.46875, 0, 1 )
 shader_param/brightness = 0.6
 shader_param/alpha = 1.0
 
+[sub_resource type="DynamicFont" id=17]
+resource_local_to_scene = true
+size = 30
+font_data = ExtResource( 11 )
+
 [node name="BaseLevel" instance=ExtResource( 1 )]
 z_widget = false
 nz_widget = false
@@ -212,11 +218,14 @@ transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 
 
 [node name="Particles4" parent="Props" index="3" instance=ExtResource( 10 )]
 
-[node name="Message" parent="." index="3" instance=ExtResource( 6 )]
-margin_left = 70.0
-margin_top = 424.0
+[node name="Message2" parent="." index="3" instance=ExtResource( 6 )]
+anchor_left = 0.125
+anchor_top = 0.75
+anchor_right = 0.125
+anchor_bottom = 0.75
+custom_fonts/font = SubResource( 17 )
+text = "Click and drag."
 auto_activate_in = 3.0
-message = "Click and drag."
 
 [connection signal="grabbed_sphere" from="CameraPivot/Camera/DragControls" to="Stage/MainSphere/Arrow" method="deactivate"]
-[connection signal="activated" from="Message" to="Stage/MainSphere/Arrow" method="activate"]
+[connection signal="activated" from="Message2" to="Stage/MainSphere/Arrow" method="activate"]
