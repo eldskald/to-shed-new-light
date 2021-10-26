@@ -1,11 +1,11 @@
 extends Control
 
-onready var transition: Node = $Transition
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var sfx: AudioStreamPlayer = $SelectSFX
 
 func _ready() -> void:
-	transition.fade_in(3)
+	ScreenTransition.connect("fade_out_finished", self, "_on_Transition_fade_out_finished")
+	ScreenTransition.fade_in(3)
 	anim_player.play("load")
 
 func _on_Transition_fade_out_finished():
@@ -13,7 +13,7 @@ func _on_Transition_fade_out_finished():
 
 func _on_StartGame_pressed():
 	sfx.play()
-	transition.fade_out()
+	ScreenTransition.fade_out()
 
 func _on_Credits_pressed():
 	sfx.play()

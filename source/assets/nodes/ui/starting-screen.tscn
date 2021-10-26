@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/textures/start-menu-bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/shaders/starting-screen-bg.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/nodes/ui/screen-transition.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/nodes/ui/gui-settings.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/scripts/ui-starting-screen.gd" type="Script" id=6]
 [ext_resource path="res://assets/scripts/ui-starting-screen-button.gd" type="Script" id=7]
@@ -426,8 +425,6 @@ anims/load_credits = SubResource( 12 )
 
 [node name="SettingsGUI" parent="." instance=ExtResource( 5 )]
 
-[node name="Transition" parent="." instance=ExtResource( 4 )]
-
 [node name="SelectSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 bus = "SFX"
@@ -447,4 +444,3 @@ bus = "SFX"
 [connection signal="mouse_entered" from="CreditsScreen/Return" to="CreditsScreen/Return" method="_on_focus_entered"]
 [connection signal="mouse_exited" from="CreditsScreen/Return" to="CreditsScreen/Return" method="_on_focus_exited"]
 [connection signal="pressed" from="CreditsScreen/Return" to="." method="_on_Return_pressed"]
-[connection signal="fade_out_finished" from="Transition" to="." method="_on_Transition_fade_out_finished"]

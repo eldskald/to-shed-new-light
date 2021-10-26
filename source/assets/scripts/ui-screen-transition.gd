@@ -7,6 +7,7 @@ func fade_in(custom_speed: float = 1) -> void:
 	$AnimationPlayer.play("fade_in", -1, custom_speed)
 
 func fade_out(custom_speed: float = 1) -> void:
+	print("entra")
 	$AnimationPlayer.play("fade_out", -1, custom_speed)
 
 func _on_animation_finished(anim_name):
