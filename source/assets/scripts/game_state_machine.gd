@@ -18,6 +18,7 @@ func set_state(new_value: int) -> void:
 	match new_value:
 		states.START_MENU:
 			get_tree().change_scene(start_menu)
+			level_progress = 1
 		states.GAME:
 			get_tree().change_scene(
 				levels_derectory + "/" + level_prefix +
