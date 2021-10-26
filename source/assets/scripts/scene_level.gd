@@ -86,8 +86,8 @@ func disable_controls() -> void:
 	$CameraPivot/Camera/CameraControls/RotRay.enabled = false
 
 func _on_stage_cleared() -> void:
-#	UniversalSFX.get_node("StageTransitionSFX").play()
-	ScreenTransition.fade_out(1, true)
+	ScreenTransition.fade_out()
+	ScreenTransition.play_sfx()
 	disable_controls()
 
 func _on_Transition_fade_out_finished() -> void:
