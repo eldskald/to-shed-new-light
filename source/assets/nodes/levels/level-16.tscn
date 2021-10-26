@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://assets/nodes/levels/base_level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/nodes/levels/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=4]
@@ -126,6 +126,7 @@ shader_param/alpha = 1.0
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 ring_widget = false
+send_to_credits = true
 
 [node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]
 material/0 = SubResource( 1 )

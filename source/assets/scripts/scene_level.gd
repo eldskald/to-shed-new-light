@@ -8,6 +8,8 @@ export(bool) var nx_widget
 export(bool) var y_widget
 export(bool) var ny_widget
 export(bool) var ring_widget
+export(bool) var send_to_credits
+export(bool) var send_to_starting_screen
 
 onready var z = $CameraPivot/Camera/CameraControls/PivotWidget/Z
 onready var nz = $CameraPivot/Camera/CameraControls/PivotWidget/nZ
@@ -91,4 +93,9 @@ func _on_stage_cleared() -> void:
 	disable_controls()
 
 func _on_Transition_fade_out_finished() -> void:
-	GameStateMachine.stage_cleared()
+	if send_to_credits:
+		GameStateMachine.set_state(GameStateMachine.states.CREDITS)
+	elif send_to_starting_screen:
+		GameStateMachine.set_state(GameStateMachine.states.START_MENU)
+	else:
+		GameStateMachine.stage_cleared()
