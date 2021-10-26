@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://assets/nodes/levels/base_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
@@ -11,9 +11,7 @@
 [ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/nodes/particles/falling-stars.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/nodes/interactables/old-message.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/scripts/special-level-6.gd" type="Script" id=13]
-[ext_resource path="res://assets/scripts/scene-old-message.gd" type="Script" id=14]
 [ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://assets/nodes/interactables/message.tscn" type="PackedScene" id=16]
 
@@ -144,38 +142,6 @@ resource_local_to_scene = true
 size = 42
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=20]
-size = 42
-font_data = ExtResource( 15 )
-
-[sub_resource type="Animation" id=21]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.001, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=22]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-
 [node name="BaseLevel" instance=ExtResource( 1 )]
 z_widget = false
 nz_widget = false
@@ -303,55 +269,12 @@ grow_horizontal = 1
 custom_fonts/font = SubResource( 19 )
 text = "Everything changes!"
 
-[node name="oMessage" parent="." index="6" instance=ExtResource( 12 )]
-visible = false
-margin_left = 67.0
-margin_top = 384.0
-auto_activate_in = 12.0
-message = "Some problems might seem impossible."
-
-[node name="oMessage2" parent="." index="7" instance=ExtResource( 12 )]
-visible = false
-margin_left = 100.0
-margin_top = 434.0
-auto_activate_in = 18.0
-message = "But if you look at it from a different perspective..."
-
-[node name="oMessage3" type="Control" parent="." index="8"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 293.0
-margin_top = 492.0
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-message = "Everything Changes!"
-
-[node name="Label" type="Label" parent="oMessage3" index="0"]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 20 )
-text = "lorem ipsum"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Timer" type="Timer" parent="oMessage3" index="1"]
-one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="oMessage3" index="2"]
-anims/activate = SubResource( 21 )
-anims/deactivate = SubResource( 22 )
-
-[node name="Level6Special" type="Timer" parent="." index="9"]
+[node name="Level6Special" type="Timer" parent="." index="6"]
 wait_time = 21.0
 one_shot = true
 autostart = true
 script = ExtResource( 13 )
 
 [connection signal="changed_view_direction" from="CameraPivot/Camera/CameraControls" to="Level6Special" method="_on_CameraControls_changed_view_direction"]
-[connection signal="timeout" from="oMessage3/Timer" to="oMessage3" method="_on_timer_timeout"]
 [connection signal="changed_direction" from="Level6Special" to="Message3" method="activate"]
 [connection signal="timeout" from="Level6Special" to="Level6Special" method="_on_timeout"]

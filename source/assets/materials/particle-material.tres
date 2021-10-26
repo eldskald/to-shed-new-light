@@ -44,7 +44,7 @@ void fragment() {
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	ALBEDO = albedo.rgb * COLOR.rgb;
-	ALPHA = albedo_tex.r * COLOR.a;
+	ALPHA = albedo_tex.r * albedo.a * COLOR.a;
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
 	SPECULAR = specular;
