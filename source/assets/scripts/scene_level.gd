@@ -23,7 +23,8 @@ onready var down = $CameraPivot/Camera/CameraControls/RotationWidget/Down
 onready var right = $CameraPivot/Camera/CameraControls/RotationWidget/Right
 
 func _ready() -> void:
-	ScreenTransition.connect("fade_out_finished", self, "_on_Transition_fade_out_finished")
+	ScreenTransition.connect(
+		"fade_out_finished", self, "_on_Transition_fade_out_finished")
 	ScreenTransition.fade_in()
 	if not z_widget:
 		disable_widget(z)
@@ -85,8 +86,8 @@ func disable_controls() -> void:
 	$CameraPivot/Camera/CameraControls/RotRay.enabled = false
 
 func _on_stage_cleared() -> void:
-	UniversalSFX.get_node("StageTransitionSFX").play()
-	ScreenTransition.fade_out()
+#	UniversalSFX.get_node("StageTransitionSFX").play()
+	ScreenTransition.fade_out(1, true)
 	disable_controls()
 
 func _on_Transition_fade_out_finished() -> void:

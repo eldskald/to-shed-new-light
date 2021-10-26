@@ -33,7 +33,6 @@ default_bus_layout="res://common/default_bus_layout.tres"
 [autoload]
 
 GameStateMachine="*res://assets/nodes/autoloads/game_state_machine.tscn"
-UniversalSFX="*res://assets/nodes/autoloads/universal_sfx.tscn"
 ScreenTransition="*res://assets/nodes/autoloads/screen-transition.tscn"
 
 [debug]
