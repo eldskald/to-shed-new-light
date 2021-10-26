@@ -49,6 +49,8 @@ func _physics_process(_delta) -> void:
 		var c_widget: Area = pivot_ray.get_collider()
 		c_widget.brightness = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
+			$TurnSFX.pitch_scale = 1 + randf()*0.3
+			$TurnSFX.play()
 			tween.interpolate_property(
 				pivot, "rotation_degrees", null, pivot_states[c_widget.name],
 				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)

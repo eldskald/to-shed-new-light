@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/nodes/ui/gui-settings.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scripts/controls-camera.gd" type="Script" id=2]
 [ext_resource path="res://assets/materials/cube-widget-material.tres" type="Material" id=3]
 [ext_resource path="res://assets/nodes/interactables/main-sphere.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/scripts/controls-drag.gd" type="Script" id=5]
+[ext_resource path="res://assets/sfx/stage_turn.ogg" type="AudioStream" id=6]
 [ext_resource path="res://assets/models/widget-piece.obj" type="ArrayMesh" id=7]
 [ext_resource path="res://assets/nodes/interactables/goal.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=9]
@@ -359,6 +360,9 @@ shape = SubResource( 18 )
 
 [node name="Timer" type="Timer" parent="CameraPivot/Camera/CameraControls/RotationWidget"]
 one_shot = true
+
+[node name="TurnSFX" type="AudioStreamPlayer" parent="CameraPivot/Camera/CameraControls"]
+stream = ExtResource( 6 )
 
 [node name="FixedStage" type="Spatial" parent="CameraPivot/Camera"]
 
