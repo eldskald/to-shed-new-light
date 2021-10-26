@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 signal fade_in_finished
 signal fade_out_finished
