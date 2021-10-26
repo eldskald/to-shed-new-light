@@ -152,7 +152,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 5.1, 7 ),
+"times": PoolRealArray( 0, 5.1, 7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -258,6 +258,10 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
 text = "Start Game"
 flat = true
@@ -277,6 +281,10 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_styles/focus = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
 text = "Credits"
 flat = true
@@ -397,6 +405,10 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_styles/focus = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
 shortcut_in_tooltip = false
 text = "Return"
 flat = true
