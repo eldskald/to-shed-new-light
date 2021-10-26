@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://assets/nodes/levels/base_level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/nodes/paths/path-curve.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/nodes/particles/bg-particles-3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/nodes/particles/bg-particles-2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
@@ -12,6 +13,7 @@
 [ext_resource path="res://assets/fonts/PlayfairDisplay-Regular.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/nodes/interactables/message.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/nodes/interactables/arrow.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/nodes/paths/path-3-intersection.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -167,43 +169,118 @@ material/3 = SubResource( 16 )
 transform = Transform( 3.49692e-06, -1.74847e-07, 4, 4, -2.42395e-06, -3.49692e-06, 2.42395e-06, 4, 1.74845e-07, 2, -3, -2 )
 
 [node name="MainSphere" parent="Stage" index="0"]
-transform = Transform( -1, 3.49692e-07, 8.74228e-08, 3.49692e-07, 1, -1.52855e-14, -8.74228e-08, 7.64294e-15, -1, 4.48999e-07, 1, 3 )
+transform = Transform( -1, 3.49692e-07, 8.74228e-08, 3.49692e-07, 1, -1.52855e-14, -8.74228e-08, 7.64294e-15, -1, 6.67555e-07, -3, 3.64756e-13 )
 
 [node name="Goal" parent="Stage" index="1"]
-transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, 1.80804e-06, 1, -3 )
+transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, 5.24538e-07, 3, 5.01444e-19 )
 
 [node name="StraightPath" parent="Stage" index="2" instance=ExtResource( 3 )]
-transform = Transform( -1, -2.18556e-07, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -2.18556e-07, 1, 4.3711e-08, 6.87417e-07, 1, 3 )
+transform = Transform( -1, -2.18556e-07, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -2.18556e-07, 1, 4.3711e-08, 5.99993e-07, -3, 1 )
 
-[node name="StraightPath2" parent="Stage" index="3" instance=ExtResource( 3 )]
-transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.3711e-08, 1, 1.31134e-07, -1, -4.3711e-08, 7.54979e-07, 1, 2 )
+[node name="StraightPath8" parent="Stage" index="3" instance=ExtResource( 3 )]
+transform = Transform( 2.84217e-14, 1.74846e-07, 1, 2.18558e-07, 1, -1.74846e-07, -1, 2.18558e-07, 0, -7.97763e-09, -2, 2 )
 
-[node name="StraightPath3" parent="Stage" index="4" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 5.84121e-07, 1, 1 )
+[node name="StraightPath9" parent="Stage" index="4" instance=ExtResource( 3 )]
+transform = Transform( 2.84217e-14, 1.74846e-07, 1, 2.18558e-07, 1, -1.74846e-07, -1, 2.18558e-07, 0, 1.66868e-07, -1, 2 )
 
-[node name="StraightPath4" parent="Stage" index="5" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 8.90101e-07, 1, 9.53675e-07 )
+[node name="StraightPath10" parent="Stage" index="5" instance=ExtResource( 3 )]
+transform = Transform( 2.84217e-14, 1.74846e-07, 1, 2.18558e-07, 1, -1.74846e-07, -1, 2.18558e-07, 0, 1.56563e-06, -2.73745e-13, -2 )
 
-[node name="StraightPath5" parent="Stage" index="6" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 1.19608e-06, 1, -0.999999 )
+[node name="StraightPath11" parent="Stage" index="6" instance=ExtResource( 3 )]
+transform = Transform( 8.74218e-08, -1, 1.31135e-07, -3.0598e-07, 1.31135e-07, 1, -1, -8.74217e-08, -3.0598e-07, 1, 1, -2 )
 
-[node name="StraightPath6" parent="Stage" index="7" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 1.50206e-06, 1, -2 )
+[node name="StraightPath12" parent="Stage" index="7" instance=ExtResource( 3 )]
+transform = Transform( -1, -4.37103e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37104e-08, 1, 4.37111e-08, 2, 1, -0.999999 )
 
-[node name="StraightPath7" parent="Stage" index="8" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 1.80804e-06, 1, -3 )
+[node name="StraightPath13" parent="Stage" index="8" instance=ExtResource( 3 )]
+transform = Transform( 2.84217e-14, 1.74846e-07, 1, 2.18558e-07, 1, -1.74846e-07, -1, 2.18558e-07, 0, -2, 2, -6.1196e-07 )
 
-[node name="StraightPath8" parent="Stage" index="9" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 2.34429e-07, -1, 1 )
+[node name="StraightPath14" parent="Stage" index="9" instance=ExtResource( 3 )]
+transform = Transform( 5.24538e-07, 1, -2.18558e-07, 3.0598e-07, -2.18558e-07, -1, -1, 5.24538e-07, -3.0598e-07, -0.999998, 3, -1 )
 
-[node name="StraightPath9" parent="Stage" index="10" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 5.40409e-07, -1, 9.53675e-07 )
+[node name="StraightPath15" parent="Stage" index="10" instance=ExtResource( 3 )]
+transform = Transform( 5.24538e-07, 1, -2.18558e-07, 3.0598e-07, -2.18558e-07, -1, -1, 5.24538e-07, -3.0598e-07, -0.999999, 3, 1 )
 
-[node name="StraightPath10" parent="Stage" index="11" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37109e-08, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -4.37108e-08, 1, 4.3711e-08, 8.46389e-07, -1, -0.999999 )
+[node name="StraightPath16" parent="Stage" index="11" instance=ExtResource( 3 )]
+transform = Transform( 5.24538e-07, 1, -2.18558e-07, 3.0598e-07, -2.18558e-07, -1, -1, 5.24538e-07, -3.0598e-07, 9.33814e-07, 3, 1 )
 
-[node name="Wall" parent="Stage" index="12" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, -1, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -4.37114e-08, 1.74846e-07, 1, 1.76183e-19 )
+[node name="StraightPath17" parent="Stage" index="12" instance=ExtResource( 3 )]
+transform = Transform( 5.24538e-07, 1, -2.18558e-07, 3.0598e-07, -2.18558e-07, -1, -1, 5.24538e-07, -3.0598e-07, 1.23979e-06, 3, 2.18855e-13 )
+
+[node name="StraightPath18" parent="Stage" index="13" instance=ExtResource( 3 )]
+transform = Transform( 5.24538e-07, 1, -2.18558e-07, 3.0598e-07, -2.18558e-07, -1, -1, 5.24538e-07, -3.0598e-07, 1.54577e-06, 3, -1 )
+
+[node name="TriIntersectionPath" parent="Stage" index="14" instance=ExtResource( 15 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -2, 3, -6.1196e-07 )
+
+[node name="TriIntersectionPath2" parent="Stage" index="15" instance=ExtResource( 15 )]
+transform = Transform( 4.80826e-07, 1, -2.18557e-07, 3.49691e-07, -2.18557e-07, -1, -1, 4.80826e-07, -3.49691e-07, 1, 3, 3.0598e-07 )
+
+[node name="CurvePath" parent="Stage" index="16" instance=ExtResource( 6 )]
+transform = Transform( 1, -4.80826e-07, 1.31134e-07, 1.31134e-07, -4.37114e-08, -1, 4.80826e-07, 1, -4.37113e-08, -1.1365e-06, -3, 2 )
+
+[node name="CurvePath2" parent="Stage" index="17" instance=ExtResource( 6 )]
+transform = Transform( 1, -3.49692e-07, 6.1196e-07, -3.49692e-07, -1, 8.74227e-08, 6.1196e-07, -8.74229e-08, -1, -5.24538e-07, -3, -5.4355e-19 )
+
+[node name="CurvePath5" parent="Stage" index="18" instance=ExtResource( 6 )]
+transform = Transform( 8.14503e-08, 1.74846e-07, -1, 2.62269e-07, 1, 1.74846e-07, 1, -2.62269e-07, 8.14502e-08, 7.86806e-07, 1, -2 )
+
+[node name="CurvePath6" parent="Stage" index="19" instance=ExtResource( 6 )]
+transform = Transform( -5.62276e-07, 2.18557e-07, 1, -1, 3.0598e-07, -5.62276e-07, -3.0598e-07, -1, 2.18557e-07, 2, 1, -2 )
+
+[node name="CurvePath7" parent="Stage" index="20" instance=ExtResource( 6 )]
+transform = Transform( -1, 2.12584e-07, -7.37122e-07, -2.12584e-07, -1, 1.51959e-14, -7.37122e-07, 2.03811e-13, 1, 2, 1, 6.1196e-07 )
+
+[node name="CurvePath8" parent="Stage" index="21" instance=ExtResource( 6 )]
+transform = Transform( 6.05988e-07, 3.49691e-07, -1, 1, -3.43719e-07, 6.05988e-07, -3.43719e-07, -1, -3.49691e-07, -2, 3, -1 )
+
+[node name="CurvePath10" parent="Stage" index="22" instance=ExtResource( 6 )]
+transform = Transform( 5.18565e-07, 1, 3.93403e-07, 1, -5.18565e-07, 4.31141e-07, 4.31142e-07, 3.93403e-07, -1, 1, 3, -1 )
+
+[node name="CurvePath11" parent="Stage" index="23" instance=ExtResource( 6 )]
+transform = Transform( -2.56296e-07, -4.37114e-07, 1, 1, -3.43719e-07, 2.56295e-07, 3.43719e-07, 1, 4.37114e-07, 1, 3, 1 )
+
+[node name="CurvePath9" parent="Stage" index="24" instance=ExtResource( 6 )]
+transform = Transform( -1.68873e-07, -1, -3.0598e-07, 1, -1.68873e-07, 4.31142e-07, -4.31142e-07, -3.0598e-07, 1, -2, 3, 0.999999 )
+
+[node name="Wall" parent="Stage" index="25" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -3.49692e-07, -2, -3.52366e-19 )
+
+[node name="Wall2" parent="Stage" index="26" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, 1, -2, 3.0598e-07 )
+
+[node name="Wall3" parent="Stage" index="27" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, 1, -2, -1 )
+
+[node name="Wall4" parent="Stage" index="28" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -4.3712e-08, -2, -1 )
+
+[node name="Wall6" parent="Stage" index="29" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -1, -2, -3.0598e-07 )
+
+[node name="Wall7" parent="Stage" index="30" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -1, -2, 1 )
+
+[node name="Wall8" parent="Stage" index="31" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -6.55672e-07, -2, 1 )
+
+[node name="Wall9" parent="Stage" index="32" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, 0.999999, -2, 1 )
+
+[node name="Wall18" parent="Stage" index="33" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, 1, -2, -1 )
+
+[node name="Wall19" parent="Stage" index="34" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -4.3712e-08, -2, -1 )
+
+[node name="Wall20" parent="Stage" index="35" instance=ExtResource( 4 )]
+transform = Transform( 4.37115e-07, 3.0598e-07, -1, 1, -2.18557e-07, 4.37115e-07, -2.18557e-07, -1, -3.0598e-07, -1, -2, -1 )
+
+[node name="Wall10" parent="Stage" index="36" instance=ExtResource( 4 )]
+transform = Transform( 5.68249e-07, -1.74846e-07, -1, -2.62269e-07, -1, 1.74846e-07, -1, 2.62269e-07, -5.68249e-07, 3.0598e-07, -5.34994e-14, -1 )
+
+[node name="Wall11" parent="Stage" index="37" instance=ExtResource( 4 )]
+transform = Transform( -1, 8.74228e-08, -5.24537e-07, -8.74232e-08, -1, 7.75024e-14, -5.24537e-07, 1.30644e-13, 1, -1, 2, -3.0598e-07 )
 
 [node name="Particles" parent="Props" index="0" instance=ExtResource( 9 )]
 
