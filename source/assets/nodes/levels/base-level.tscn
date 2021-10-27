@@ -365,6 +365,7 @@ one_shot = true
 stream = ExtResource( 6 )
 
 [node name="FixedStage" type="Spatial" parent="CameraPivot/Camera"]
+transform = Transform( 1, 0, 5.61209e-15, 0, 1, 0, 5.61209e-15, 0, 1, -6.55673e-07, 1.09279e-06, -5 )
 
 [node name="Stage" type="Spatial" parent="."]
 
