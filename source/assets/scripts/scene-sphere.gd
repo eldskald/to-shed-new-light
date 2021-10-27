@@ -10,7 +10,7 @@ signal stage_cleared
 
 func _physics_process(_delta):
 	var lin_volume: float = inverse_lerp(-80, -4, sphere_grab_sfx.volume_db)
-	material.set_shader_param("brightness", lerp(0.8, 1.2, lin_volume))
+	material.set_shader_param("brightness", lerp(0.8, 1.5, lin_volume))
 	if reparent_call != null:       # Can't reparent on an area_entered signal
 		reparent_to(reparent_call)  # or else the game crashes, so we're doing
 		reparent_call = null        # it on the next frame instead.
