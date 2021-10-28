@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/music/abf.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/music/samsara_0.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/scripts/music-player.gd" type="Script" id=3]
+[ext_resource path="res://assets/music/mix00.mp3" type="AudioStream" id=4]
+
+[node name="Music" type="Node"]
+script = ExtResource( 3 )
+
+[node name="BGM1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="BGM2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="BGM3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_tween_completed"]

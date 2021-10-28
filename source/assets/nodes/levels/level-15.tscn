@@ -131,6 +131,7 @@ size = 30
 font_data = ExtResource( 4 )
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
+music = 1
 ring_widget = false
 
 [node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]

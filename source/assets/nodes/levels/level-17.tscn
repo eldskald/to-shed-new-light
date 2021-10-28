@@ -125,6 +125,7 @@ shader_param/brightness = 0.6
 shader_param/alpha = 1.0
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
+music = 1
 ring_widget = false
 
 [node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]

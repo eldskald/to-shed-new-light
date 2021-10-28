@@ -1,6 +1,7 @@
 extends Spatial
 class_name BaseLevel
 
+export(int) var music
 export(bool) var z_widget
 export(bool) var nz_widget
 export(bool) var x_widget
@@ -28,6 +29,7 @@ func _ready() -> void:
 	ScreenTransition.connect(
 		"fade_out_finished", self, "_on_Transition_fade_out_finished")
 	ScreenTransition.fade_in()
+	MusicPlayer.play(music)
 	if not z_widget:
 		disable_widget(z)
 	if not nz_widget:

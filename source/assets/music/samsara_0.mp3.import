@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/samsara_0.mp3-d619d8310875f61da0930cf5877a71aa.mp3str"
+
+[deps]
+
+source_file="res://assets/music/samsara_0.mp3"
+dest_files=[ "res://.import/samsara_0.mp3-d619d8310875f61da0930cf5877a71aa.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

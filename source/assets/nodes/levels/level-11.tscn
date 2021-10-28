@@ -123,6 +123,7 @@ shader_param/brightness = 0.6
 shader_param/alpha = 1.0
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
+music = 1
 nz_widget = false
 nx_widget = false
 ny_widget = false

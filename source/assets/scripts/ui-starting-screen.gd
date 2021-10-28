@@ -7,6 +7,7 @@ func _ready() -> void:
 	ScreenTransition.connect("fade_out_finished", self, "_on_Transition_fade_out_finished")
 	ScreenTransition.fade_in(3)
 	anim_player.play("load")
+	MusicPlayer.play(0)
 
 func _on_Transition_fade_out_finished():
 	GameStateMachine.set_state(GameStateMachine.states.GAME)
