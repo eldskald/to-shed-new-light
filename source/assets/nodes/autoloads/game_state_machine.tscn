@@ -4,7 +4,7 @@
 
 [node name="GameStateMachine" type="Node"]
 script = ExtResource( 1 )
-levels_derectory = "res://assets/nodes/levels"
+levels_directory = "res://assets/nodes/levels"
 level_prefix = "level-"
 start_menu = "res://assets/nodes/ui/starting-screen.tscn"
 credits = "res://assets/nodes/levels/credits-level.tscn"
