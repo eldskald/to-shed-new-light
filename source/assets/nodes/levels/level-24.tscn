@@ -125,7 +125,6 @@ shader_param/alpha = 1.0
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 music = 2
-send_to_credits = true
 
 [node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]
 material/0 = SubResource( 1 )
