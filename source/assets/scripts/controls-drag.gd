@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 			path = find_path()
 			if path != null:
 				emit_signal("grabbed_sphere")
-				drag_sphere(get_collision_point())
+				sphere.global_transform.origin = get_collision_point()
 			else:
 				sphere = null
 				clear_exceptions()
@@ -28,15 +28,13 @@ func _physics_process(_delta: float) -> void:
 		var new_path = find_path() # In order to remember last frame's path.
 		if new_path != null:
 			path = new_path
-			drag_sphere(get_collision_point())
+			sphere.global_transform.origin = get_collision_point()
 		else:
 			let_go_of_sphere() # Snap sphere to last frame's path center.
 	
 	# Lastly, to check if the player had just let go of the sphere.
 	elif Input.is_action_just_released("click") and sphere != null:
 		let_go_of_sphere() # Snap sphere to current frame's path center.
-
-
 
 func update_raycast_position() -> void:
 	var viewport: Viewport = get_viewport()
@@ -63,10 +61,6 @@ func find_path() -> Object:
 			return get_collider()
 	return null
 
-func drag_sphere(new_position: Vector3) -> void:
-	var offset: Vector3 = new_position - sphere.to_global(Vector3.ZERO)
-	sphere.global_translate(offset)
-
 func let_go_of_sphere() -> void:
 	sphere.snap_to(path.translation)
 	sphere = null
@@ -76,4 +70,3 @@ func let_go_of_sphere() -> void:
 
 func is_grabbing_sphere() -> bool:
 	return sphere != null
-

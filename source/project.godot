@@ -38,7 +38,6 @@ MusicPlayer="*res://assets/nodes/autoloads/music-player.tscn"
 
 [debug]
 
-settings/stdout/print_fps=true
 gdscript/warnings/unused_variable=false
 gdscript/warnings/return_value_discarded=false
 

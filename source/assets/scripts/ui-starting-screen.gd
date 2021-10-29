@@ -4,7 +4,8 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 onready var sfx: AudioStreamPlayer = $SelectSFX
 
 func _ready() -> void:
-	ScreenTransition.connect("fade_out_finished", self, "_on_Transition_fade_out_finished")
+	ScreenTransition.connect(
+		"fade_out_finished", self, "_on_Transition_fade_out_finished")
 	ScreenTransition.fade_in(3)
 	anim_player.play("load")
 	MusicPlayer.play(0)

@@ -16,6 +16,16 @@ func _physics_process(_delta):
 		reparent_call = null        # it on the next frame instead.
 
 func reparent_to(new_parent: Spatial) -> void:
+	if tween.is_active():
+		tween.stop(self)
+		reparent(new_parent)
+		var rounded_pos = Vector3(
+			round(translation.x), round(translation.y), round(translation.z))
+		snap_to(rounded_pos)
+	else:
+		reparent(new_parent)
+
+func reparent(new_parent: Spatial) -> void:
 	var old_transform: Transform = global_transform
 	get_parent().remove_child(self)
 	new_parent.add_child(self)

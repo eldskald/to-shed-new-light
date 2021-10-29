@@ -5,6 +5,7 @@ onready var pivot_ray: RayCast = $PivotRay
 onready var rot_ray: RayCast = $RotRay
 onready var pivot: Spatial = get_parent().get_parent()
 onready var camera: Spatial = get_parent()
+onready var sfx: AudioStreamPlayer = $TurnSFX
 
 var last_pivot_state: String = "Z"
 var last_rot_state: String = "Up"
@@ -49,8 +50,7 @@ func _physics_process(_delta) -> void:
 		var c_widget: Area = pivot_ray.get_collider()
 		c_widget.brightness = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
-			$TurnSFX.pitch_scale = 1 + randf()*0.3
-			$TurnSFX.play()
+			play_sfx()
 			tween.interpolate_property(
 				pivot, "rotation_degrees", null, pivot_states[c_widget.name],
 				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
@@ -71,6 +71,7 @@ func _physics_process(_delta) -> void:
 		var rot_widget = $RotationWidget
 		rot_widget.brightness[rot_materials[c_widget]] = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
+			play_sfx()
 			tween.interpolate_property(
 				camera, "rotation_degrees", null, rot_states[c_widget],
 				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
@@ -87,6 +88,10 @@ func update_raycast_position(ray: RayCast) -> void:
 	ray.translation.x = unit_pos.x * camera.size / 2
 	ray.translation.y = -unit_pos.y * camera.size / 2
 	ray.translation.y *= viewport.size.y / viewport.size.x
+
+func play_sfx() -> void:
+	sfx.pitch_scale = 1 + randf() * 0.3
+	sfx.play()
 
 func get_pivot_state() -> String:
 	for key in pivot_states.keys():
