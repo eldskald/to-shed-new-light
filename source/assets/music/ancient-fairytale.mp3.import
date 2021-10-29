@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ancient-fairytale.mp3-0f2d59176e46808db20a0bb0bc3540bb.mp3str"
+
+[deps]
+
+source_file="res://assets/music/ancient-fairytale.mp3"
+dest_files=[ "res://.import/ancient-fairytale.mp3-0f2d59176e46808db20a0bb0bc3540bb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

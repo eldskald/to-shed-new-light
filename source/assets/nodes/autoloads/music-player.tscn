@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/music/abf.mp3" type="AudioStream" id=1]
-[ext_resource path="res://assets/music/samsara_0.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/music/ancient-fairytale.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/music/samsara.mp3" type="AudioStream" id=2]
 [ext_resource path="res://assets/scripts/music-player.gd" type="Script" id=3]
-[ext_resource path="res://assets/music/mix00.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/music/painful-vacation.mp3" type="AudioStream" id=4]
 
 [node name="Music" type="Node"]
 script = ExtResource( 3 )
