@@ -152,8 +152,6 @@ ring_widget = true
 [node name="CameraPivot" type="Spatial" parent="."]
 transform = Transform( -4.37114e-08, -1, 2.84217e-14, 1, -4.37114e-08, -1.74846e-07, 1.74846e-07, -2.84217e-14, 1, 0, 0, 0 )
 
-[node name="RotationTween" type="Tween" parent="CameraPivot"]
-
 [node name="Camera" type="Camera" parent="CameraPivot"]
 transform = Transform( -4.37113e-08, 0, 1, 1.74846e-07, 1, 1.42109e-14, -1, 1.74846e-07, -4.37113e-08, 10, 0, 0 )
 keep_aspect = 0

@@ -50,13 +50,7 @@ func _physics_process(_delta) -> void:
 		var c_widget: Area = pivot_ray.get_collider()
 		c_widget.brightness = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
-			play_sfx()
-			tween.interpolate_property(
-				pivot, "rotation_degrees", null, pivot_states[c_widget.name],
-				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-			tween.start()
-			last_pivot_state = c_widget.name
-			emit_signal("changed_view_direction", c_widget.name)
+			change_direction(c_widget.name)
 	
 	# Check for rotation around the current view direction.
 	var rot_state: String = get_rot_state()
@@ -71,13 +65,7 @@ func _physics_process(_delta) -> void:
 		var rot_widget = $RotationWidget
 		rot_widget.brightness[rot_materials[c_widget]] = 1.1
 		if Input.is_action_just_pressed("click") and not tween.is_active():
-			play_sfx()
-			tween.interpolate_property(
-				camera, "rotation_degrees", null, rot_states[c_widget],
-				1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
-			tween.start()
-			last_rot_state = c_widget
-			emit_signal("changed_camera_rotation", c_widget)
+			rotate_camera(c_widget)
 
 func update_raycast_position(ray: RayCast) -> void:
 	var viewport: Viewport = get_viewport()
@@ -88,6 +76,24 @@ func update_raycast_position(ray: RayCast) -> void:
 	ray.translation.x = unit_pos.x * camera.size / 2
 	ray.translation.y = -unit_pos.y * camera.size / 2
 	ray.translation.y *= viewport.size.y / viewport.size.x
+
+func change_direction(pivot_state: String, time: float = 1) -> void:
+	play_sfx()
+	tween.interpolate_property(
+		pivot, "rotation_degrees", null, pivot_states[pivot_state],
+		time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.start()
+	last_pivot_state = pivot_state
+	emit_signal("changed_view_direction", pivot_state)
+
+func rotate_camera(rot_state: String, time: float = 1) -> void:
+	play_sfx()
+	tween.interpolate_property(
+		camera, "rotation_degrees", null, rot_states[rot_state],
+		time, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	tween.start()
+	last_rot_state = rot_state
+	emit_signal("changed_camera_rotation", rot_state)
 
 func play_sfx() -> void:
 	sfx.pitch_scale = 1 + randf() * 0.3

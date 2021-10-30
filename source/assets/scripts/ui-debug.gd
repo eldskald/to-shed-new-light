@@ -4,8 +4,8 @@ onready var level_label: Label = $Level
 onready var fps_label: Label = $FPS
 
 func _ready():
-	if GameStateMachine.state != GameStateMachine.states.GAME:
-		$ResetButton.visible = false
+	if GameStateMachine.state == GameStateMachine.states.GAME:
+		$ResetButton.visible = true
 
 func _process(_delta):
 	level_label.text = "Level " + GameStateMachine.level_progress as String

@@ -136,6 +136,7 @@ text = "60 fps"
 align = 2
 
 [node name="ResetButton" type="Button" parent="Debug"]
+visible = false
 margin_right = 191.0
 margin_bottom = 39.0
 custom_styles/focus = SubResource( 8 )

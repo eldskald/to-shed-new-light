@@ -1,7 +1,7 @@
 extends Node
 
 onready var tween: Tween = $Tween
-onready var bgms: Array = [$BGM1, $BGM2, $BGM3]
+onready var bgms: Array = [$BGM1, $BGM2, $BGM3, $BGM4]
 
 var currently_playing: int = -1
 var next_playing: int = -1

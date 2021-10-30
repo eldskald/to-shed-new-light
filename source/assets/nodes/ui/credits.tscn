@@ -114,8 +114,9 @@ anchor_right = 0.5
 anchor_bottom = 0.58
 grow_horizontal = 2
 custom_fonts/font = SubResource( 3 )
-text = "Ancient Fairytale, Painful Vacation and
-Samsara by Oddroom on opengameart.org,
+text = "Ancient Fairytale, Moon Chime Remix,
+Painful Vacation and Samsara
+by Oddroom on opengameart.org,
 all under creative commons license."
 align = 1
 valign = 1
