@@ -140,23 +140,23 @@ height = 1.0
 [sub_resource type="SphereShape" id=18]
 radius = 0.1
 
-[sub_resource type="Gradient" id=29]
+[sub_resource type="Gradient" id=19]
 offsets = PoolRealArray( 0, 0.2, 0.7, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.1, 0.1, 0.1, 1, 0.1, 0.1, 0.1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=30]
-gradient = SubResource( 29 )
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
 width = 256
 
-[sub_resource type="Curve" id=23]
+[sub_resource type="Curve" id=21]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=24]
+[sub_resource type="CurveTexture" id=22]
 width = 256
-curve = SubResource( 23 )
+curve = SubResource( 21 )
 
-[sub_resource type="ParticlesMaterial" id=25]
-trail_size_modifier = SubResource( 24 )
+[sub_resource type="ParticlesMaterial" id=23]
+trail_size_modifier = SubResource( 22 )
 emission_shape = 1
 emission_sphere_radius = 10.0
 direction = Vector3( 0, -1, 0 )
@@ -168,11 +168,11 @@ radial_accel = -20.0
 tangential_accel = 10.0
 scale = 0.5
 scale_random = 0.5
-color_ramp = SubResource( 30 )
+color_ramp = SubResource( 20 )
 hue_variation = 1.0
 hue_variation_random = 1.0
 
-[sub_resource type="Shader" id=26]
+[sub_resource type="Shader" id=24]
 code = "shader_type spatial;
 render_mode blend_add,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
 uniform vec4 albedo : hint_color;
@@ -220,9 +220,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=27]
+[sub_resource type="ShaderMaterial" id=25]
 resource_local_to_scene = true
-shader = SubResource( 26 )
+shader = SubResource( 24 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5
 shader_param/metallic = 0.0
@@ -237,11 +237,10 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 20 )
 
-[sub_resource type="QuadMesh" id=28]
-material = SubResource( 27 )
+[sub_resource type="QuadMesh" id=26]
+material = SubResource( 25 )
 
-[sub_resource type="Animation" id=19]
-resource_name = "first_to_second"
+[sub_resource type="Animation" id=27]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CameraPivot/Camera/FixedStage:translation")
@@ -354,8 +353,7 @@ tracks/8/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=20]
-resource_name = "second_to_third"
+[sub_resource type="Animation" id=28]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("CameraPivot/Camera/FixedStage2:translation")
@@ -568,6 +566,7 @@ transform = Transform( -6.55672e-07, 3.05981e-07, -1, -1, 2.62268e-07, 6.55672e-
 
 [node name="FixedStage3" type="Spatial" parent="CameraPivot/Camera" index="4"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55674e-07, -40, 35 )
+visible = false
 
 [node name="Wall" parent="CameraPivot/Camera/FixedStage3" index="0" instance=ExtResource( 17 )]
 transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999998, 7.62939e-06, 7.62939e-06 )
@@ -831,15 +830,19 @@ transform = Transform( 1.31134e-07, -1, 8.74233e-08, -3.0598e-07, 8.74233e-08, 1
 amount = 320
 preprocess = 10.0
 speed_scale = 0.1
-process_material = SubResource( 25 )
-draw_pass_1 = SubResource( 28 )
+process_material = SubResource( 23 )
+draw_pass_1 = SubResource( 26 )
 
 [node name="LastLevelSpecial" type="AnimationPlayer" parent="." index="5"]
-anims/first_to_second = SubResource( 19 )
-anims/second_to_third = SubResource( 20 )
+anims/first_to_second = SubResource( 27 )
+anims/second_to_third = SubResource( 28 )
 script = ExtResource( 14 )
 controls = NodePath("../CameraPivot/Camera/CameraControls")
 
+[connection signal="grabbed_sphere" from="CameraPivot/Camera/DragControls" to="Stage2/MainSphere" method="_on_grabbed_sphere"]
+[connection signal="grabbed_sphere" from="CameraPivot/Camera/DragControls" to="Stage3/MainSphere" method="_on_grabbed_sphere"]
+[connection signal="let_go_of_sphere" from="CameraPivot/Camera/DragControls" to="Stage2/MainSphere" method="_on_let_go_of_sphere"]
+[connection signal="let_go_of_sphere" from="CameraPivot/Camera/DragControls" to="Stage3/MainSphere" method="_on_let_go_of_sphere"]
 [connection signal="area_entered" from="Stage/FirstGoal" to="LastLevelSpecial" method="_on_FirstGoal_area_entered"]
 [connection signal="area_entered" from="Stage2/SecondGoal" to="LastLevelSpecial" method="_on_SecondGoal_area_entered"]
 [connection signal="stage_cleared" from="Stage3/MainSphere" to="." method="_on_stage_cleared"]
