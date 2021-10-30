@@ -161,13 +161,45 @@ projection = 1
 size = 16.0
 
 [node name="DragControls" type="RayCast" parent="CameraPivot/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27374e-13, 1.90735e-06 )
+transform = Transform( 1, 0, 5.61209e-15, 0, 1, 0, 5.61209e-15, 0, 1, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( 0, 0, -100 )
 collision_mask = 3
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource( 5 )
+
+[node name="Checker1" type="RayCast" parent="CameraPivot/Camera/DragControls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.25, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Checker2" type="RayCast" parent="CameraPivot/Camera/DragControls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.25, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Checker3" type="RayCast" parent="CameraPivot/Camera/DragControls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, -0.25, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Checker4" type="RayCast" parent="CameraPivot/Camera/DragControls"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.25, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -100 )
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="CameraControls" type="Spatial" parent="CameraPivot/Camera"]
 script = ExtResource( 2 )

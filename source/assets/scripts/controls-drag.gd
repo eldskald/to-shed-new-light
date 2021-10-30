@@ -18,8 +18,13 @@ func _physics_process(_delta: float) -> void:
 			add_exception(sphere)
 			path = find_path()
 			if path != null:
-				emit_signal("grabbed_sphere")
-				sphere.global_transform.origin = get_collision_point()
+				var height: float = get_length_to_collision(self)
+				if not are_paths_in_front(height - 0.5):
+					emit_signal("grabbed_sphere")
+					sphere.global_transform.origin = get_collision_point()
+				else:                   # It is possible to grab the sphere
+					sphere = null       # behind a path due to hitbox shapes
+					clear_exceptions()  # so we do check with raycasts.
 			else:
 				sphere = null
 				clear_exceptions()
@@ -66,6 +71,16 @@ func update_raycast_position() -> void:
 	self.translation.x = coords.x
 	self.translation.y = coords.y
 
+func get_length_to_collision(raycast: RayCast) -> float:
+	if not raycast.is_colliding():
+		return raycast.cast_to.length()
+	else:
+		var collision: Vector3 = raycast.get_collision_point()
+		collision -= raycast.global_transform.origin
+		return collision.length()
+
+
+
 func find_sphere() -> Object:
 	force_raycast_update()
 	if self.is_colliding():
@@ -79,6 +94,13 @@ func find_path() -> Object:
 		if get_collider().is_in_group("path"):
 			return get_collider()
 	return null
+
+func are_paths_in_front(height: float) -> bool:
+	var checkers_that_found: int = 0
+	for checker in get_children():
+		checker.force_raycast_update()
+		checkers_that_found += int(get_length_to_collision(checker) < height)
+	return checkers_that_found > 0
 
 func let_go_of_sphere() -> void:
 	sphere.snap_to(path.translation)

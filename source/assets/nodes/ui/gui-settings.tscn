@@ -120,6 +120,7 @@ __meta__ = {
 }
 
 [node name="Level" type="Label" parent="Debug"]
+visible = false
 margin_right = 143.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 6 )
@@ -127,17 +128,16 @@ text = "Level 69"
 align = 2
 
 [node name="FPS" type="Label" parent="Debug"]
-margin_top = 37.0
+visible = false
 margin_right = 143.0
-margin_bottom = 70.0
+margin_bottom = 33.0
 custom_fonts/font = SubResource( 7 )
 text = "60 fps"
 align = 2
 
 [node name="ResetButton" type="Button" parent="Debug"]
-margin_top = 74.0
 margin_right = 143.0
-margin_bottom = 113.0
+margin_bottom = 39.0
 custom_styles/focus = SubResource( 8 )
 custom_fonts/font = SubResource( 9 )
 text = "Reset Level"
