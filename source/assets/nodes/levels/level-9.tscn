@@ -1,16 +1,19 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/nodes/levels/base-level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/nodes/paths/path-curve.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/nodes/paths/path-3-intersection.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/nodes/particles/bg-particles-3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/nodes/particles/bg-particles-2.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/nodes/particles/falling-stars.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/nodes/paths/path-3-2-intersection.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/models/wall.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://assets/nodes/paths/path-end.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/materials/wall-material.tres" type="Material" id=14]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -131,6 +134,15 @@ nx_widget = false
 ny_widget = false
 ring_widget = false
 
+[node name="Camera" parent="CameraPivot" index="0"]
+size = 20.0
+
+[node name="WidgetCube" parent="CameraPivot/Camera/CameraControls" index="3"]
+transform = Transform( 5.96047e-08, 0.707107, 0.707106, 0.707107, -0.5, 0.5, 0.707107, 0.5, -0.5, 8, -3.75, -2 )
+
+[node name="PivotWidget" parent="CameraPivot/Camera/CameraControls" index="4"]
+transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 8, -3.75, -2 )
+
 [node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]
 material/0 = SubResource( 1 )
 material/1 = SubResource( 2 )
@@ -155,6 +167,9 @@ material/1 = SubResource( 10 )
 material/0 = SubResource( 11 )
 material/1 = SubResource( 12 )
 
+[node name="RotationWidget" parent="CameraPivot/Camera/CameraControls" index="5"]
+transform = Transform( 1.5, 1.13687e-13, 2.97344e-14, 1.13687e-13, 1.5, -1.13687e-13, 2.97344e-14, -1.13687e-13, 1.5, 8, -3.75, -2 )
+
 [node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/RotationWidget" index="0"]
 material/0 = SubResource( 13 )
 material/1 = SubResource( 14 )
@@ -162,115 +177,258 @@ material/2 = SubResource( 15 )
 material/3 = SubResource( 16 )
 
 [node name="MainSphere" parent="Stage" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 3.0598e-07 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 7 )
 
 [node name="Goal" parent="Stage" index="1"]
-transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, -2, -1, -3 )
+transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, 1, -1.15241e-07, -3 )
 
-[node name="StraightPath" parent="Stage" index="2" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, 1, -2 )
+[node name="StraightPath" parent="Stage" index="2" instance=ExtResource( 13 )]
+transform = Transform( 1, -4.80826e-07, 1.31134e-07, 1.31134e-07, -4.37114e-08, -1, 4.80826e-07, 1, -4.37113e-08, -3, 4, 7 )
 
-[node name="StraightPath2" parent="Stage" index="3" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, 1, -1 )
+[node name="StraightPath2" parent="Stage" index="3" instance=ExtResource( 13 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 3, 2, -3 )
 
 [node name="StraightPath3" parent="Stage" index="4" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, 1, 3.0598e-07 )
+transform = Transform( -4.37113e-08, 1, -3.0598e-07, -1, -4.37114e-08, -3.0598e-07, -3.0598e-07, 3.0598e-07, 1, -2, 4, 5 )
 
-[node name="StraightPath4" parent="Stage" index="5" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, 1, 1 )
+[node name="CurvePath" parent="Stage" index="5" instance=ExtResource( 4 )]
+transform = Transform( -4.37115e-07, -1, 3.93403e-07, -1, 4.37114e-07, -2.6227e-07, 2.62269e-07, -3.93403e-07, -1, -3, 4, 5 )
 
-[node name="StraightPath5" parent="Stage" index="6" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, 1, 2 )
+[node name="CurvePath3" parent="Stage" index="6" instance=ExtResource( 4 )]
+transform = Transform( -4.37115e-07, -1, 3.93403e-07, -1, 4.37114e-07, -2.6227e-07, 2.62269e-07, -3.93403e-07, -1, -0.999997, 4, 3 )
 
-[node name="StraightPath6" parent="Stage" index="7" instance=ExtResource( 3 )]
-transform = Transform( 1.13687e-13, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, -1.13687e-13, 3.0598e-07, 4.48999e-07, 1, 3 )
+[node name="CurvePath2" parent="Stage" index="7" instance=ExtResource( 4 )]
+transform = Transform( 8.74235e-08, 1, -3.05981e-07, -1, 8.74224e-08, -2.6227e-07, -2.62269e-07, 3.05981e-07, 1, -0.999998, 4, 5 )
 
-[node name="StraightPath7" parent="Stage" index="8" instance=ExtResource( 3 )]
-transform = Transform( 1.13687e-13, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, -1.13687e-13, 3.0598e-07, -0.999999, 1, 3 )
+[node name="TriIntersectionPath" parent="Stage" index="8" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -3, 4, 6 )
 
-[node name="StraightPath8" parent="Stage" index="9" instance=ExtResource( 3 )]
-transform = Transform( 1, -4.37115e-08, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, -4.37116e-08, -1, -4.37113e-08, -2, 1, 2 )
+[node name="TriIntersectionPath2" parent="Stage" index="9" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -1, 4, 4 )
 
-[node name="StraightPath9" parent="Stage" index="10" instance=ExtResource( 3 )]
-transform = Transform( 1, -4.37115e-08, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, -4.37116e-08, -1, -4.37113e-08, -2, 1, 0.999999 )
+[node name="StraightPath4" parent="Stage" index="10" instance=ExtResource( 3 )]
+transform = Transform( -4.37113e-08, 1, -3.0598e-07, -1, -4.37114e-08, -3.0598e-07, -3.0598e-07, 3.0598e-07, 1, -9.93467e-08, 4, 3 )
 
-[node name="StraightPath10" parent="Stage" index="11" instance=ExtResource( 3 )]
-transform = Transform( 1, -4.37115e-08, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, -4.37116e-08, -1, -4.37113e-08, -2, 1, -6.11959e-07 )
+[node name="CurvePath4" parent="Stage" index="11" instance=ExtResource( 4 )]
+transform = Transform( -4.37115e-07, -1, 3.93403e-07, -1, 4.37114e-07, -2.6227e-07, 2.62269e-07, -3.93403e-07, -1, 1, 4, 1 )
 
-[node name="StraightPath11" parent="Stage" index="12" instance=ExtResource( 3 )]
-transform = Transform( 1, -4.37115e-08, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, -4.37116e-08, -1, -4.37113e-08, -2, 1, -1 )
+[node name="CurvePath5" parent="Stage" index="12" instance=ExtResource( 4 )]
+transform = Transform( 8.74235e-08, 1, -3.05981e-07, -1, 8.74224e-08, -2.6227e-07, -2.62269e-07, 3.05981e-07, 1, 1, 4, 3 )
 
-[node name="StraightPath12" parent="Stage" index="13" instance=ExtResource( 3 )]
-transform = Transform( 1, -4.37115e-08, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, -4.37116e-08, -1, -4.37113e-08, -2, 1, -2 )
+[node name="TriIntersectionPath3" parent="Stage" index="13" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 1, 4, 2 )
 
-[node name="StraightPath13" parent="Stage" index="14" instance=ExtResource( 3 )]
-transform = Transform( -8.7423e-08, -1, 1.31135e-07, -3.0598e-07, 1.31135e-07, 1, -1, 8.74229e-08, -3.0598e-07, -0.999997, 1, -3 )
+[node name="StraightPath5" parent="Stage" index="14" instance=ExtResource( 3 )]
+transform = Transform( -4.37113e-08, 1, -3.0598e-07, -1, -4.37114e-08, -3.0598e-07, -3.0598e-07, 3.0598e-07, 1, 2, 4, 1 )
 
-[node name="StraightPath14" parent="Stage" index="15" instance=ExtResource( 3 )]
-transform = Transform( -8.7423e-08, -1, 1.31135e-07, -3.0598e-07, 1.31135e-07, 1, -1, 8.74229e-08, -3.0598e-07, 3.23855e-06, 1, -3 )
+[node name="CurvePath6" parent="Stage" index="15" instance=ExtResource( 4 )]
+transform = Transform( -1, 4.80826e-07, 4.37102e-08, 4.80827e-07, 1, -8.74234e-08, -4.37105e-08, -8.74233e-08, -1, 3, 4, 1.87162e-06 )
 
-[node name="StraightPath15" parent="Stage" index="16" instance=ExtResource( 3 )]
-transform = Transform( 1, -5.68249e-07, 6.55671e-07, -5.68249e-07, -1, -8.7423e-08, 6.55672e-07, 8.74227e-08, -1, 1, -2.94055e-07, 3 )
+[node name="CurvePath8" parent="Stage" index="16" instance=ExtResource( 4 )]
+transform = Transform( -1, 1.31134e-07, -5.6825e-07, -1.31135e-07, -1, 7.38845e-13, -5.6825e-07, 7.0469e-13, 1, 3, 2, 1.87162e-06 )
 
-[node name="StraightPath16" parent="Stage" index="17" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, -1, -2 )
+[node name="CurvePath7" parent="Stage" index="17" instance=ExtResource( 4 )]
+transform = Transform( 8.74235e-08, 1, -3.05981e-07, -1, 8.74224e-08, -2.6227e-07, -2.62269e-07, 3.05981e-07, 1, 3, 4, 1 )
 
-[node name="StraightPath17" parent="Stage" index="18" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, -1, -1 )
+[node name="StraightPath6" parent="Stage" index="18" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 6 )
 
-[node name="StraightPath18" parent="Stage" index="19" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, -1, 3.0598e-07 )
+[node name="StraightPath42" parent="Stage" index="19" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, 6 )
 
-[node name="StraightPath19" parent="Stage" index="20" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, -1, 1 )
+[node name="StraightPath7" parent="Stage" index="20" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3, 4 )
 
-[node name="StraightPath20" parent="Stage" index="21" instance=ExtResource( 3 )]
-transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37114e-08, 1, -4.37112e-08, 1, 4.37113e-08, 1, -1, 2 )
+[node name="StraightPath8" parent="Stage" index="21" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 3, 2 )
 
-[node name="StraightPath21" parent="Stage" index="22" instance=ExtResource( 3 )]
-transform = Transform( -8.7423e-08, -1, 1.31135e-07, -3.05981e-07, 1.31135e-07, 1, -1, 8.74229e-08, -3.0598e-07, 2.65044e-06, -1, -3 )
+[node name="StraightPath13" parent="Stage" index="22" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 2 )
 
-[node name="StraightPath22" parent="Stage" index="23" instance=ExtResource( 3 )]
-transform = Transform( -8.7423e-08, -1, 1.31135e-07, -3.05981e-07, 1.31135e-07, 1, -1, 8.74229e-08, -3.0598e-07, -0.999997, -1, -3 )
+[node name="StraightPath9" parent="Stage" index="23" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 9.1794e-07 )
 
-[node name="StraightPath23" parent="Stage" index="24" instance=ExtResource( 3 )]
-transform = Transform( -8.7423e-08, -1, 1.31135e-07, -3.05981e-07, 1.31135e-07, 1, -1, 8.74229e-08, -3.0598e-07, -2, -1, -3 )
+[node name="CurvePath9" parent="Stage" index="24" instance=ExtResource( 4 )]
+transform = Transform( -1, 1.31134e-07, -5.6825e-07, -1.31135e-07, -1, 7.38845e-13, -5.6825e-07, 7.0469e-13, 1, 1, -1.15242e-07, 2 )
 
-[node name="CurvePath" parent="Stage" index="25" instance=ExtResource( 4 )]
-transform = Transform( 1, -6.99382e-07, 4.3712e-08, 4.37121e-08, -8.74232e-08, -1, 6.99383e-07, 1, -8.74233e-08, 0.999999, -1, 3 )
+[node name="StraightPath12" parent="Stage" index="25" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 2 )
 
-[node name="CurvePath3" parent="Stage" index="26" instance=ExtResource( 4 )]
-transform = Transform( 4.37116e-07, 2.18556e-07, -1, 1, -3.05979e-07, 4.37115e-07, -3.0598e-07, -1, -2.18557e-07, -2, 1, -3 )
+[node name="StraightPath10" parent="Stage" index="26" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 3, 2, -0.999999 )
 
-[node name="CurvePath4" parent="Stage" index="27" instance=ExtResource( 4 )]
-transform = Transform( -1.31134e-07, -1, -1.74845e-07, 1, -1.31133e-07, 2.62269e-07, -2.6227e-07, -1.74845e-07, 1, -2, 1, 3 )
+[node name="StraightPath11" parent="Stage" index="27" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 3, 2, -2 )
 
-[node name="CurvePath2" parent="Stage" index="28" instance=ExtResource( 4 )]
-transform = Transform( -3.93404e-07, 3.93403e-07, 1, -1, 3.49691e-07, -3.93404e-07, -3.49692e-07, -1, 3.93403e-07, 0.999999, -1, -3 )
+[node name="StraightPath14" parent="Stage" index="28" instance=ExtResource( 13 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 0.999999, 1.23177e-07, -3 )
 
-[node name="CurvePath5" parent="Stage" index="29" instance=ExtResource( 4 )]
-transform = Transform( -3.93404e-07, 3.93403e-07, 1, -1, 3.4969e-07, -3.93404e-07, -3.49692e-07, -1, 3.93403e-07, 1, 0.999999, -3 )
+[node name="StraightPath15" parent="Stage" index="29" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1, -1.15241e-07, -1 )
 
-[node name="Tri2IntersectionPath" parent="Stage" index="30" instance=ExtResource( 12 )]
-transform = Transform( -1, 3.49692e-07, 8.74228e-08, 3.49692e-07, 1, -1.52855e-14, -8.74228e-08, 2.18538e-14, -1, 1, 1, 3 )
+[node name="StraightPath16" parent="Stage" index="30" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1, -1.15242e-07, -2 )
 
-[node name="Wall" parent="Stage" index="31" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 2, -3.49692e-07, 6.1196e-07 )
+[node name="StraightPath17" parent="Stage" index="31" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1, -1.15241e-07, 1 )
 
-[node name="Wall2" parent="Stage" index="32" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 1, -2.34451e-07, 3.0598e-07 )
+[node name="StraightPath18" parent="Stage" index="32" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 1, -1.15241e-07, 3.0598e-07 )
 
-[node name="Wall3" parent="Stage" index="33" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -5.96047e-08, -5.96046e-08, 1.01839e-14 )
+[node name="StraightPath24" parent="Stage" index="33" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 4 )
 
-[node name="Wall4" parent="Stage" index="34" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -1, 5.56367e-08, -3.0598e-07 )
+[node name="StraightPath29" parent="Stage" index="34" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 4 )
 
-[node name="Wall5" parent="Stage" index="35" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -2, 1.70878e-07, -6.1196e-07 )
+[node name="StraightPath25" parent="Stage" index="35" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.74846e-07, 4 )
 
-[node name="Wall6" parent="Stage" index="36" instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -3, 2.86119e-07, -9.1794e-07 )
+[node name="CurvePath10" parent="Stage" index="36" instance=ExtResource( 4 )]
+transform = Transform( -1, 1.31134e-07, -5.6825e-07, -1.31135e-07, -1, 7.38845e-13, -5.6825e-07, 7.0469e-13, 1, -0.999998, -2, 4 )
+
+[node name="StraightPath26" parent="Stage" index="37" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -1, 4 )
+
+[node name="StraightPath27" parent="Stage" index="38" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -1, -2, 3 )
+
+[node name="StraightPath28" parent="Stage" index="39" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -1, -2, 2 )
+
+[node name="StraightPath19" parent="Stage" index="40" instance=ExtResource( 13 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -1, -2, -3 )
+
+[node name="StraightPath20" parent="Stage" index="41" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -0.999999, -2, -1 )
+
+[node name="StraightPath21" parent="Stage" index="42" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -0.999999, -2, -2 )
+
+[node name="StraightPath22" parent="Stage" index="43" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -1, -2, 1 )
+
+[node name="StraightPath23" parent="Stage" index="44" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -1, -2, -1.86771e-07 )
+
+[node name="StraightPath30" parent="Stage" index="45" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 6 )
+
+[node name="StraightPath31" parent="Stage" index="46" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.999999, 6 )
+
+[node name="StraightPath32" parent="Stage" index="47" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5.24538e-07, 6 )
+
+[node name="StraightPath33" parent="Stage" index="48" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -2, 6 )
+
+[node name="CurvePath11" parent="Stage" index="49" instance=ExtResource( 4 )]
+transform = Transform( -1, 1.31134e-07, -5.6825e-07, -1.31135e-07, -1, 7.38845e-13, -5.6825e-07, 7.0469e-13, 1, -3, -4, 6 )
+
+[node name="StraightPath34" parent="Stage" index="50" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -3, 6 )
+
+[node name="StraightPath35" parent="Stage" index="51" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, 5 )
+
+[node name="StraightPath36" parent="Stage" index="52" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, 4 )
+
+[node name="StraightPath37" parent="Stage" index="53" instance=ExtResource( 13 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, -3 )
+
+[node name="StraightPath38" parent="Stage" index="54" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, 0.999999 )
+
+[node name="StraightPath39" parent="Stage" index="55" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, -9.1794e-07 )
+
+[node name="StraightPath43" parent="Stage" index="56" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, -1 )
+
+[node name="StraightPath44" parent="Stage" index="57" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, -2 )
+
+[node name="StraightPath40" parent="Stage" index="58" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, 3 )
+
+[node name="StraightPath41" parent="Stage" index="59" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, -4, 2 )
+
+[node name="Wall" parent="Stage" index="60" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, -3, 4, 4.1 )
+
+[node name="Wall2" parent="Stage" index="61" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, -2, 4, 4.1 )
+
+[node name="Wall3" parent="Stage" index="62" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, -1, 4, 2.1 )
+
+[node name="Wall4" parent="Stage" index="63" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, 5.68258e-08, 4, 2.1 )
+
+[node name="Wall5" parent="Stage" index="64" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, 1, 4, 0.100001 )
+
+[node name="Wall6" parent="Stage" index="65" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, 2, 4, 0.100001 )
+
+[node name="Wall7" parent="Stage" index="66" instance=ExtResource( 11 )]
+transform = Transform( -5.24536e-08, 1.74846e-07, 1, 2.09815e-07, 1, -1.74846e-07, -1.2, 1.74846e-07, -4.37114e-08, 3, 4, -0.899998 )
+
+[node name="Wall8" parent="Stage" index="67" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -2 )
+
+[node name="Wall9" parent="Stage" index="68" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -3 )
+
+[node name="Wall10" parent="Stage" index="69" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.999999, -2 )
+
+[node name="Wall12" parent="Stage" index="70" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -6.99384e-07, -2 )
+
+[node name="Wall14" parent="Stage" index="71" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -2 )
+
+[node name="Wall16" parent="Stage" index="72" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -2 )
+
+[node name="Wall18" parent="Stage" index="73" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -2 )
+
+[node name="Wall20" parent="Stage" index="74" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -4, -2 )
+
+[node name="Wall21" parent="Stage" index="75" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -4, -3 )
+
+[node name="Wall22" parent="Stage" index="76" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -4 )
+
+[node name="Wall23" parent="Stage" index="77" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.999999, -4 )
+
+[node name="Wall24" parent="Stage" index="78" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -6.99384e-07, -4 )
+
+[node name="Wall25" parent="Stage" index="79" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1, -4 )
+
+[node name="Wall26" parent="Stage" index="80" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -2, -4 )
+
+[node name="Wall27" parent="Stage" index="81" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -3, -4 )
+
+[node name="Wall28" parent="Stage" index="82" instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -4, -4 )
+
+[node name="SpecialWall" type="MeshInstance" parent="Stage" index="83"]
+transform = Transform( -4.37113e-08, 5.24538e-07, 1, 5.59507e-07, 3, -1.74846e-07, -1, 1.67852e-06, -4.37114e-08, 4, -1, -3 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 14 )
 
 [node name="Particles" parent="Props" index="0" instance=ExtResource( 9 )]
 

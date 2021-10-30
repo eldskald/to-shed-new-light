@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[sub_resource type="Shader" id=11]
+[sub_resource type="Shader" id=1]
 code = "shader_type spatial;
 render_mode unshaded;
 
@@ -18,5 +18,5 @@ void fragment() {
 
 [resource]
 resource_local_to_scene = true
-shader = SubResource( 11 )
-shader_param/color = Color( 0.596078, 0, 0, 1 )
+shader = SubResource( 1 )
+shader_param/color = Color( 0.737255, 0.0470588, 0.0470588, 1 )

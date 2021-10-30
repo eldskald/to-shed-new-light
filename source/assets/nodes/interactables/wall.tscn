@@ -28,15 +28,15 @@ color_ramp = SubResource( 2 )
 [sub_resource type="QuadMesh" id=4]
 material = ExtResource( 1 )
 
-[sub_resource type="Gradient" id=14]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.5, 1 )
 colors = PoolColorArray( 0.596078, 0, 0, 1, 0.596078, 0, 0, 1, 0.596078, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=15]
-gradient = SubResource( 14 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 width = 256
 
-[sub_resource type="ParticlesMaterial" id=16]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 0.1, 0.4, 0.4 )
 spread = 180.0
@@ -44,9 +44,9 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 0.25
 initial_velocity_random = 1.0
 scale = 0.3
-color_ramp = SubResource( 15 )
+color_ramp = SubResource( 6 )
 
-[sub_resource type="Shader" id=17]
+[sub_resource type="Shader" id=8]
 code = "shader_type spatial;
 render_mode blend_mix,depth_draw_never,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
 uniform vec4 albedo : hint_color;
@@ -95,9 +95,9 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id=18]
+[sub_resource type="ShaderMaterial" id=9]
 resource_local_to_scene = true
-shader = SubResource( 17 )
+shader = SubResource( 8 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5
 shader_param/metallic = 0.0
@@ -112,14 +112,14 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 2 )
 
-[sub_resource type="QuadMesh" id=19]
-material = SubResource( 18 )
+[sub_resource type="QuadMesh" id=10]
+material = SubResource( 9 )
 
-[sub_resource type="ShaderMaterial" id=12]
+[sub_resource type="ShaderMaterial" id=11]
 shader = ExtResource( 4 )
 shader_param/color = Color( 0.596078, 0, 0, 1 )
 
-[sub_resource type="BoxShape" id=13]
+[sub_resource type="BoxShape" id=12]
 extents = Vector3( 0.5, 0.5, 0.5 )
 
 [node name="Wall" type="Area"]
@@ -133,14 +133,14 @@ draw_pass_1 = SubResource( 4 )
 [node name="Particles2" type="Particles" parent="."]
 amount = 128
 lifetime = 0.5
-process_material = SubResource( 16 )
-draw_pass_1 = SubResource( 19 )
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, 0, 0, 0 )
 visible = false
 mesh = ExtResource( 3 )
-material/0 = SubResource( 12 )
+material/0 = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 13 )
+shape = SubResource( 12 )
