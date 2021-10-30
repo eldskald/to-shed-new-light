@@ -136,15 +136,18 @@ text = "60 fps"
 align = 2
 
 [node name="ResetButton" type="Button" parent="Debug"]
-margin_right = 143.0
+margin_right = 191.0
 margin_bottom = 39.0
 custom_styles/focus = SubResource( 8 )
 custom_fonts/font = SubResource( 9 )
-text = "Reset Level"
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "    Reset Level    "
 flat = true
-align = 2
 script = ExtResource( 10 )
-unfocus_text = "Reset Level"
+unfocus_text = "    Reset Level    "
 focus_text = "- Reset Level -"
 
 [connection signal="pressed" from="VBoxContainer/DisplayControls" to="VBoxContainer/DisplayControls" method="_on_pressed"]
