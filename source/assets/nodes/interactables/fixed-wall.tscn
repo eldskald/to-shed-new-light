@@ -143,7 +143,7 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 [node name="Wall" type="Area"]
 
 [node name="Particles" type="Particles" parent="."]
-amount = 128
+amount = 64
 lifetime = 0.5
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 6 )

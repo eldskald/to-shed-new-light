@@ -162,10 +162,10 @@ emission_sphere_radius = 10.0
 direction = Vector3( 0, -1, 0 )
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
-angular_velocity = 720.0
+angular_velocity = 360.0
 angular_velocity_random = 0.5
-radial_accel = -20.0
-tangential_accel = 10.0
+radial_accel = -10.0
+tangential_accel = 5.0
 scale = 0.5
 scale_random = 0.5
 color_ramp = SubResource( 20 )
@@ -827,9 +827,8 @@ transform = Transform( 1.31134e-07, -1, 8.74233e-08, -3.0598e-07, 8.74233e-08, 1
 [node name="Particles4" parent="Props" index="3" instance=ExtResource( 10 )]
 
 [node name="Particles5" type="Particles" parent="Props" index="4"]
-amount = 320
+amount = 160
 preprocess = 10.0
-speed_scale = 0.1
 process_material = SubResource( 23 )
 draw_pass_1 = SubResource( 26 )
 

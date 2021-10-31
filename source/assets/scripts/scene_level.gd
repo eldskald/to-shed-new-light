@@ -46,6 +46,7 @@ func _ready() -> void:
 		z_widget or nz_widget or x_widget or nx_widget or y_widget or ny_widget
 	):
 		cube.visible = false
+		cube.alpha = 0
 	if not ring_widget:
 		var mesh: MeshInstance = get_node(
 			"CameraPivot/Camera/CameraControls/RotationWidget/MeshInstance")
