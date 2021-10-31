@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="SphereMesh" id=17]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="Shader" id=18]
+code = "shader_type spatial;
+
+void fragment() {
+	ALBEDO = vec3(0.0);
+	ROUGHNESS = 0.0;
+	METALLIC = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 18 )
+
+[node name="MirrorSphere" type="MeshInstance"]
+mesh = SubResource( 17 )
+material/0 = SubResource( 19 )
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+update_mode = 1
+extents = Vector3( 10, 10, 10 )
+interior_enable = true
+interior_ambient_color = Color( 0.0980392, 0.027451, 0.172549, 1 )
+interior_ambient_contrib = 1.0

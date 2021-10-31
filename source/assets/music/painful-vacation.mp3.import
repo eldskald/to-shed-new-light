@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/painful-vacation.mp3-2baca1b18aa47355331ab35ea287f95d.mp3str"
+
+[deps]
+
+source_file="res://assets/music/painful-vacation.mp3"
+dest_files=[ "res://.import/painful-vacation.mp3-2baca1b18aa47355331ab35ea287f95d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

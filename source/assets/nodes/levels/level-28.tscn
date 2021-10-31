@@ -1,0 +1,277 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/nodes/levels/base-level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
+[ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/nodes/paths/path-4-intersection.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/nodes/particles/bg-particles-3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/nodes/particles/bg-particles-2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/nodes/particles/falling-stars.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/nodes/paths/fixed-path-straight.tscn" type="PackedScene" id=11]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[node name="BaseLevel" instance=ExtResource( 1 )]
+music = 2
+
+[node name="Camera" parent="CameraPivot" index="1"]
+size = 20.0
+
+[node name="WidgetCube" parent="CameraPivot/Camera/CameraControls" index="3"]
+transform = Transform( 5.96052e-08, 0.707107, 0.707106, 0.707107, -0.5, 0.5, 0.707107, 0.5, -0.5, 8, -3.75, -2 )
+
+[node name="PivotWidget" parent="CameraPivot/Camera/CameraControls" index="4"]
+transform = Transform( 0.707107, -1.23634e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 8, -3.75, -2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ" index="0"]
+material/0 = SubResource( 3 )
+material/1 = SubResource( 4 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/X" index="0"]
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX" index="0"]
+material/0 = SubResource( 7 )
+material/1 = SubResource( 8 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y" index="0"]
+material/0 = SubResource( 9 )
+material/1 = SubResource( 10 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY" index="0"]
+material/0 = SubResource( 11 )
+material/1 = SubResource( 12 )
+
+[node name="RotationWidget" parent="CameraPivot/Camera/CameraControls" index="5"]
+transform = Transform( 1.5, 5.68434e-13, 1.43421e-13, 5.68434e-13, 1.5, -1.13687e-13, 1.43421e-13, -1.13687e-13, 1.5, 8, -3.75, -2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/RotationWidget" index="0"]
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
+material/2 = SubResource( 15 )
+material/3 = SubResource( 16 )
+
+[node name="StraightPath" parent="CameraPivot/Camera/FixedStage" index="0" instance=ExtResource( 11 )]
+transform = Transform( 1.31135e-07, 1, 3.49692e-07, -1, 1.31133e-07, -8.7423e-08, -8.74231e-08, -3.49692e-07, 1, 2.24125e-06, 4, 0 )
+
+[node name="StraightPath5" parent="CameraPivot/Camera/FixedStage" index="1" instance=ExtResource( 11 )]
+transform = Transform( 1.31135e-07, 1, 3.49692e-07, -1, 1.31133e-07, -8.7423e-08, -8.74231e-08, -3.49692e-07, 1, 1, 4, 0 )
+
+[node name="StraightPath6" parent="CameraPivot/Camera/FixedStage" index="2" instance=ExtResource( 11 )]
+transform = Transform( 1.31135e-07, 1, 3.49692e-07, -1, 1.31134e-07, -8.7423e-08, -8.74232e-08, -3.49692e-07, 1, -0.999998, 4, 0 )
+
+[node name="StraightPath2" parent="CameraPivot/Camera/FixedStage" index="3" instance=ExtResource( 11 )]
+transform = Transform( 1.31135e-07, 1, 3.49692e-07, -1, 1.31133e-07, -8.7423e-08, -8.74231e-08, -3.49692e-07, 1, -8.82122e-07, -2, -1.43051e-06 )
+
+[node name="StraightPath3" parent="CameraPivot/Camera/FixedStage" index="4" instance=ExtResource( 11 )]
+transform = Transform( 1.31135e-07, 1, 3.49692e-07, -1, 1.31134e-07, -8.7423e-08, -8.74232e-08, -3.49692e-07, 1, -1, -2, -1.43051e-06 )
+
+[node name="StraightPath4" parent="CameraPivot/Camera/FixedStage" index="5" instance=ExtResource( 11 )]
+transform = Transform( 1.31135e-07, 1, 3.49692e-07, -1, 1.31134e-07, -8.7423e-08, -8.74232e-08, -3.49692e-07, 1, 0.999999, -2, -4.76837e-07 )
+
+[node name="MainSphere" parent="Stage" index="0"]
+transform = Transform( -1, 3.49692e-07, 8.74228e-08, 3.49692e-07, 1, -1.52855e-14, -8.74228e-08, 7.64294e-15, -1, 5, -1.35107e-06, 5.76226e-07 )
+
+[node name="Goal" parent="Stage" index="1"]
+transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, -2.08431e-13, 4.76842e-07, 9.53674e-07 )
+
+[node name="StraightPath" parent="Stage" index="2" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, 1, -6.51688e-07, -6.47694e-07 )
+
+[node name="StraightPath2" parent="Stage" index="3" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, 2, -8.26534e-07, -3.41714e-07 )
+
+[node name="StraightPath3" parent="Stage" index="4" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, 3, -1.00138e-06, -3.57343e-08 )
+
+[node name="StraightPath4" parent="Stage" index="5" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, 4, -1.17623e-06, 2.70246e-07 )
+
+[node name="StraightPath17" parent="Stage" index="6" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, 5, -1.35107e-06, 5.76226e-07 )
+
+[node name="StraightPath5" parent="Stage" index="7" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, -4, 2.22542e-07, -2.17759e-06 )
+
+[node name="StraightPath19" parent="Stage" index="8" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, -5, 3.97388e-07, -2.48357e-06 )
+
+[node name="StraightPath6" parent="Stage" index="9" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, -3, 4.76959e-08, -1.87161e-06 )
+
+[node name="StraightPath7" parent="Stage" index="10" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, -2, -1.2715e-07, -1.56563e-06 )
+
+[node name="StraightPath8" parent="Stage" index="11" instance=ExtResource( 3 )]
+transform = Transform( -1.74845e-07, 1, 2.18557e-07, -3.0598e-07, -2.18557e-07, 1, 1, 1.74845e-07, 3.0598e-07, -1, -3.01996e-07, -1.25965e-06 )
+
+[node name="StraightPath9" parent="Stage" index="12" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, 3.0598e-07, -5.34994e-14, -1 )
+
+[node name="StraightPath10" parent="Stage" index="13" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, 6.1196e-07, -1.06999e-13, -2 )
+
+[node name="StraightPath11" parent="Stage" index="14" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, 0, 0, -3 )
+
+[node name="StraightPath12" parent="Stage" index="15" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, 0, 0, -4 )
+
+[node name="StraightPath18" parent="Stage" index="16" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, 3.0598e-07, -5.34994e-14, -5 )
+
+[node name="StraightPath13" parent="Stage" index="17" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, -1.22392e-06, 2.13998e-13, 4 )
+
+[node name="StraightPath20" parent="Stage" index="18" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, -1.5299e-06, 2.67497e-13, 5 )
+
+[node name="StraightPath14" parent="Stage" index="19" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, -9.1794e-07, 1.60498e-13, 3 )
+
+[node name="StraightPath15" parent="Stage" index="20" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, -1.5299e-06, 2.67497e-13, 2 )
+
+[node name="StraightPath16" parent="Stage" index="21" instance=ExtResource( 3 )]
+transform = Transform( 1, 1.31133e-07, 4.80826e-07, -4.80826e-07, -4.37111e-08, 1, 1.31133e-07, -1, -4.3711e-08, -1.5299e-06, 2.67497e-13, 1 )
+
+[node name="QuadIntersectionPath" parent="Stage" index="22" instance=ExtResource( 4 )]
+transform = Transform( -4.37113e-08, -1, -3.0598e-07, 1, -4.37114e-08, 3.0598e-07, -3.0598e-07, -3.0598e-07, 1, 0, 0, 0 )
+
+[node name="Wall" parent="Stage" index="23" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -5.24538e-07, 9.1794e-07 )
+
+[node name="Wall2" parent="Stage" index="24" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5.24538e-07, -9.1794e-07 )
+
+[node name="Wall3" parent="Stage" index="25" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, -3.0598e-07, 5.34994e-14, 1 )
+
+[node name="Wall4" parent="Stage" index="26" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 3.0598e-07, -5.34994e-14, -1 )
+
+[node name="Particles" parent="Props" index="0" instance=ExtResource( 9 )]
+
+[node name="Particles2" parent="Props" index="1" instance=ExtResource( 8 )]
+
+[node name="Particles3" parent="Props" index="2" instance=ExtResource( 7 )]
+
+[node name="Particles4" parent="Props" index="3" instance=ExtResource( 10 )]

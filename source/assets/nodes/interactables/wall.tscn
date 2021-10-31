@@ -1,0 +1,146 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/materials/particle-material.tres" type="Material" id=1]
+[ext_resource path="res://assets/textures/particle-0.png" type="Texture" id=2]
+[ext_resource path="res://assets/models/wall.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/shaders/wall.gdshader" type="Shader" id=4]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0.596078, 0, 0, 1, 0.596078, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 256
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 0.1, 0.5, 0.5 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.25
+initial_velocity_random = 1.0
+angle = 180.0
+angle_random = 1.0
+scale = 0.7
+color_ramp = SubResource( 2 )
+
+[sub_resource type="QuadMesh" id=4]
+material = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.5, 1 )
+colors = PoolColorArray( 0.596078, 0, 0, 1, 0.596078, 0, 0, 1, 0.596078, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+width = 256
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 0.1, 0.4, 0.4 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.25
+initial_velocity_random = 1.0
+scale = 0.3
+color_ramp = SubResource( 6 )
+
+[sub_resource type="Shader" id=8]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_never,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+uniform int particles_anim_h_frames;
+uniform int particles_anim_v_frames;
+uniform bool particles_anim_loop;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	mat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);
+	mat_world = mat_world * mat4( vec4(cos(INSTANCE_CUSTOM.x),-sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),vec4(0.0, 0.0, 1.0, 0.0),vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat_world;
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	float particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);
+	float particle_frame = floor(INSTANCE_CUSTOM.z * float(particle_total_frames));
+	if (!particles_anim_loop) {
+		particle_frame = clamp(particle_frame, 0.0, particle_total_frames - 1.0);
+	} else {
+		particle_frame = mod(particle_frame, particle_total_frames);
+	}	UV /= vec2(h_frames, v_frames);
+	UV += vec2(mod(particle_frame, h_frames) / h_frames, floor(particle_frame / h_frames) / v_frames);
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * COLOR.rgb;
+	ALPHA = albedo_tex.r * albedo.a * COLOR.a;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 8 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/particles_anim_h_frames = 1
+shader_param/particles_anim_v_frames = 1
+shader_param/particles_anim_loop = false
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=10]
+material = SubResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 4 )
+shader_param/color = Color( 0.596078, 0, 0, 1 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[node name="Wall" type="Area"]
+
+[node name="Particles" type="Particles" parent="."]
+amount = 64
+lifetime = 0.5
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
+
+[node name="Particles2" type="Particles" parent="."]
+amount = 128
+lifetime = 0.5
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -1.96701e-08, 0, 0.45, 0, 0.45, 0, -0.45, 0, -1.96701e-08, 0, 0, 0 )
+visible = false
+mesh = ExtResource( 3 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 12 )

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/scripts/game_state_machine.gd" type="Script" id=1]
+
+[node name="GameStateMachine" type="Node"]
+script = ExtResource( 1 )
+levels_directory = "res://assets/nodes/levels"
+level_prefix = "level-"
+start_menu = "res://assets/nodes/ui/starting-screen.tscn"
+credits = "res://assets/nodes/levels/credits-level.tscn"
