@@ -1,0 +1,848 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://assets/nodes/levels/base-level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/shaders/one-color.gdshader" type="Shader" id=2]
+[ext_resource path="res://assets/nodes/paths/path-straight.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/nodes/paths/fixed-path-straight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/shaders/ring-widget.gdshader" type="Shader" id=5]
+[ext_resource path="res://assets/nodes/paths/path-curve.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/nodes/particles/bg-particles-3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/nodes/particles/bg-particles-2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/nodes/particles/bg-particles-1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/nodes/particles/falling-stars.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/nodes/paths/path-end.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/nodes/paths/fixed-path-end.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/materials/goal-material.tres" type="Material" id=13]
+[ext_resource path="res://assets/scripts/special-last-level.gd" type="Script" id=14]
+[ext_resource path="res://assets/nodes/paths/path-3-2-intersection.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/nodes/interactables/main-sphere.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/nodes/interactables/fixed-wall.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/nodes/interactables/wall.tscn" type="PackedScene" id=18]
+[ext_resource path="res://assets/nodes/interactables/goal.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/textures/particle-1.png" type="Texture" id=20]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 0, 1, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 1, 0, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/color = Color( 0, 1, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = ExtResource( 5 )
+shader_param/color = Color( 1, 0.46875, 0, 1 )
+shader_param/brightness = 0.6
+shader_param/alpha = 1.0
+
+[sub_resource type="SphereMesh" id=17]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="SphereShape" id=18]
+radius = 0.1
+
+[sub_resource type="Gradient" id=19]
+offsets = PoolRealArray( 0, 0.2, 0.7, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.1, 0.1, 0.1, 1, 0.1, 0.1, 0.1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=20]
+gradient = SubResource( 19 )
+width = 256
+
+[sub_resource type="Curve" id=21]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=22]
+width = 256
+curve = SubResource( 21 )
+
+[sub_resource type="ParticlesMaterial" id=23]
+trail_size_modifier = SubResource( 22 )
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 720.0
+angular_velocity_random = 0.5
+radial_accel = -20.0
+tangential_accel = 10.0
+scale = 0.5
+scale_random = 0.5
+color_ramp = SubResource( 20 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[sub_resource type="Shader" id=24]
+code = "shader_type spatial;
+render_mode blend_add,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+uniform int particles_anim_h_frames;
+uniform int particles_anim_v_frames;
+uniform bool particles_anim_loop;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	mat4 mat_world = mat4(normalize(CAMERA_MATRIX[0])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[1])*length(WORLD_MATRIX[0]),normalize(CAMERA_MATRIX[2])*length(WORLD_MATRIX[2]),WORLD_MATRIX[3]);
+	mat_world = mat_world * mat4( vec4(cos(INSTANCE_CUSTOM.x),-sin(INSTANCE_CUSTOM.x), 0.0, 0.0), vec4(sin(INSTANCE_CUSTOM.x), cos(INSTANCE_CUSTOM.x), 0.0, 0.0),vec4(0.0, 0.0, 1.0, 0.0),vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_MATRIX = INV_CAMERA_MATRIX * mat_world;
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	float particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);
+	float particle_frame = floor(INSTANCE_CUSTOM.z * float(particle_total_frames));
+	if (!particles_anim_loop) {
+		particle_frame = clamp(particle_frame, 0.0, particle_total_frames - 1.0);
+	} else {
+		particle_frame = mod(particle_frame, particle_total_frames);
+	}	UV /= vec2(h_frames, v_frames);
+	UV += vec2(mod(particle_frame, h_frames) / h_frames, floor(particle_frame / h_frames) / v_frames);
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb * COLOR.rgb;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=25]
+resource_local_to_scene = true
+shader = SubResource( 24 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/particles_anim_h_frames = 1
+shader_param/particles_anim_v_frames = 1
+shader_param/particles_anim_loop = false
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 20 )
+
+[sub_resource type="QuadMesh" id=26]
+material = SubResource( 25 )
+
+[sub_resource type="Animation" id=27]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CameraPivot/Camera/FixedStage:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -6.55673e-07, 1.09279e-06, -5 ), Vector3( 0, 40, -45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CameraPivot/Camera/FixedStage2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6.55674e-07, -40, 35 ), Vector3( 0, 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Stage:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -40, -40, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Stage2:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 40, 40, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Stage2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Stage:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CameraPivot/Camera/FixedStage2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CameraPivot/Camera/FixedStage:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("LastLevelSpecial")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_perspectives"
+} ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CameraPivot/Camera/FixedStage2:translation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( -6.55673e-07, 1.09279e-06, -5 ), Vector3( 0, 40, -45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CameraPivot/Camera/FixedStage3:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6.55674e-07, -40, 35 ), Vector3( 0, 0, -5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Stage2:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -40, -40, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Stage3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 40, 40, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Stage3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Stage2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CameraPivot/Camera/FixedStage3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CameraPivot/Camera/FixedStage2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("LastLevelSpecial")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reset_perspectives"
+} ]
+}
+
+[node name="BaseLevel" instance=ExtResource( 1 )]
+music = 3
+send_to_credits = true
+
+[node name="Camera" parent="CameraPivot" index="0"]
+size = 20.0
+
+[node name="CameraControls" parent="CameraPivot/Camera" index="1"]
+transform = Transform( 1, 0, 5.61209e-15, 0, 1, 0, 5.61209e-15, 0, 1, 0, 0, 0 )
+
+[node name="WidgetCube" parent="CameraPivot/Camera/CameraControls" index="3"]
+transform = Transform( 5.96048e-08, 0.707107, 0.707106, 0.707107, -0.5, 0.5, 0.707107, 0.5, -0.5, 8, -3.75, -2 )
+
+[node name="PivotWidget" parent="CameraPivot/Camera/CameraControls" index="4"]
+transform = Transform( 0.707107, -1.23635e-07, -0.707107, -0.5, 0.707107, -0.5, 0.5, 0.707107, 0.5, 8, -3.75, -2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Z" index="0"]
+material/0 = SubResource( 1 )
+material/1 = SubResource( 2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nZ" index="0"]
+material/0 = SubResource( 3 )
+material/1 = SubResource( 4 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/X" index="0"]
+material/0 = SubResource( 5 )
+material/1 = SubResource( 6 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nX" index="0"]
+material/0 = SubResource( 7 )
+material/1 = SubResource( 8 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/Y" index="0"]
+material/0 = SubResource( 9 )
+material/1 = SubResource( 10 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/PivotWidget/nY" index="0"]
+material/0 = SubResource( 11 )
+material/1 = SubResource( 12 )
+
+[node name="RotationWidget" parent="CameraPivot/Camera/CameraControls" index="5"]
+transform = Transform( 1.5, 2.27374e-13, 5.81561e-14, 2.27374e-13, 1.5, -1.13687e-13, 5.81562e-14, -1.13687e-13, 1.5, 8, -3.75, -2 )
+
+[node name="MeshInstance" parent="CameraPivot/Camera/CameraControls/RotationWidget" index="0"]
+material/0 = SubResource( 13 )
+material/1 = SubResource( 14 )
+material/2 = SubResource( 15 )
+material/3 = SubResource( 16 )
+
+[node name="StraightPath" parent="CameraPivot/Camera/FixedStage" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 5.61209e-15, 0, 1, 0, 5.61209e-15, 0, 1, -4, 1.9233e-06, 4.76837e-07 )
+
+[node name="StraightPath2" parent="CameraPivot/Camera/FixedStage" index="1" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 5.61209e-15, 0, 1, 0, 5.61209e-15, 0, 1, -4, 1, 0 )
+
+[node name="StraightPath3" parent="CameraPivot/Camera/FixedStage" index="2" instance=ExtResource( 12 )]
+transform = Transform( -1, 8.74224e-08, 2.62269e-07, -8.74232e-08, -1, -4.37115e-07, 2.62269e-07, -4.37115e-07, 1, -4, -0.999998, 3.33786e-06 )
+
+[node name="FixedStage2" type="Spatial" parent="CameraPivot/Camera" index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55674e-07, -40, 35 )
+visible = false
+
+[node name="Wall" parent="CameraPivot/Camera/FixedStage2" index="0" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1.82746e-06, 0, 7.62939e-06 )
+
+[node name="Wall2" parent="CameraPivot/Camera/FixedStage2" index="1" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1.22743e-06, -1, 7.62939e-06 )
+
+[node name="Wall3" parent="CameraPivot/Camera/FixedStage2" index="2" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 7.46597e-07, -2, 7.62939e-06 )
+
+[node name="Wall4" parent="CameraPivot/Camera/FixedStage2" index="3" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 2.65767e-07, -3, 7.62939e-06 )
+
+[node name="Wall5" parent="CameraPivot/Camera/FixedStage2" index="4" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1.4714e-05, 3, 0 )
+
+[node name="Wall6" parent="CameraPivot/Camera/FixedStage2" index="5" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1.42332e-05, 2, 0 )
+
+[node name="Wall7" parent="CameraPivot/Camera/FixedStage2" index="6" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 2.18907e-06, 1, 7.62939e-06 )
+
+[node name="Wall8" parent="CameraPivot/Camera/FixedStage2" index="7" instance=ExtResource( 17 )]
+transform = Transform( -6.55672e-07, 3.05981e-07, -1, -1, 2.62268e-07, 6.55672e-07, 2.62268e-07, 1, 3.05981e-07, 1.82746e-06, 0, 7.62939e-06 )
+
+[node name="Wall9" parent="CameraPivot/Camera/FixedStage2" index="8" instance=ExtResource( 17 )]
+transform = Transform( -6.55672e-07, 3.05981e-07, -1, -1, 2.62268e-07, 6.55672e-07, 2.62268e-07, 1, 3.05981e-07, 3, 0, 7.62939e-06 )
+
+[node name="Wall10" parent="CameraPivot/Camera/FixedStage2" index="9" instance=ExtResource( 17 )]
+transform = Transform( -6.55672e-07, 3.05981e-07, -1, -1, 2.62268e-07, 6.55672e-07, 2.62268e-07, 1, 3.05981e-07, -2, 3.05176e-05, 3.8147e-06 )
+
+[node name="Wall11" parent="CameraPivot/Camera/FixedStage2" index="10" instance=ExtResource( 17 )]
+transform = Transform( -6.55672e-07, 3.05981e-07, -1, -1, 2.62268e-07, 6.55672e-07, 2.62268e-07, 1, 3.05981e-07, -0.999998, 3.05176e-05, 7.62939e-06 )
+
+[node name="Wall12" parent="CameraPivot/Camera/FixedStage2" index="11" instance=ExtResource( 17 )]
+transform = Transform( -6.55672e-07, 3.05981e-07, -1, -1, 2.62268e-07, 6.55672e-07, 2.62268e-07, 1, 3.05981e-07, 2, 0, 7.62939e-06 )
+
+[node name="FixedStage3" type="Spatial" parent="CameraPivot/Camera" index="4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55674e-07, -40, 35 )
+visible = false
+
+[node name="Wall" parent="CameraPivot/Camera/FixedStage3" index="0" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999998, 7.62939e-06, 7.62939e-06 )
+
+[node name="Wall2" parent="CameraPivot/Camera/FixedStage3" index="1" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999999, -0.999992, 7.62939e-06 )
+
+[node name="Wall3" parent="CameraPivot/Camera/FixedStage3" index="2" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999999, -1.99999, 7.62939e-06 )
+
+[node name="Wall4" parent="CameraPivot/Camera/FixedStage3" index="3" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -1, -2.99999, 7.62939e-06 )
+
+[node name="Wall5" parent="CameraPivot/Camera/FixedStage3" index="4" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999985, 3.00001, 0 )
+
+[node name="Wall6" parent="CameraPivot/Camera/FixedStage3" index="5" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999986, 2.00001, 0 )
+
+[node name="Wall7" parent="CameraPivot/Camera/FixedStage3" index="6" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, -0.999998, 1.00001, 7.62939e-06 )
+
+[node name="Wall8" parent="CameraPivot/Camera/FixedStage3" index="7" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1, 7.62939e-06, 7.62939e-06 )
+
+[node name="Wall9" parent="CameraPivot/Camera/FixedStage3" index="8" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1, -0.999992, 7.62939e-06 )
+
+[node name="Wall10" parent="CameraPivot/Camera/FixedStage3" index="9" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1, -1.99999, 7.62939e-06 )
+
+[node name="Wall11" parent="CameraPivot/Camera/FixedStage3" index="10" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1, -2.99999, 7.62939e-06 )
+
+[node name="Wall12" parent="CameraPivot/Camera/FixedStage3" index="11" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1.00001, 3.00001, 0 )
+
+[node name="Wall13" parent="CameraPivot/Camera/FixedStage3" index="12" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1.00001, 2.00001, 0 )
+
+[node name="Wall14" parent="CameraPivot/Camera/FixedStage3" index="13" instance=ExtResource( 17 )]
+transform = Transform( -1, 4.80827e-07, 6.99383e-07, 6.99384e-07, 8.74223e-08, 1, 4.80827e-07, 1, -8.74227e-08, 1, 1.00001, 7.62939e-06 )
+
+[node name="StraightPath" parent="CameraPivot/Camera/FixedStage3" index="14" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, -1, -8.74228e-08, 1, -4.37113e-08, -3.49692e-07, 3.49692e-07, -8.74228e-08, 1, -1, -4.99999, -2.28882e-05 )
+
+[node name="StraightPath2" parent="CameraPivot/Camera/FixedStage3" index="15" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, -1, -8.74228e-08, 1, -4.37113e-08, -3.49692e-07, 3.49692e-07, -8.74228e-08, 1, -2, -4.99998, -3.05176e-05 )
+
+[node name="StraightPath3" parent="CameraPivot/Camera/FixedStage3" index="16" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, -1, -8.74228e-08, 1, -4.37113e-08, -3.49692e-07, 3.49692e-07, -8.74228e-08, 1, -5.76669e-07, -4.99999, -4.19617e-05 )
+
+[node name="StraightPath4" parent="CameraPivot/Camera/FixedStage3" index="17" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, -1, -8.74228e-08, 1, -4.37113e-08, -3.49692e-07, 3.49692e-07, -8.74228e-08, 1, 1, -4.99999, -4.95911e-05 )
+
+[node name="StraightPath5" parent="CameraPivot/Camera/FixedStage3" index="18" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, -1, -8.74228e-08, 1, -4.37113e-08, -3.49692e-07, 3.49692e-07, -8.74228e-08, 1, 2, -4.99999, -5.72205e-05 )
+
+[node name="Goal" parent="CameraPivot/Camera/FixedStage3" index="19" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 5.61209e-15, 0, 1, 0, 5.61209e-15, 0, 1, -2.40413e-06, -5, -7.62939e-06 )
+
+[node name="MainSphere" parent="Stage" index="0"]
+transform = Transform( -1, 3.49692e-07, 8.74228e-08, 3.49692e-07, 1, -1.52855e-14, -8.74228e-08, 7.64294e-15, -1, -3.57627e-07, 2.38419e-07, -9.53674e-07 )
+
+[node name="Goal" parent="Stage" index="1"]
+transform = Transform( -2.84217e-14, -1, -4.37114e-08, 1.31135e-07, -4.37114e-08, 1, -1, 2.84217e-14, 1.31135e-07, -10, -0.999999, -7 )
+visible = false
+
+[node name="StraightPath" parent="Stage" index="2" instance=ExtResource( 3 )]
+transform = Transform( -1, -2.18556e-07, -1.31134e-07, -1.31134e-07, -4.3711e-08, 1, -2.18556e-07, 1, 4.3711e-08, -6.75611e-08, 3.57628e-07, 0.999999 )
+
+[node name="StraightPath2" parent="Stage" index="3" instance=ExtResource( 11 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, 0, 0, 0 )
+
+[node name="StraightPath3" parent="Stage" index="4" instance=ExtResource( 11 )]
+transform = Transform( -1, -4.37113e-08, -1.31134e-07, -1.31134e-07, -4.37113e-08, 1, -4.37112e-08, 1, 4.37113e-08, -6.1196e-07, 1.06999e-13, 2 )
+
+[node name="StraightPath4" parent="Stage" index="5" instance=ExtResource( 3 )]
+transform = Transform( -1, 4.37114e-08, 3.05981e-07, 3.05981e-07, -2.18557e-07, 1, 4.37115e-08, 1, 2.18557e-07, -3, 2, -1 )
+
+[node name="StraightPath5" parent="Stage" index="6" instance=ExtResource( 3 )]
+transform = Transform( -1, 4.37114e-08, 3.05981e-07, 3.05981e-07, -2.18557e-07, 1, 4.37115e-08, 1, 2.18557e-07, -3, 2, -2 )
+
+[node name="StraightPath6" parent="Stage" index="7" instance=ExtResource( 3 )]
+transform = Transform( -1, 2.6227e-07, 0, 2.6227e-07, 1, -2.94875e-13, 0, -3.21416e-13, -1, -8.9808e-07, -3, 2 )
+
+[node name="StraightPath7" parent="Stage" index="8" instance=ExtResource( 11 )]
+transform = Transform( 8.74226e-08, -1, 1.31135e-07, -3.0598e-07, 1.31135e-07, 1, -1, -8.74227e-08, -3.0598e-07, -4, 2, 0 )
+
+[node name="StraightPath8" parent="Stage" index="9" instance=ExtResource( 3 )]
+transform = Transform( -1, 2.6227e-07, 0, 2.6227e-07, 1, -2.94875e-13, 0, -3.21416e-13, -1, -1.07293e-06, -4, 2 )
+
+[node name="StraightPath9" parent="Stage" index="10" instance=ExtResource( 11 )]
+transform = Transform( 1, 1.31134e-07, 4.80826e-07, -4.80826e-07, -4.37114e-08, 1, 1.31134e-07, -1, -4.37113e-08, -3, 2, -3 )
+
+[node name="CurvePath" parent="Stage" index="11" instance=ExtResource( 6 )]
+transform = Transform( -4.37113e-08, 1, -2.18557e-07, -1, -4.37114e-08, -3.93403e-07, -3.93403e-07, 2.18557e-07, 1, -3, 2, -9.17939e-07 )
+
+[node name="FirstGoal" type="Area" parent="Stage" index="12"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Stage/FirstGoal" index="0"]
+mesh = SubResource( 17 )
+material/0 = ExtResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage/FirstGoal" index="1"]
+shape = SubResource( 18 )
+
+[node name="Stage2" type="Spatial" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 40, 0 )
+visible = false
+
+[node name="SecondGoal" type="Area" parent="Stage2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 1.10108e-06 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Stage2/SecondGoal" index="0"]
+mesh = SubResource( 17 )
+material/0 = ExtResource( 13 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Stage2/SecondGoal" index="1"]
+shape = SubResource( 18 )
+
+[node name="MainSphere" parent="Stage2" index="1" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 9.9779e-07 )
+
+[node name="StraightPath" parent="Stage2" index="2" instance=ExtResource( 3 )]
+transform = Transform( -4.37113e-08, 1, -3.0598e-07, -1, -4.37114e-08, -3.0598e-07, -3.0598e-07, 3.0598e-07, 1, 2, 1, 1 )
+
+[node name="StraightPath2" parent="Stage2" index="3" instance=ExtResource( 3 )]
+transform = Transform( -4.37113e-08, 1, -3.0598e-07, -1, -4.37114e-08, -3.0598e-07, -3.0598e-07, 3.0598e-07, 1, 2, 1, -0.999999 )
+
+[node name="StraightPath3" parent="Stage2" index="4" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, -3.49691e-07, -1, -1, 1.31135e-07, -1.31134e-07, 1.31135e-07, 1, -3.49691e-07, 1, 1, 1.10109e-06 )
+
+[node name="StraightPath4" parent="Stage2" index="5" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, -3.49691e-07, -1, -1, 1.31135e-07, -1.31134e-07, 1.31135e-07, 1, -3.49691e-07, 3, 1, 1.71305e-06 )
+
+[node name="StraightPath5" parent="Stage2" index="6" instance=ExtResource( 3 )]
+transform = Transform( 1, -1.42109e-14, 0, 1.42109e-14, 1, 1.33748e-14, 0, 3.34421e-15, 1, 1, 0, -1 )
+
+[node name="StraightPath6" parent="Stage2" index="7" instance=ExtResource( 3 )]
+transform = Transform( 1, -1.42109e-14, 0, 1.42109e-14, 1, 1.33748e-14, 0, 3.34421e-15, 1, 3, 0, -0.999998 )
+
+[node name="StraightPath7" parent="Stage2" index="8" instance=ExtResource( 3 )]
+transform = Transform( 1, -1.42109e-14, 0, 1.42109e-14, 1, 1.33748e-14, 0, 3.34421e-15, 1, 3, 0, 1 )
+
+[node name="StraightPath8" parent="Stage2" index="9" instance=ExtResource( 3 )]
+transform = Transform( 1, -1.42109e-14, 0, 1.42109e-14, 1, 1.33748e-14, 0, 3.34421e-15, 1, 1, 0, 1 )
+
+[node name="Tri2IntersectionPath" parent="Stage2" index="10" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+
+[node name="Tri2IntersectionPath2" parent="Stage2" index="11" instance=ExtResource( 15 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 1, 1, 1 )
+
+[node name="Tri2IntersectionPath3" parent="Stage2" index="12" instance=ExtResource( 15 )]
+transform = Transform( -1, 3.49692e-07, -8.74228e-08, 3.49692e-07, 1, 1.52855e-14, 8.74228e-08, -7.64259e-15, -1, 3, 1, 1 )
+
+[node name="Tri2IntersectionPath4" parent="Stage2" index="13" instance=ExtResource( 15 )]
+transform = Transform( 1.31134e-07, 1.74846e-07, -1, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, 1.31134e-07, 3, 1, -0.999997 )
+
+[node name="StraightPath9" parent="Stage2" index="14" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, -1, -3.0598e-07, 1, 1.31134e-07, 3.0598e-07, -3.0598e-07, -3.0598e-07, 1, 2, -0.999996, 1 )
+
+[node name="StraightPath10" parent="Stage2" index="15" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, -1, -3.0598e-07, 1, 1.31134e-07, 3.0598e-07, -3.0598e-07, -3.0598e-07, 1, 2, -0.999996, -0.999999 )
+
+[node name="StraightPath11" parent="Stage2" index="16" instance=ExtResource( 3 )]
+transform = Transform( -4.37112e-08, -2.62269e-07, 1, 1, -1.31135e-07, 4.37112e-08, 1.31135e-07, 1, 2.62269e-07, 3, -0.999996, 1.71304e-06 )
+
+[node name="StraightPath12" parent="Stage2" index="17" instance=ExtResource( 3 )]
+transform = Transform( -4.37112e-08, -2.62269e-07, 1, 1, -1.31135e-07, 4.37112e-08, 1.31135e-07, 1, 2.62269e-07, 0.999996, -0.999996, 1.10108e-06 )
+
+[node name="Tri2IntersectionPath5" parent="Stage2" index="18" instance=ExtResource( 15 )]
+transform = Transform( -1, -8.74228e-08, -6.1196e-07, 8.74228e-08, -1, 1.33748e-13, -6.1196e-07, 8.02488e-14, 1, 3, -0.999996, -0.999998 )
+
+[node name="Tri2IntersectionPath6" parent="Stage2" index="19" instance=ExtResource( 15 )]
+transform = Transform( 6.55671e-07, -2.62269e-07, -1, -1.74846e-07, -1, 2.62269e-07, -1, 1.74846e-07, -6.55671e-07, 3, -0.999996, 1 )
+
+[node name="Tri2IntersectionPath7" parent="Stage2" index="20" instance=ExtResource( 15 )]
+transform = Transform( 1, -4.37115e-07, 6.99383e-07, -4.37115e-07, -1, -1.56677e-13, 6.99383e-07, -1.41391e-13, -1, 0.999996, -0.999996, 1 )
+
+[node name="Tri2IntersectionPath8" parent="Stage2" index="21" instance=ExtResource( 15 )]
+transform = Transform( -7.43094e-07, -2.62269e-07, 1, -1.74846e-07, -1, -2.62269e-07, 1, -1.74846e-07, 7.43094e-07, 0.999996, -0.999996, -0.999998 )
+
+[node name="Wall" parent="Stage2" index="22" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 1, 1, 1.10109e-06 )
+
+[node name="Wall2" parent="Stage2" index="23" instance=ExtResource( 18 )]
+transform = Transform( -4.37114e-08, 1.74846e-07, 1, 1.74846e-07, 1, -1.74846e-07, -1, 1.74846e-07, -4.37114e-08, 3, -1, 1.71305e-06 )
+
+[node name="Stage3" type="Spatial" parent="." index="3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 40, 0 )
+visible = false
+
+[node name="MainSphere" parent="Stage3" index="0" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9.9779e-07 )
+
+[node name="StraightPath" parent="Stage3" index="1" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 3, 0, 1 )
+
+[node name="StraightPath2" parent="Stage3" index="2" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 3, 0, 1.77265e-06 )
+
+[node name="StraightPath3" parent="Stage3" index="3" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 3, 0, -0.999998 )
+
+[node name="StraightPath4" parent="Stage3" index="4" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, 3 )
+
+[node name="StraightPath5" parent="Stage3" index="5" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, 2 )
+
+[node name="StraightPath6" parent="Stage3" index="6" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, 1 )
+
+[node name="StraightPath7" parent="Stage3" index="7" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, 1.81634e-06 )
+
+[node name="StraightPath8" parent="Stage3" index="8" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, -0.999999 )
+
+[node name="StraightPath9" parent="Stage3" index="9" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, -2 )
+
+[node name="StraightPath10" parent="Stage3" index="10" instance=ExtResource( 3 )]
+transform = Transform( -4.80826e-07, 2.62269e-07, 1, -1, 1.31135e-07, -4.80826e-07, -1.31135e-07, -1, 2.62269e-07, 1, 0, -3 )
+
+[node name="StraightPath11" parent="Stage3" index="11" instance=ExtResource( 3 )]
+transform = Transform( 0, 1.31135e-07, 1, 1.74846e-07, 1, -1.31135e-07, -1, 1.74846e-07, 0, 1, -2, 2 )
+
+[node name="StraightPath12" parent="Stage3" index="12" instance=ExtResource( 3 )]
+transform = Transform( 0, 1.31135e-07, 1, 1.74846e-07, 1, -1.31135e-07, -1, 1.74846e-07, 0, 0.999992, -3, 2 )
+
+[node name="StraightPath13" parent="Stage3" index="13" instance=ExtResource( 3 )]
+transform = Transform( 0, 1.31135e-07, 1, 1.74846e-07, 1, -1.31135e-07, -1, 1.74846e-07, 0, 0.999985, -4, 2 )
+
+[node name="StraightPath14" parent="Stage3" index="14" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, -1, 8.74233e-08, -3.0598e-07, 8.74233e-08, 1, -1, -1.31134e-07, -3.0598e-07, 4.99997, -4, 2 )
+
+[node name="StraightPath15" parent="Stage3" index="15" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, -1, 8.74233e-08, -3.0598e-07, 8.74233e-08, 1, -1, -1.31134e-07, -3.0598e-07, 3.99997, -4, 2 )
+
+[node name="Particles" parent="Props" index="0" instance=ExtResource( 9 )]
+
+[node name="Particles2" parent="Props" index="1" instance=ExtResource( 8 )]
+
+[node name="Particles3" parent="Props" index="2" instance=ExtResource( 7 )]
+
+[node name="Particles4" parent="Props" index="3" instance=ExtResource( 10 )]
+
+[node name="Particles5" type="Particles" parent="Props" index="4"]
+amount = 320
+preprocess = 10.0
+speed_scale = 0.1
+process_material = SubResource( 23 )
+draw_pass_1 = SubResource( 26 )
+
+[node name="LastLevelSpecial" type="AnimationPlayer" parent="." index="5"]
+anims/first_to_second = SubResource( 27 )
+anims/second_to_third = SubResource( 28 )
+script = ExtResource( 14 )
+controls = NodePath("../CameraPivot/Camera/CameraControls")
+
+[connection signal="grabbed_sphere" from="CameraPivot/Camera/DragControls" to="Stage2/MainSphere" method="_on_grabbed_sphere"]
+[connection signal="grabbed_sphere" from="CameraPivot/Camera/DragControls" to="Stage3/MainSphere" method="_on_grabbed_sphere"]
+[connection signal="let_go_of_sphere" from="CameraPivot/Camera/DragControls" to="Stage2/MainSphere" method="_on_let_go_of_sphere"]
+[connection signal="let_go_of_sphere" from="CameraPivot/Camera/DragControls" to="Stage3/MainSphere" method="_on_let_go_of_sphere"]
+[connection signal="area_entered" from="Stage/FirstGoal" to="LastLevelSpecial" method="_on_FirstGoal_area_entered"]
+[connection signal="area_entered" from="Stage2/SecondGoal" to="LastLevelSpecial" method="_on_SecondGoal_area_entered"]
+[connection signal="stage_cleared" from="Stage3/MainSphere" to="." method="_on_stage_cleared"]
